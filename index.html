@@ -89,35 +89,33 @@
     padding: 1rem 0;
 }
 
-.faq-question {
+
+    .faq-question {
     width: 100%;
-    background: none;
+    background-color: transparent;
     border: none;
     font-size: 1.1rem;
     font-weight: 600;
-    color: #1e88e5;
+    color: #f2f8fd;
     text-align: left;
     cursor: pointer;
     padding: 0.5rem 0;
     display: flex;
     justify-content: space-between;
+    transition: background-color 0.3s, color 0.3s;
 }
 
-.faq-question::after {
-    content: "+";
-    font-weight: bold;
-    font-size: 1.2rem;
-}
-
-.faq-question.active::after {
-    content: "−";
+.faq-question:hover {
+    background-color: rgba(242, 248, 253, 0.1);
+    color: #ffffff;
 }
 
 .faq-answer {
     display: none;
     margin-top: 0.5rem;
     font-size: 1rem;
-    color: #333;
+    color: #f2f8fd;
+    transition: color 0.3s;
 }
 
   
