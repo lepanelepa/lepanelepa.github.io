@@ -68,6 +68,58 @@
             text-decoration: none;
             font-weight: bold;           
         }
+        .faq {
+    max-width: 900px;
+    margin: 3rem auto;
+    padding: 2rem;
+    background: rgba(255,255,255,0.95);
+    box-shadow: 0 2px 12px rgba(0,0,0,0.15);
+}
+
+.faq-title {
+    font-size: 1.8rem;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 2rem;
+    color: #000;
+}
+
+.faq-item {
+    border-top: 1px solid #adc6eb;
+    padding: 1rem 0;
+}
+
+.faq-question {
+    width: 100%;
+    background: none;
+    border: none;
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #1e88e5;
+    text-align: left;
+    cursor: pointer;
+    padding: 0.5rem 0;
+    display: flex;
+    justify-content: space-between;
+}
+
+.faq-question::after {
+    content: "+";
+    font-weight: bold;
+    font-size: 1.2rem;
+}
+
+.faq-question.active::after {
+    content: "−";
+}
+
+.faq-answer {
+    display: none;
+    margin-top: 0.5rem;
+    font-size: 1rem;
+    color: #333;
+}
+
   
      footer {
     text-align: center;
@@ -171,6 +223,30 @@
         </div>
      
     </section>
+    <section class="faq">
+    <div class="faq-title">Часто задаваемые вопросы</div>
+
+    <div class="faq-item">
+        <button class="faq-question">Какие технологии вы используете для разработки?</button>
+        <div class="faq-answer">Мы используем стек разработки, включающий .Net, C#, Golang, MS SQL, Postgresql, ScyllaDB, Docker, Nomad, Kafka.</div>
+    </div>
+
+    <div class="faq-item">
+        <button class="faq-question">Можете ли вы разработать мобильное приложение для моего бизнеса?</button>
+        <div class="faq-answer">Да, мы разрабатываем мобильные приложения под Android и iOS с нуля, под ключ.</div>
+    </div>
+
+    <div class="faq-item">
+        <button class="faq-question">Какие языки программирования вы используете?</button>
+        <div class="faq-answer">Мы используем C#, Golang, HTML/CSS/JS и другие современные технологии.</div>
+    </div>
+
+    <div class="faq-item">
+        <button class="faq-question">Какие СУБД вы применяете в разработке?</button>
+        <div class="faq-answer">Мы используем MS SQL Server, PostgreSQL и ScyllaDB.</div>
+    </div>
+</section>
+
 
     <footer>
         &copy; 2025 Helena systems. Все права защищены.
@@ -193,6 +269,15 @@
 </div>
 
 
+<script>
+    document.querySelectorAll('.faq-question').forEach(btn => {
+        btn.addEventListener('click', () => {
+            btn.classList.toggle('active');
+            const answer = btn.nextElementSibling;
+            answer.style.display = answer.style.display === 'block' ? 'none' : 'block';
+        });
+    });
+</script>
 
 </body>
 </html>
