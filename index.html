@@ -89,25 +89,9 @@
     padding: 1rem 0;
 }
 
-
-    .faq-question {
-    width: 100%;
-    background-color: transparent;
-    border: none;
-    font-size: 1.1rem;
-    font-weight: 600;
-    color: #f2f8fd;
-    text-align: left;
-    cursor: pointer;
-    padding: 0.5rem 0;
-    display: flex;
-    justify-content: space-between;
-    transition: background-color 0.3s, color 0.3s;
-}
-
 .faq-question {
     width: 100%;
-    background-color: transparent;
+    background: transparent;
     border: none;
     font-size: 1.1rem;
     font-weight: 600;
@@ -117,20 +101,29 @@
     padding: 0.5rem 0;
     display: flex;
     justify-content: space-between;
-    transition: background-color 0.3s, color 0.3s;
+    align-items: center;
 }
 
-.faq-question:hover {
-    background-color: #f2f8fd;
-    color: #000;
+.faq-question svg {
+    width: 24px;
+    height: 24px;
+    transition: transform 0.3s ease;
+}
+
+.faq-question.active svg {
+    transform: rotate(45deg);
 }
 
 .faq-answer {
-    display: none;
-    margin-top: 0.5rem;
+    max-height: 0;
+    overflow: hidden;
     font-size: 1rem;
     color: #000;
-    transition: color 0.3s;
+    transition: max-height 0.4s ease;
+}
+
+.faq-answer.open {
+    max-height: 500px; /* достаточно для текста */
 }
 
   
@@ -239,25 +232,52 @@
     <section class="faq">
     <div class="faq-title">Часто задаваемые вопросы</div>
 
-    <div class="faq-item">
-        <button class="faq-question">Какие технологии вы используете для разработки?</button>
-        <div class="faq-answer">Мы используем стек разработки, включающий .Net, C#, Golang, MS SQL, Postgresql, ScyllaDB, Docker, Nomad, Kafka.</div>
-    </div>
 
-    <div class="faq-item">
-        <button class="faq-question">Можете ли вы разработать мобильное приложение для моего бизнеса?</button>
-        <div class="faq-answer">Да, мы разрабатываем мобильные приложения под Android и iOS с нуля, под ключ.</div>
-    </div>
 
-    <div class="faq-item">
-        <button class="faq-question">Какие языки программирования вы используете?</button>
-        <div class="faq-answer">Мы используем C#, Golang, HTML/CSS/JS и другие современные технологии.</div>
-    </div>
+           <div class="faq-item">
+    <button class="faq-question">
+      Можете ли вы разработать мобильное приложение для моего бизнеса?
+        <svg viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg" fill="currentColor">
+            <circle cx="20" cy="20" r="20" stroke-width="0"></circle>
+            <g stroke-width="2px" fill="none">
+                <path d="M9 20H31"></path>
+                <path d="M20 9V31"></path>
+            </g>
+        </svg>
+    </button>
+    <div class="faq-answer">Да, мы разрабатываем мобильные приложения под Android и iOS с нуля, под ключ.</div>
+</div>
 
-    <div class="faq-item">
-        <button class="faq-question">Какие СУБД вы применяете в разработке?</button>
-        <div class="faq-answer">Мы используем MS SQL Server, PostgreSQL и ScyllaDB.</div>
-    </div>
+
+        <div class="faq-item">
+    <button class="faq-question">
+       Какие языки программирования вы используете?
+        <svg viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg" fill="currentColor">
+            <circle cx="20" cy="20" r="20" stroke-width="0"></circle>
+            <g stroke-width="2px" fill="none">
+                <path d="M9 20H31"></path>
+                <path d="M20 9V31"></path>
+            </g>
+        </svg>
+    </button>
+    <div class="faq-answer">Мы используем C#, Golang, HTML/CSS/JS и другие современные технологии.</div>
+</div>
+
+
+   <div class="faq-item">
+    <button class="faq-question">
+        Какие технологии вы используете для разработки?
+        <svg viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg" fill="currentColor">
+            <circle cx="20" cy="20" r="20" stroke-width="0"></circle>
+            <g stroke-width="2px" fill="none">
+                <path d="M9 20H31"></path>
+                <path d="M20 9V31"></path>
+            </g>
+        </svg>
+    </button>
+    <div class="faq-answer">Мы используем .Net, C#, Golang, MS SQL, PostgreSQL, ScyllaDB, Kafka и др.</div>
+</div>
+
 </section>
 
 
@@ -283,14 +303,15 @@
 
 
 <script>
-    document.querySelectorAll('.faq-question').forEach(btn => {
-        btn.addEventListener('click', () => {
-            btn.classList.toggle('active');
-            const answer = btn.nextElementSibling;
-            answer.style.display = answer.style.display === 'block' ? 'none' : 'block';
-        });
+document.querySelectorAll('.faq-question').forEach(btn => {
+    btn.addEventListener('click', () => {
+        const isActive = btn.classList.toggle('active');
+        const answer = btn.nextElementSibling;
+        answer.classList.toggle('open', isActive);
     });
+});
 </script>
+
 
 </body>
 </html>
