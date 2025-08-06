@@ -305,12 +305,22 @@
 <script>
 document.querySelectorAll('.faq-question').forEach(btn => {
     btn.addEventListener('click', () => {
-        const isActive = btn.classList.toggle('active');
+        const svg = btn.querySelector('svg');
+        const vertical = svg.querySelector('.line-vertical');
         const answer = btn.nextElementSibling;
-        answer.classList.toggle('open', isActive);
+
+        const isOpen = answer.classList.toggle('open');
+        btn.classList.toggle('active', isOpen);
+
+        if (isOpen) {
+            vertical.style.opacity = '0'; // превращается в «–»
+        } else {
+            vertical.style.opacity = '1'; // возвращается в «+»
+        }
     });
 });
 </script>
+
 
 
 </body>
