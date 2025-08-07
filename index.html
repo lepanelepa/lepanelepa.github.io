@@ -42,6 +42,50 @@
             box-shadow: 0 2px 12px rgba(0,0,0,0.15);
         }
 
+        .section-portfolio {
+  text-align: center;
+  padding: 60px 20px;
+}
+
+.section-portfolio .container {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.work-list {
+  list-style: none;
+  padding: 0;
+  margin: 40px 0 0;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+}
+
+.work-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 15px;
+  text-align: left;
+}
+
+.icon {
+  flex-shrink: 0;
+  background-size: cover;
+  border-radius: 50%;
+}
+
+.work-title {
+  margin: 0 0 8px;
+  font-weight: bold;
+}
+
+.work-description {
+  margin: 0;
+  font-size: 14px;
+  color: #555;
+}
+
+
         h2 {
             color: #222;
         }
@@ -219,6 +263,68 @@
         <h1>Создавайте цифровое будущее вместе с нами!</h1>
         <p>Мы предлагаем современные решения для веб- и мобильных приложений.<br/> Убедитесь сами – мы воплощаем идеи в жизнь!</p>
     </header>
+
+<section class="section-portfolio">
+  <div class="container">
+    <h2 class="title">Посмотрите, что мы сделали</h2>
+    <p class="description">Оцените качество и разнообразие наших работ, взглянув на примеры успешных проектов.</p>
+
+    <ul class="work-list">
+      <li class="work-item">
+        <div class="icon">
+          <svg width="30" height="30" viewBox="0 0 30 30" fill="none">
+            <circle cx="15" cy="15" r="15" fill="#f2f8fd"/>
+            <path d="M10 15L14 19L21 12" stroke="#3498db" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+        <div class="content">
+          <h3 class="work-title">Веб-приложение</h3>
+          <p class="work-description">Создание интуитивно понятного интерфейса для пользователей с использованием современных технологий.</p>
+        </div>
+      </li>
+
+      <li class="work-item">
+        <div class="icon">
+          <svg width="30" height="30" viewBox="0 0 30 30" fill="none">
+            <circle cx="15" cy="15" r="15" fill="#f2f8fd"/>
+            <path d="M10 15L14 19L21 12" stroke="#3498db" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+        <div class="content">
+          <h3 class="work-title">Мобильное приложение</h3>
+          <p class="work-description">Разработка приложения для мобильных устройств с удобным и функциональным интерфейсом.</p>
+        </div>
+      </li>
+
+      <li class="work-item">
+        <div class="icon">
+          <svg width="30" height="30" viewBox="0 0 30 30" fill="none">
+            <circle cx="15" cy="15" r="15" fill="#f2f8fd"/>
+            <path d="M10 15L14 19L21 12" stroke="#3498db" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+        <div class="content">
+          <h3 class="work-title">Интеграция ИИ</h3>
+          <p class="work-description">Внедрение искусственного интеллекта для улучшения пользовательского опыта и автоматизации процессов.</p>
+        </div>
+      </li>
+
+      <li class="work-item">
+        <div class="icon">
+          <svg width="30" height="30" viewBox="0 0 30 30" fill="none">
+            <circle cx="15" cy="15" r="15" fill="#f2f8fd"/>
+            <path d="M10 15L14 19L21 12" stroke="#3498db" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+        <div class="content">
+          <h3 class="work-title">Работа с базами данных</h3>
+          <p class="work-description">Оптимизация работы с различными СУБД для обеспечения высокой производительности и надёжности.</p>
+        </div>
+      </li>
+    </ul>
+  </div>
+</section>
+
 
     <section>
         <h2>Наши услуги</h2>
