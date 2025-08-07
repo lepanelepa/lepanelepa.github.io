@@ -42,49 +42,83 @@
             box-shadow: 0 2px 12px rgba(0,0,0,0.15);
         }
 
-        .section-portfolio {
-  text-align: center;
-  padding: 60px 20px;
-}
+      .section-portfolio {
+    padding: 40px 20px;
+    background-color: #fff;
+  }
 
-.section-portfolio .container {
-  max-width: 800px;
-  margin: 0 auto;
-}
+  .section-portfolio .title {
+    font-size: 24px;
+    text-align: center;
+    margin-bottom: 12px;
+  }
 
-.work-list {
-  list-style: none;
-  padding: 0;
-  margin: 40px 0 0;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 40px;
-}
+  .section-portfolio .description {
+    font-size: 16px;
+    text-align: center;
+    margin-bottom: 32px;
+    color: #555;
+  }
 
-.work-item {
-  display: flex;
-  align-items: flex-start;
-  gap: 15px;
-  text-align: left;
-}
+  .work-list {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    padding: 0;
+    margin: 0;
+    list-style: none;
+  }
 
-.icon {
-  flex-shrink: 0;
-  background-size: cover;
-  border-radius: 50%;
-}
+  .work-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+  }
 
-.work-title {
-  margin: 0 0 8px;
-  font-weight: bold;
-}
+  .work-item .icon {
+    flex-shrink: 0;
+  }
 
-.work-description {
-  margin: 0;
-  font-size: 14px;
-  color: #555;
-}
+  .work-title {
+    margin: 0 0 4px;
+    font-size: 18px;
+    font-weight: 600;
+  }
 
+  .work-description {
+    margin: 0;
+    font-size: 15px;
+    color: #444;
+  }
+
+  @media (min-width: 768px) {
+    .section-portfolio .title {
+      font-size: 32px;
+    }
+
+    .section-portfolio .description {
+      font-size: 18px;
+    }
+
+    .work-list {
+      flex-direction: row;
+      flex-wrap: wrap;
+    }
+
+    .work-item {
+      width: calc(50% - 12px);
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .work-item {
+      width: calc(50% - 16px);
+    }
+
+    .section-portfolio {
+      padding: 60px 40px;
+    }
+  }
 
         h2 {
             color: #222;
@@ -261,12 +295,12 @@
 <body>
     <header>
         <h1>Создавайте цифровое будущее вместе с нами!</h1>
-        <p>Мы предлагаем современные решения для веб- и мобильных приложений.<br/> Убедитесь сами – мы воплощаем идеи в жизнь!</p>
+        <p>Мы предлагаем разработку современных решений для веб- и мобильных приложений.<br/> Убедитесь сами – мы воплощаем идеи в жизнь!</p>
     </header>
 
 <section class="section-portfolio">
   <div class="container">
-    <h2 class="title">Посмотрите, что мы сделали</h2>
+    <h2 class="title">Что мы умеем</h2>
     <p class="description">Оцените качество и разнообразие наших работ, взглянув на примеры успешных проектов.</p>
 
     <ul class="work-list">
@@ -305,7 +339,7 @@
         </div>
         <div class="content">
           <h3 class="work-title">Интеграция ИИ</h3>
-          <p class="work-description">Внедрение искусственного интеллекта для улучшения пользовательского опыта и автоматизации процессов.</p>
+          <p class="work-description">Внедрение искусственного интеллекта для улучшения пользовательского опыта и автоматизации процессов разработки.</p>
         </div>
       </li>
 
@@ -318,7 +352,7 @@
         </div>
         <div class="content">
           <h3 class="work-title">Работа с базами данных</h3>
-          <p class="work-description">Оптимизация работы с различными СУБД для обеспечения высокой производительности и надёжности.</p>
+          <p class="work-description">Оптимизация работы с различными СУБД для обеспечения высокой производительности и надёжности. Работа с высоконагруженными системами.</p>
         </div>
       </li>
     </ul>
