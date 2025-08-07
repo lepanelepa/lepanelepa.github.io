@@ -119,6 +119,10 @@
   transition: transform 0.3s ease;
 }
 
+.faq-icon.rotate {
+  transform: rotate(45deg);
+}
+
 .faq-icon svg {
   width: 32px;
   height: 32px;
@@ -333,16 +337,24 @@
 document.querySelectorAll('.faq-question').forEach(btn => {
   btn.addEventListener('click', () => {
     const answer = btn.nextElementSibling;
-    const icon = btn.querySelector('.faq-icon .vertical-line');
+    const icon = btn.querySelector('.faq-icon');
 
     const isOpen = answer.classList.toggle('open');
 
+    // Повернуть svg (или обертку) на 45 градусов
     if (icon) {
-      icon.style.opacity = isOpen ? '0' : '1'; // скрыть вертикальную линию — получается "–"
+      icon.classList.toggle('rotate', isOpen);
+    }
+
+    // Если у тебя есть вертикальная линия внутри — её можно тоже скрыть для превращения в «–»
+    const vertical = btn.querySelector('.faq-icon .vertical-line');
+    if (vertical) {
+      vertical.style.opacity = isOpen ? '0' : '1';
     }
   });
 });
 </script>
+
 
 
 
