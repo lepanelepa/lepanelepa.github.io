@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Лэндинг 2027 — 3D Hero</title>
+
+<!-- Three.js (via unpkg CDN) -->
+<script src="https://unpkg.com/three@0.154.0/build/three.min.js"></script>
+<script src="https://unpkg.com/three@0.154.0/examples/js/controls/OrbitControls.js"></script>
+
+<style>
+  :root{
+    --bg:#0b1220;
+    --panel: rgba(255,255,255,0.04);
+    --accent: linear-gradient(90deg,#7b61ff,#00ffd5);
+    --text:#ffffff;
+  }
+
+  html,body{height:100%;margin:0;font-family:Inter,Segoe UI,system-ui,Arial,sans-serif;background:var(--bg);color:var(--text);}
+
+  /* Fullscreen hero with canvas */
+  .hero {
+    position:relative;
+    height:100vh;
+    min-height:560px;
+    width:100%;
+    overflow:hidden;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+  }
+
+  /* WebGL canvas full-bleed */
+  #hero-canvas{
+    position:absolute;
+    inset:0;
+    width:100%;
+    height:100%;
+    display:block;
+  }
+
+  /* Overlay content centered */
+  .hero-content{
+    position:relative;
+    z-index:5;
+    max-width:1100px;
+    padding:2rem;
+    width:100%;
+    text-align:center;
+    pointer-events:none; /* allow pointer events to pass to controls optionally */
+  }
+
+  .logo {
+    display:inline-block;
+    margin-bottom:1rem;
+    background:rgba(255,255,255,0.06);
+    padding:0.35rem 0.7rem;
+    border-radius:10px;
+    font-weight:600;
+    pointer-events:auto;
+  }
+
+  h1{
+    font-size:clamp(1.6rem,4.5vw,3.6rem);
+    margin:0 0 0.6rem 0;
+    line-height:1.05;
+    pointer-events:auto;
+    background:var(--accent);
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
+  }
+
+  p.lead{
+    margin:0 auto 1.6rem auto;
+    max-width:900px;
+    opacity:0.9;
+    font-size:clamp(0.95rem,1.4vw,1.15rem);
+    pointer-events:auto;
+  }
+
+  .cta-row{ display:flex; gap:12px; justify-content:center; flex-wrap:wrap; pointer-events:auto; margin-top:12px; }
+  .btn {
+    background:#0f1724;
+    border:1px solid rgba(255,255,255,0.08);
+    color:var(--text);
+    padding:0.9rem 1.3rem;
+    border-radius:10px;
+    font-weight:600;
+    text-decoration:none;
+    box-shadow:0 6px 18px rgba(11,18,32,0.45);
+    transition:transform .18s ease, box-shadow .18s ease;
+  }
+  .btn:hover{ transform:translateY(-4px); box-shadow:0 14px 30px rgba(11,18,32,0.55); }
+
+  /* small panel under hero */
+  .panel {
+    background:var(--panel);
+    border-top-left-radius:16px;
+    border-top-right-radius:16px;
+    padding:28px 18px;
+    margin-top:-16px;
+  }
+
+  /* Footer minimal */
+  footer{ padding:28px 14px; text-align:center; color:rgba(255,255,255,0.65); font-size:0.92rem; }
+
+  /* Mobile fallback: hide canvas, show static poster */
+  .hero-poster {
+    display:none;
+    position:absolute;
+    inset:0;
+    background-size:cover;
+    background-position:center;
+  }
+
+  /* Accessibility: focus states */
+  .btn:focus{ outline:2px solid rgba(125,97,255,0.45); outline-offset:2px; }
+
+  @media (max-width:880px){
+    #hero-canvas{ display:none; } /* disable heavy WebGL on small screens */
+    .hero-poster{ display:block; background-image:linear-gradient(180deg, rgba(11,18,32,0.45), rgba(11,18,32,0.45)), url('https://images.unsplash.com/photo-1527689368864-3a821dbccc34?q=80&w=1600&auto=format&fit=crop&ixlib=rb-4.0.3&s='); }
+  }
+</style>
+</head>
+<body>
+
+<section class="hero" aria-label="Hero">
+  <!-- WebGL canvas -->
+  <canvas id="hero-canvas" role="img" aria-label="3D visual"></canvas>
+
+  <!-- Mobile poster fallback -->
+  <div class="hero-poster" aria-hidden="true"></div>
+
+  <!-- Overlay content -->
+  <div class="hero-content">
+    <div class="logo">Helena systems — 20 years</div>
+    <h1>Создаём продукты, которые работают сегодня и завтра</h1>
+    <p class="lead">Веб, мобильные и десктоп решения, интеграции и AI. От прототипа до поддержки в проде — под ключ.</p>
+
+    <div class="cta-row">
+      <a class="btn" href="mailto:bfirgg@gmail.com">Связаться</a>
+      <a class="btn" href="#portfolio" style="background:#0f1724; border:1px solid rgba(125,97,255,0.22)">Портфолио</a>
+    </div>
+  </div>
+</section>
+
+<!-- Simple panel and footer -->
+<div class="panel">
+  <div style="max-width:1100px;margin:0 auto;">
+    <h2 id="portfolio" style="margin:0 0 10px 0; font-size:1.25rem; color:#fff">Что мы делаем</h2>
+    <p style="margin:0 0 18px 0; color:rgba(255,255,255,0.85)">Веб-приложения, мобильные приложения, сервисы, интеграции и AI — с продуманной архитектурой и UX.</p>
+    <!-- placeholder content -->
+    <div style="display:flex;gap:12px;flex-wrap:wrap">
+      <div style="flex:1; min-width:220px; background:rgba(255,255,255,0.03); padding:14px; border-radius:10px">Web apps</div>
+      <div style="flex:1; min-width:220px; background:rgba(255,255,255,0.03); padding:14px; border-radius:10px">Mobile</div>
+      <div style="flex:1; min-width:220px; background:rgba(255,255,255,0.03); padding:14px; border-radius:10px">AI & Automation</div>
+    </div>
+  </div>
+</div>
+
+<footer>&copy; 2025 Helena systems — all rights reserved.</footer>
+
+<script>
+/* Three.js hero: animated torus-knot with soft lights, responsive */
+(function(){
+  // Bail out quickly if canvas not supported
+  const canvas = document.getElementById('hero-canvas');
+  if (!canvas) return;
+
+  // Resize helper
+  const DPR = Math.min(window.devicePixelRatio || 1, 2);
+
+  // Scene, camera, renderer
+  const scene = new THREE.Scene();
+  scene.fog = new THREE.FogExp2(0x0b1220, 0.09);
+
+  const camera = new THREE.PerspectiveCamera(35, window.innerWidth / window.innerHeight, 0.1, 100);
+  camera.position.set(0, 0.6, 3.2);
+
+  const renderer = new THREE.WebGLRenderer({ canvas, antialias: true, alpha: true });
+  renderer.setPixelRatio(DPR);
+  renderer.setSize(window.innerWidth, window.innerHeight, false);
+  renderer.toneMapping = THREE.ACESFilmicToneMapping;
+  renderer.outputEncoding = THREE.sRGBEncoding;
+  renderer.setClearColor(0x0b1220, 1);
+
+  // Controls (subtle, optional)
+  const controls = new THREE.OrbitControls(camera, renderer.domElement);
+  controls.enablePan = false;
+  controls.enableZoom = false;
+  controls.enabled = true;
+  controls.autoRotate = true;
+  controls.autoRotateSpeed = 0.35;
+  controls.minPolarAngle = 0.35;
+  controls.maxPolarAngle = 2.0;
+  controls.rotateSpeed = 0.25;
+  controls.target.set(0, 0, 0);
+
+  // Lights
+  const amb = new THREE.AmbientLight(0xffffff, 0.6);
+  scene.add(amb);
+
+  const key = new THREE.DirectionalLight(0xffffff, 1.2);
+  key.position.set(5, 10, 7);
+  scene.add(key);
+
+  const fill = new THREE.PointLight(0x7b61ff, 1.1, 20);
+  fill.position.set(-4, -2, 2);
+  scene.add(fill);
+
+  // Environment: subtle hemisphere
+  const hemi = new THREE.HemisphereLight(0xb7d4ff, 0x101018, 0.18);
+  scene.add(hemi);
+
+  // Geometry + material (gradient-ish)
+  const geometry = new THREE.TorusKnotGeometry(0.7, 0.25, 240, 20, 2.4, 3.2);
+
+  // Custom shader-like material using MeshStandard + gradient via vertex colors
+  const mat = new THREE.MeshStandardMaterial({
+    metalness: 0.45,
+    roughness: 0.18,
+    side: THREE.DoubleSide,
+    emissive: new THREE.Color(0x001122).multiplyScalar(0.2),
+    envMapIntensity: 0.8
+  });
+
+  const mesh = new THREE.Mesh(geometry, mat);
+  mesh.rotation.x = 0.6;
+  mesh.rotation.y = 0.2;
+  scene.add(mesh);
+
+  // Add a soft rim using another mesh with wireframe / transparent
+  const rimMat = new THREE.MeshBasicMaterial({ color:0x7b61ff, transparent:true, opacity:0.06, side:THREE.DoubleSide});
+  const rimMesh = new THREE.Mesh(geometry.clone(), rimMat);
+  rimMesh.scale.set(1.03,1.03,1.03);
+  scene.add(rimMesh);
+
+  // subtle animation values
+  let time = 0;
+  const clock = new THREE.Clock();
+
+  function onResize(){
+    const w = window.innerWidth;
+    const h = window.innerHeight;
+    renderer.setSize(w, h);
+    camera.aspect = w/h;
+    camera.updateProjectionMatrix();
+  }
+  window.addEventListener('resize', onResize, { passive:true });
+
+  // Performance: pause animation on small screens (canvas hidden)
+  function isCanvasVisible(){
+    return window.getComputedStyle(canvas).display !== 'none';
+  }
+
+  function animate(){
+    requestAnimationFrame(animate);
+
+    if (!isCanvasVisible()) return;
+
+    const delta = clock.getDelta();
+    time += delta;
+
+    // gentle rotation & morph
+    mesh.rotation.y += 0.12 * delta;
+    mesh.rotation.x += 0.06 * delta;
+    rimMesh.rotation.y = mesh.rotation.y * 1.02;
+
+    // subtle pulsation
+    const s = 1 + Math.sin(time * 0.9) * 0.015 + Math.sin(time * 1.7) * 0.01;
+    mesh.scale.set(s,s,s);
+    rimMesh.scale.set(s*1.03, s*1.03, s*1.03);
+
+    // dynamic lights
+    fill.intensity = 0.9 + Math.sin(time * 0.7) * 0.3;
+    key.position.x = 5 * Math.cos(time * 0.2);
+
+    controls.update();
+    renderer.render(scene, camera);
+  }
+
+  // Start
+  animate();
+
+  // accessibility: stop rotate when user interacts
+  ['pointerdown','touchstart','wheel'].forEach(ev=>{
+    renderer.domElement.addEventListener(ev, ()=> { controls.autoRotate = false; }, {passive:true});
+  });
+
+})();
+</script>
+</body>
+</html>
