@@ -1,82 +1,124 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 <head>
-  <meta charset="UTF-8">
-  <title>Landing 2027 - 3D</title>
-  <style>
-    body { margin: 0; background-color: #000; }
-    canvas { display: block; }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Landing 2027</title>
+<style>
+    body, html {
+        margin: 0;
+        padding: 0;
+        height: 100%;
+        overflow-x: hidden;
+        background-color: #000;
+        color: white;
+        font-family: 'Segoe UI', sans-serif;
+    }
+
+    header {
+        height: 100vh;
+        position: relative;
+    }
+
+    #bg3d {
+        position: absolute;
+        top: 0; left: 0;
+        width: 100%;
+        height: 100%;
+    }
+
+    .hero-text {
+        position: relative;
+        z-index: 2;
+        text-align: center;
+        top: 40%;
+        transform: translateY(-50%);
+        font-size: 3rem;
+        text-shadow: 0 0 15px #0ff, 0 0 30px #0ff;
+        animation: glow 2s ease-in-out infinite alternate;
+    }
+
+    @keyframes glow {
+        from { text-shadow: 0 0 15px #0ff; }
+        to   { text-shadow: 0 0 30px #0ff, 0 0 60px #0ff; }
+    }
+
+    .scroll-down {
+        position: absolute;
+        bottom: 20px;
+        left: 50%;
+        transform: translateX(-50%);
+        font-size: 1.2rem;
+        cursor: pointer;
+        z-index: 2;
+    }
+
+    section {
+        padding: 80px 20px;
+        text-align: center;
+        background: #111;
+    }
+</style>
 </head>
 <body>
-<script type="module">
-  import * as THREE from 'https://unpkg.com/three@0.152.2/build/three.module.js';
-  import { OrbitControls } from 'https://unpkg.com/three@0.152.2/examples/jsm/controls/OrbitControls.js';
 
-  // Сцена
-  const scene = new THREE.Scene();
+<header>
+    <canvas id="bg3d"></canvas>
+    <div class="hero-text">Будущее уже здесь — 2027</div>
+    <div class="scroll-down" onclick="document.getElementById('about').scrollIntoView({behavior:'smooth'})">
+        ⬇ Прокрутить вниз
+    </div>
+</header>
 
-  // Камера
-  const camera = new THREE.PerspectiveCamera(60, window.innerWidth / window.innerHeight, 0.1, 1000);
-  camera.position.set(3, 2, 5);
+<section id="about">
+    <h2>О проекте</h2>
+    <p>Это демонстрация футуристического лендинга с 3D-графикой и минималистичным дизайном.</p>
+</section>
 
-  // Рендерер
-  const renderer = new THREE.WebGLRenderer({ antialias: true });
-  renderer.setSize(window.innerWidth, window.innerHeight);
-  renderer.setPixelRatio(window.devicePixelRatio);
-  document.body.appendChild(renderer.domElement);
+<!-- Подключаем Three.js и OrbitControls с CDN -->
+<script src="https://cdn.jsdelivr.net/npm/three@0.128.0/build/three.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
 
-  // Свет
-  const ambientLight = new THREE.AmbientLight(0xffffff, 0.4);
-  scene.add(ambientLight);
-
-  const directionalLight = new THREE.DirectionalLight(0xffffff, 1);
-  directionalLight.position.set(5, 5, 5);
-  scene.add(directionalLight);
-
-  // Объект (с мягким свечением)
-  const geometry = new THREE.SphereGeometry(1, 64, 64);
-  const material = new THREE.MeshStandardMaterial({
-    color: 0x00ffff,
-    emissive: 0x009999,
-    emissiveIntensity: 0.5,
-    metalness: 0.6,
-    roughness: 0.3
-  });
-  const sphere = new THREE.Mesh(geometry, material);
-  scene.add(sphere);
-
-  // Контролы
-  const controls = new OrbitControls(camera, renderer.domElement);
-  controls.enableDamping = true;
-  controls.dampingFactor = 0.05;
-  controls.enableZoom = true;
-
-  // Переменные для авто-вращения
-  let angle = 0;
-
-  // Анимация
-  function animate() {
-    requestAnimationFrame(animate);
-
-    // Авто-вращение камеры
-    angle += 0.002;
-    camera.position.x = Math.cos(angle) * 5;
-    camera.position.z = Math.sin(angle) * 5;
-    camera.lookAt(scene.position);
-
-    controls.update();
-    renderer.render(scene, camera);
-  }
-
-  animate();
-
-  // Адаптация под размер окна
-  window.addEventListener('resize', () => {
-    camera.aspect = window.innerWidth / window.innerHeight;
-    camera.updateProjectionMatrix();
+<script>
+    let scene = new THREE.Scene();
+    let camera = new THREE.PerspectiveCamera(75, window.innerWidth/window.innerHeight, 0.1, 1000);
+    let renderer = new THREE.WebGLRenderer({ canvas: document.getElementById('bg3d'), antialias: true });
     renderer.setSize(window.innerWidth, window.innerHeight);
-  });
+
+    // Добавляем свет
+    const light = new THREE.PointLight(0xffffff, 1);
+    light.position.set(5, 5, 5);
+    scene.add(light);
+
+    // Создаём объект (тест — вращающийся торус)
+    const geometry = new THREE.TorusKnotGeometry(1, 0.3, 100, 16);
+    const material = new THREE.MeshStandardMaterial({ color: 0x00ffff, metalness: 0.7, roughness: 0.2 });
+    const torusKnot = new THREE.Mesh(geometry, material);
+    scene.add(torusKnot);
+
+    camera.position.z = 5;
+
+    // Контролы
+    let controls = new THREE.OrbitControls(camera, renderer.domElement);
+    controls.enableDamping = true;
+    controls.enableZoom = false;
+
+    function animate() {
+        requestAnimationFrame(animate);
+        torusKnot.rotation.x += 0.01;
+        torusKnot.rotation.y += 0.01;
+        controls.update();
+        renderer.render(scene, camera);
+    }
+    animate();
+
+    // Адаптация под экран
+    window.addEventListener('resize', () => {
+        camera.aspect = window.innerWidth / window.innerHeight;
+        camera.updateProjectionMatrix();
+        renderer.setSize(window.innerWidth, window.innerHeight);
+    });
 </script>
+
 </body>
 </html>
