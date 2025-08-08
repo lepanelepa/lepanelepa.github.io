@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>GLB Animation on GitHub Pages</title>
+    <style>
+        body { margin: 0; overflow: hidden; background: black; }
+        canvas { display: block; }
+    </style>
+</head>
+<body>
+<script type="module">
+import * as THREE from 'https://unpkg.com/three@0.165.0/build/three.module.js';
+import { OrbitControls } from 'https://unpkg.com/three@0.165.0/examples/jsm/controls/OrbitControls.js';
+import { GLTFLoader } from 'https://unpkg.com/three@0.165.0/examples/jsm/loaders/GLTFLoader.js';
+
+let scene = new THREE.Scene();
+let camera = new THREE.PerspectiveCamera(45, window.innerWidth/window.innerHeight, 0.1, 100);
+camera.position.set(0, 1.5, 4);
+
+let renderer = new THREE.WebGLRenderer({antialias: true});
+renderer.setSize(window.innerWidth, window.innerHeight);
+document.body.appendChild(renderer.domElement);
+
+// Свет
+let light = new THREE.HemisphereLight(0xffffff, 0x444444, 1.5);
+scene.add(light);
+let dirLight = new THREE.DirectionalLight(0xffffff, 1);
+dirLight.position.set(5, 10, 7.5);
+scene.add(dirLight);
+
+// Орбитальные контролы
+let controls = new OrbitControls(camera, renderer.domElement);
+controls.enableDamping = true;
+
+// Переменные для анимации
+let mixer;
+
+// Загрузка GLB
+let loader = new GLTFLoader();
+loader.load(
+    'your_model.glb', // сюда свой файл
+    (gltf) => {
+        scene.add(gltf.scene);
+        
+        // Если есть анимации
+        if (gltf.animations && gltf.animations.length > 0) {
+            mixer = new THREE.AnimationMixer(gltf.scene);
+            gltf.animations.forEach((clip) => {
+                mixer.clipAction(clip).play();
+            });
+        }
+    },
+    undefined,
+    (error) => console.error(error)
+);
+
+// Рендер-цикл
+let clock = new THREE.Clock();
+function animate() {
+    requestAnimationFrame(animate);
+    let delta = clock.getDelta();
+    if (mixer) mixer.update(delta);
+    controls.update();
+    renderer.render(scene, camera);
+}
+animate();
+
+window.addEventListener('resize', () => {
+    camera.aspect = window.innerWidth / window.innerHeight;
+    camera.updateProjectionMatrix();
+    renderer.setSize(window.innerWidth, window.innerHeight);
+});
+</script>
+</body>
+</html>
