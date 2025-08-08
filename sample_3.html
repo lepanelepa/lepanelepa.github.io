@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Landing 2027 — 3D Hero (GLTF)</title>
+
+<!-- Three.js + examples (non-module) — версия подобрана для совместимости -->
+<script src="https://cdn.jsdelivr.net/npm/three@0.128.0/build/three.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/loaders/GLTFLoader.js"></script>
+
+<style>
+  :root{
+    --bg:#0b1220;
+    --accent: linear-gradient(90deg,#7b61ff,#00ffd5);
+    --text:#ffffff;
+  }
+  html,body{height:100%;margin:0;font-family:Inter,Segoe UI,system-ui,Arial,sans-serif;background:var(--bg);color:var(--text);}
+  .hero { position:relative;height:100vh;min-height:560px;width:100%;overflow:hidden;display:flex;align-items:center;justify-content:center;}
+  canvas { position:absolute; inset:0; width:100%; height:100%; display:block; }
+  .hero-poster { display:none; position:absolute; inset:0; background-size:cover; background-position:center; }
+  .hero-content{ position:relative; z-index:5; text-align:center; pointer-events:none; padding:2rem; }
+  .logo { display:inline-block; margin-bottom:1rem; background:rgba(255,255,255,0.06); padding:0.35rem 0.7rem; border-radius:10px; font-weight:600; pointer-events:auto; color:#000; background:#fff; }
+  h1{ margin:0 0 0.6rem 0; line-height:1.05; pointer-events:auto; background:var(--accent); -webkit-background-clip:text; -webkit-text-fill-color:transparent; font-size:clamp(1.6rem,4.5vw,3rem);}
+  p.lead{ margin:0 auto 1.6rem auto; max-width:900px; opacity:0.95;}
+  .cta-row{ display:flex; gap:12px; justify-content:center; pointer-events:auto; margin-top:12px; }
+  .btn{ background:#0f1724; border:1px solid rgba(255,255,255,0.08); color:var(--text); padding:0.9rem 1.3rem; border-radius:10px; text-decoration:none; font-weight:600;}
+  .panel{ background:rgba(255,255,255,0.03); border-top-left-radius:16px; border-top-right-radius:16px; padding:28px; margin-top:-16px; color:#fff;}
+  footer{ padding:28px 14px; text-align:center; color:rgba(255,255,255,0.65); font-size:0.92rem; }
+
+  /* Mobile fallback: hide canvas under a width threshold */
+  @media (max-width:880px){
+    canvas{ display:none; }
+    .hero-poster{ display:block; background-image: linear-gradient(180deg, rgba(11,18,32,0.45), rgba(11,18,32,0.45)), url('https://images.unsplash.com/photo-1527689368864-3a821dbccc34?q=80&w=1600&auto=format&fit=crop&ixlib=rb-4.0.3&s='); }
+  }
+</style>
+</head>
+<body>
+
+<section class="hero" aria-label="Hero">
+  <canvas id="hero-canvas" role="img" aria-label="3D visual"></canvas>
+  <div class="hero-poster" aria-hidden="true"></div>
+
+  <div class="hero-content">
+    <div class="logo">Helena systems — 20 years</div>
+    <h1>Создаём продукты, которые работают сегодня и завтра</h1>
+    <p class="lead">Веб, мобильные и десктоп решения, интеграции и AI. От прототипа до поддержки в проде — под ключ.</p>
+    <div class="cta-row">
+      <a class="btn" href="mailto:bfirgg@gmail.com">Связаться</a>
+      <a class="btn" href="#portfolio" style="background:#0f1724; border:1px solid rgba(125,97,255,0.22)">Портфолио</a>
+    </div>
+  </div>
+</section>
+
+<div class="panel" id="portfolio">
+  <div style="max-width:1100px;margin:0 auto;color:#fff;">
+    <h2 style="margin:0 0 10px 0;">Что мы делаем</h2>
+    <p style="margin:0 0 18px 0;color:rgba(255,255,255,0.85)">Web, Mobile, Services, AI — архитектура, UX и поддержка.</p>
+  </div>
+</div>
+
+<footer>&copy; 2025 Helena systems — all rights reserved.</footer>
+
+<script>
+/*
+  IMPORTANT:
+  - MODEL_URL можно заменить на свой .glb/.gltf (CORS required)
+  - Используем non-module build + examples JS — это надежно для GitHub Pages
+*/
+(function(){
+  const canvas = document.getElementById('hero-canvas');
+  if (!canvas) return;
+
+  // -------- configuration --------
+  const MODEL_URL = '/Csharp_01.glb';
+  const DPR = Math.min(window.devicePixelRatio || 1, 2);
+
+  // -------- three basics --------
+  const renderer = new THREE.WebGLRenderer({ canvas, antialias: true, alpha: false });
+  renderer.setPixelRatio(DPR);
+  renderer.setSize(window.innerWidth, window.innerHeight);
+  renderer.outputEncoding = THREE.sRGBEncoding;
+  renderer.toneMapping = THREE.ACESFilmicToneMapping;
+
+  const scene = new THREE.Scene();
+  scene.background = new THREE.Color(0x0b1220);
+  scene.fog = new THREE.FogExp2(0x0b1220, 0.08);
+
+  const camera = new THREE.PerspectiveCamera(35, window.innerWidth/window.innerHeight, 0.1, 100);
+  camera.position.set(0, 0.6, 3.2);
+
+  // -------- lights --------
+  const ambient = new THREE.AmbientLight(0xffffff, 0.6);
+  scene.add(ambient);
+
+  const key = new THREE.DirectionalLight(0xffffff, 1.1);
+  key.position.set(5, 10, 7);
+  scene.add(key);
+
+  const fill = new THREE.PointLight(0x7b61ff, 1.0, 30);
+  fill.position.set(-4, -2, 2);
+  scene.add(fill);
+
+  // hemisphere for soft gradient
+  const hemi = new THREE.HemisphereLight(0xb7d4ff, 0x101018, 0.18);
+  scene.add(hemi);
+
+  // -------- controls --------
+  const controls = new THREE.OrbitControls(camera, renderer.domElement);
+  controls.enablePan = false;
+  controls.enableZoom = false;
+  controls.autoRotate = true;
+  controls.autoRotateSpeed = 0.35;
+  controls.minPolarAngle = 0.35;
+  controls.maxPolarAngle = 2.0;
+  controls.rotateSpeed = 0.25;
+  controls.target.set(0,0,0);
+
+  // -------- load model --------
+  const loader = new THREE.GLTFLoader();
+  let modelRoot = new THREE.Group();
+  scene.add(modelRoot);
+
+  loader.load(MODEL_URL,
+    function (gltf) {
+      // Add model to scene
+      modelRoot.add(gltf.scene);
+
+      // Center & scale model
+      const box = new THREE.Box3().setFromObject(gltf.scene);
+      const size = box.getSize(new THREE.Vector3());
+      const maxDim = Math.max(size.x, size.y, size.z);
+      const scale = 1.6 / maxDim; // tune scale to fit hero
+      gltf.scene.scale.setScalar(scale);
+
+      // center
+      box.setFromObject(gltf.scene);
+      const center = box.getCenter(new THREE.Vector3());
+      gltf.scene.position.sub(center); // center at origin
+
+    },
+    (xhr) => { /* progress, optional */ },
+    (err) => {
+      console.error('GLTF load error:', err);
+      // optionally show fallback
+    }
+  );
+
+  // subtle rim mesh for depth (optional)
+  const rimGeo = new THREE.TorusKnotGeometry(0.9, 0.25, 160, 20, 2.4, 3.2);
+  const rimMat = new THREE.MeshBasicMaterial({ color:0x7b61ff, transparent:true, opacity:0.04, side:THREE.DoubleSide });
+  const rim = new THREE.Mesh(rimGeo, rimMat);
+  rim.scale.set(1.02,1.02,1.02);
+  scene.add(rim);
+
+  // -------- animation --------
+  const clock = new THREE.Clock();
+
+  function animate(){
+    requestAnimationFrame(animate);
+
+    // don't animate if canvas hidden (mobile)
+    if (getComputedStyle(canvas).display === 'none') return;
+
+    const t = clock.getElapsedTime();
+
+    // rotate model root slowly
+    modelRoot.rotation.y += 0.02 * Math.min(clock.getDelta(), 0.05);
+    rim.rotation.y += 0.018 * Math.min(clock.getDelta(), 0.05);
+
+    // pulsate rim/model
+    const s = 1 + Math.sin(t * 0.9) * 0.012 + Math.sin(t * 1.7) * 0.007;
+    modelRoot.scale.setScalar(s);
+    rim.scale.setScalar(s * 1.03);
+
+    // dynamic light animation
+    fill.intensity = 0.9 + Math.sin(t * 0.7) * 0.3;
+    key.position.x = 5 * Math.cos(t * 0.2);
+
+    controls.update();
+    renderer.render(scene, camera);
+  }
+  animate();
+
+  // -------- resize handling --------
+  function onResize(){
+    const w = window.innerWidth, h = window.innerHeight;
+    renderer.setSize(w,h);
+    camera.aspect = w/h;
+    camera.updateProjectionMatrix();
+  }
+  window.addEventListener('resize', onResize, { passive:true });
+
+  // stop auto-rotate on user interaction
+  ['pointerdown','touchstart','wheel'].forEach(ev=>{
+    renderer.domElement.addEventListener(ev, ()=> controls.autoRotate = false, { passive:true });
+  });
+
+})();
+</script>
+</body>
+</html>
