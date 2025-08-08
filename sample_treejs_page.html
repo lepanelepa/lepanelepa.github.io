@@ -18,9 +18,8 @@
     </style>
 </head>
 <body>
-    <!-- Подключаем Three.js и OrbitControls с CDN -->
-<script src="https://unpkg.com/three@0.146.0/examples/js/controls/OrbitControls.js"></script>
 <script src="https://unpkg.com/three@0.146.0/build/three.min.js"></script>
+<script src="https://unpkg.com/three@0.146.0/examples/js/controls/OrbitControls.js"></script>
     
     <script type="module">
         // Сцена
@@ -48,7 +47,8 @@
         scene.add(light);
 
         // Контролы
-        const controls = new OrbitControls(camera, renderer.domElement);
+    const controls = new THREE.OrbitControls(camera, renderer.domElement);
+
 
         // Анимация
         function animate() {
