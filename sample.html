@@ -45,13 +45,14 @@ html, body {
   position: absolute;
   top: 0;
   left: 0;
-  width: auto;
+  width: 40vw;             /* ← фиксированная ширина в процентах экрана */
   height: 100%;
   background: url("img/phone.png") no-repeat left top;
-  background-size: auto 60%;
+  background-size: contain; /* ← лучше подгоняет */
   opacity: 0.85;
   pointer-events: none;
-  transition: opacity 1s ease; /* можно плавное появление */
+  transition: opacity 1s ease;
+  z-index: 1;
 }
 
 /* Нижний затемняющий градиент */
@@ -67,10 +68,12 @@ html, body {
 /* 📱 На мобильных картинку уменьшаем */
 @media (max-width: 768px) {
   .hero-bg-image {
-    background-size: auto 40%;
+    width: 60vw;
+    background-size: contain;
     opacity: 0.9;
   }
 }
+
 
 /* ===== Верхняя панель ===== */
 .top-bar {
