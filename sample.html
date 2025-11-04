@@ -3,35 +3,49 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Landing 2027</title>
+<title>Landing Viva Style</title>
 <style>
 /* ===== Общие стили ===== */
 body, html {
     margin: 0;
     padding: 0;
     height: 100%;
-    overflow-x: hidden;
-    background-color: #000;
-    color: white;
     font-family: 'Segoe UI', sans-serif;
+    background-color: #0a0a0a;
+    color: white;
+    overflow-x: hidden;
 }
 
 /* ===== Header + Hero ===== */
-header {
+.hero-viva {
     position: relative;
     width: 100%;
     height: 100vh;
     overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
 }
 
-/* Кнопка Контакты */
+/* Фон */
+.hero-bg {
+    position: absolute;
+    top:0; left:0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(120deg, #1a1a1a, #111111 80%);
+    z-index:1;
+}
+
+/* Контакты */
 .contact-btn {
     position: absolute;
     top: 20px;
     right: 20px;
-    background: linear-gradient(135deg, #e06818, #e4831f);
-    color: #fff;
-    padding: 12px 20px;
+    background: linear-gradient(135deg, #ff7f50, #ffb347);
+    color: white;
+    padding: 12px 24px;
     border-radius: 12px;
     font-weight: bold;
     cursor: pointer;
@@ -42,22 +56,36 @@ header {
     transform: scale(1.05);
 }
 
-/* Hero текст */
-.hero-text {
-    position: absolute;
-    top: 35%;
-    left: 50%;
-    transform: translateX(-50%);
-    text-align: center;
+/* Hero-текст */
+.hero-content {
+    position: relative;
     z-index: 3;
-    font-size: 3rem;
-    color: #fff;
-    text-shadow: 0 0 15px #0ff, 0 0 30px #0ff;
-    animation: glow 2s ease-in-out infinite alternate;
+    margin-top: 15vh;
+    text-align: center;
 }
-@keyframes glow {
-    from { text-shadow: 0 0 15px #0ff; }
-    to   { text-shadow: 0 0 30px #0ff, 0 0 60px #0ff; }
+.hero-title {
+    font-size: 3rem;
+    margin-bottom: 0.5em;
+    text-shadow: 0 0 20px #ff7f50, 0 0 40px #ffb347;
+}
+.hero-subtitle {
+    font-size: 1.3rem;
+    opacity: 0.85;
+    margin-bottom: 1.5em;
+}
+.hero-cta {
+    display: inline-block;
+    padding: 12px 32px;
+    background: #ff7f50;
+    border-radius: 8px;
+    color: white;
+    font-weight: bold;
+    text-decoration: none;
+    transition: background 0.3s, transform 0.3s;
+}
+.hero-cta:hover {
+    background: #ffb347;
+    transform: scale(1.05);
 }
 
 /* 3D Canvas */
@@ -66,41 +94,50 @@ header {
     top: 0; left: 0;
     width: 100%;
     height: 100%;
-    z-index: 1;
+    z-index:2;
 }
 
 /* Виджеты */
-.widgets-container { 
-  display: flex; 
-  justify-content: center; 
-  width: 100%; 
-  margin-top: 70vh; /* Достаточный отступ от Hero */
-  padding-bottom: 80px; /* чтобы на мобильных не резался */
-  z-index:3; 
-  position: relative; 
+.widgets-container {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 24px;
+    margin-top: 60px;
+    z-index:3;
+    position: relative;
+    max-width: 1200px;
 }
 .icon-box {
-  display: flex; 
-  align-items: center; 
-  gap: 16px; 
-  background: rgba(0,0,0,0.15); 
-  color:#fff; 
-  min-width:250px; 
-  padding:16px; 
-  border-radius:20px; 
-  box-shadow:0 0 20px rgba(0,255,255,0.3); 
-  flex-direction: column; 
-  text-align:center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+    background: rgba(255, 127, 80, 0.1);
+    padding: 20px;
+    border-radius: 20px;
+    min-width: 220px;
+    max-width: 260px;
+    text-align: center;
+    box-shadow: 0 0 20px rgba(255,127,80,0.3);
+    color: white;
 }
-.widgets-grid { display: flex; gap: 24px; flex-wrap: wrap; justify-content: center; }
-
-.icon-box-icon { width:80px; height:80px; flex-shrink:0; }
-.icon-box-content h3 { margin:0 0 4px 0; font-size:1.2rem; text-shadow:0 0 8px #0ff; }
-.icon-box-content p { margin:0; font-size:0.95rem; opacity:0.85; }
-
-/* Адаптив */
-@media(max-width:768px) { .widgets-grid{flex-direction:column; gap:20px;} .icon-box{width:90%; max-width:400px;} }
-
+.icon-box .icon {
+    width: 80px;
+    height: 80px;
+    margin-bottom: 12px;
+    font-size: 2rem;
+}
+.icon-box h3 {
+    margin: 0;
+    font-size: 1.2rem;
+    text-shadow: 0 0 8px #ff7f50;
+}
+.icon-box p {
+    margin:0;
+    font-size: 0.95rem;
+    opacity: 0.85;
+}
 
 /* Кнопка вниз */
 .scroll-down {
@@ -112,112 +149,74 @@ header {
     align-items: center;
     gap: 10px;
     padding: 10px 20px;
-    background: rgba(0,255,255,0.2);
+    background: rgba(255,127,80,0.2);
     border-radius: 50px;
     cursor: pointer;
-    z-index: 4;
+    z-index: 5;
     transition: transform 0.3s, background 0.3s;
 }
 .scroll-down:hover {
     transform: translateX(-50%) translateY(-3px);
-    background: rgba(0,255,255,0.35);
+    background: rgba(255,127,80,0.35);
 }
-.scroll-text { color: #fff; font-weight: bold; font-size: 1rem; }
+.scroll-text { font-weight: bold; }
 .scroll-icon { width: 20px; height: 20px; filter: invert(1); }
 
 /* ===== Адаптив ===== */
-@media (max-width: 768px) {
-    .hero-text { font-size: 2rem; top: 30%; }
-    .widgets-grid { flex-direction: column; margin-top: 50px; gap: 16px; }
+@media(max-width: 768px){
+    .hero-title { font-size: 2.2rem; }
+    .hero-subtitle { font-size: 1rem; }
+    .widgets-container { flex-direction: column; align-items: center; margin-top: 40px; gap:16px; }
     .icon-box { width: 90%; max-width: 400px; }
-    .contact-btn { top: 10px; right: 10px; padding: 10px 16px; font-size: 0.9rem; }
+    .contact-btn { top: 10px; right: 10px; padding: 10px 16px; font-size:0.9rem; }
 }
 </style>
 </head>
 <body>
 
-<header>
+<section class="hero-viva">
+    <div class="hero-bg"></div>
+
     <!-- 3D Canvas -->
     <canvas id="bg3d"></canvas>
 
     <!-- Контакты -->
     <div class="contact-btn">Контакты</div>
 
-    <!-- Hero Text -->
-    <div class="hero-text">Будущее уже здесь — 2027</div>
+    <!-- Hero Content -->
+    <div class="hero-content">
+        <h1 class="hero-title">Будущее уже здесь — 2027</h1>
+        <p class="hero-subtitle">Мы создаем игры, которые изменят мир мобильного гейминга</p>
+        <a href="#about" class="hero-cta">Узнать больше</a>
+    </div>
 
     <!-- Виджеты -->
-<section class="widgets-container">
-  <div class="widgets-grid">
-    <!-- Виджет 1 -->
-    <div class="icon-box">
-      <div class="icon-box-icon">
-        <svg width="80" height="80" viewBox="0 0 80 80">
-          <defs>
-            <radialGradient id="gradAI" cx="50%" cy="50%" r="50%">
-              <stop offset="0%" stop-color="#0ff"/>
-              <stop offset="100%" stop-color="#00f"/>
-            </radialGradient>
-          </defs>
-          <rect width="80" height="80" rx="20" fill="url(#gradAI)" opacity="0.9"/>
-          <text x="40" y="50" fill="#fff" font-size="28" text-anchor="middle" alignment-baseline="middle">🤖</text>
-        </svg>
-      </div>
-      <div class="icon-box-content">
-        <h3>AI & Automation</h3>
-        <p>Smart systems for the future.</p>
-      </div>
+    <div class="widgets-container">
+        <div class="icon-box">
+            <div class="icon">🤖</div>
+            <h3>AI & Automation</h3>
+            <p>Smart systems for the future.</p>
+        </div>
+        <div class="icon-box">
+            <div class="icon">📊</div>
+            <h3>Data Visualization</h3>
+            <p>Insights at a glance.</p>
+        </div>
+        <div class="icon-box">
+            <div class="icon">🛡️</div>
+            <h3>Cybersecurity</h3>
+            <p>Protect your digital world.</p>
+        </div>
     </div>
 
-    <!-- Виджет 2 -->
-    <div class="icon-box">
-      <div class="icon-box-icon">
-        <svg width="80" height="80" viewBox="0 0 80 80">
-          <defs>
-            <radialGradient id="gradData" cx="50%" cy="50%" r="50%">
-              <stop offset="0%" stop-color="#ff0"/>
-              <stop offset="100%" stop-color="#f80"/>
-            </radialGradient>
-          </defs>
-          <rect width="80" height="80" rx="20" fill="url(#gradData)" opacity="0.9"/>
-          <text x="40" y="50" fill="#fff" font-size="28" text-anchor="middle" alignment-baseline="middle">📊</text>
-        </svg>
-      </div>
-      <div class="icon-box-content">
-        <h3>Data Visualization</h3>
-        <p>Insights at a glance.</p>
-      </div>
-    </div>
-
-    <!-- Виджет 3 -->
-    <div class="icon-box">
-      <div class="icon-box-icon">
-        <svg width="80" height="80" viewBox="0 0 80 80">
-          <defs>
-            <radialGradient id="gradCyber" cx="50%" cy="50%" r="50%">
-              <stop offset="0%" stop-color="#f0f"/>
-              <stop offset="100%" stop-color="#800080"/>
-            </radialGradient>
-          </defs>
-          <rect width="80" height="80" rx="20" fill="url(#gradCyber)" opacity="0.9"/>
-          <text x="40" y="50" fill="#fff" font-size="28" text-anchor="middle" alignment-baseline="middle">🛡️</text>
-        </svg>
-      </div>
-      <div class="icon-box-content">
-        <h3>Cybersecurity</h3>
-        <p>Protect your digital world.</p>
-      </div>
-    </div>
-  </div>
-</section>
     <!-- Scroll down -->
     <div class="scroll-down" onclick="document.getElementById('about').scrollIntoView({behavior:'smooth'})">
         <span class="scroll-text">Далее</span>
         <img src="https://cdn-icons-png.flaticon.com/32/271/271228.png" alt="arrow" class="scroll-icon">
     </div>
-</header>
+</section>
 
-<section id="about" style="padding: 80px 20px; text-align: center; background: #111;">
+<section id="about" style="padding: 80px 20px; text-align:center; background:#111;">
     <h2>О проекте</h2>
     <p>Демонстрация футуристического лендинга с 3D-графикой и минималистичным дизайном.</p>
 </section>
@@ -228,51 +227,41 @@ header {
 <script>
 let scene = new THREE.Scene();
 let camera = new THREE.PerspectiveCamera(75, window.innerWidth/window.innerHeight, 0.1, 1000);
-let renderer = new THREE.WebGLRenderer({ canvas: document.getElementById('bg3d'), antialias: true });
+let renderer = new THREE.WebGLRenderer({ canvas: document.getElementById('bg3d'), antialias:true });
 renderer.setSize(window.innerWidth, window.innerHeight);
 
 // Свет
 const light = new THREE.PointLight(0xffffff, 1);
-light.position.set(5, 5, 5);
+light.position.set(5,5,5);
 scene.add(light);
 
-// Тест 3D объект
-const geometry = new THREE.TorusKnotGeometry(1, 0.3, 100, 16);
-const material = new THREE.MeshStandardMaterial({ color: 0x00ffff, metalness: 0.7, roughness: 0.2 });
+// 3D объект
+const geometry = new THREE.TorusKnotGeometry(1,0.3,100,16);
+const material = new THREE.MeshStandardMaterial({ color:0xff7f50, metalness:0.7, roughness:0.2 });
 const torusKnot = new THREE.Mesh(geometry, material);
-torusKnot.position.x = 1; // чуть правее
-torusKnot.position.y = 0.5; // чуть выше центра
+torusKnot.position.x = 1; torusKnot.position.y = 0.5;
 scene.add(torusKnot);
 
 camera.position.z = 5;
 
-// Контролы
 let controls = new THREE.OrbitControls(camera, renderer.domElement);
 controls.enableDamping = true;
 controls.enableZoom = false;
 
-function animate() {
+function animate(){
     requestAnimationFrame(animate);
-    torusKnot.rotation.x += 0.01;
-    torusKnot.rotation.y += 0.01;
+    torusKnot.rotation.x +=0.01;
+    torusKnot.rotation.y +=0.01;
     controls.update();
     renderer.render(scene, camera);
 }
 animate();
 
 // Адаптация под экран
-window.addEventListener('resize', () => {
-    camera.aspect = window.innerWidth / window.innerHeight;
+window.addEventListener('resize', ()=>{
+    camera.aspect = window.innerWidth/window.innerHeight;
     camera.updateProjectionMatrix();
     renderer.setSize(window.innerWidth, window.innerHeight);
-});
-
-// Анимация виджетов
-window.addEventListener('load', () => {
-    const widgets = document.querySelectorAll('.icon-box');
-    widgets.forEach((w, i) => {
-        setTimeout(() => w.classList.add('animated', 'bounceInUp'), i*200);
-    });
 });
 </script>
 
