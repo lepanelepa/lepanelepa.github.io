@@ -44,12 +44,21 @@ header {
 /* Widgets positioned at bottom */
 .widgets {
     position: absolute;
-    bottom: 40px;  /* отступ от низа экрана */
+    bottom: 40px;
     left: 50%;
     transform: translateX(-50%);
     display: flex;
     gap: 20px;
     z-index: 3;
+
+    /* Анимация */
+    opacity: 0;
+    transform: translateX(-50%) translateY(50px);
+    transition: opacity 1s ease, transform 1s ease;
+}
+.widgets.visible {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
 }
 
 .widget {
@@ -76,19 +85,7 @@ header {
     box-shadow: 0 12px 30px rgba(0,0,0,0.35);
 }
 
-/* Scroll down arrow */
-.scroll-down {
-    position: absolute;
-    bottom: 10px;
-    left: 50%;
-    transform: translateX(-50%);
-    font-size: 1.2rem;
-    color: #fff;
-    cursor: pointer;
-    z-index: 3;
-}
-
-/* Responsive */
+/* Адаптив */
 @media (max-width: 768px) {
     .widgets {
         flex-direction: column;
@@ -98,7 +95,17 @@ header {
         max-width: 90%;
     }
 }
+
 </style>
+<script>
+// Анимация появления при загрузке страницы
+window.addEventListener('load', () => {
+    const widgets = document.querySelector('.widgets');
+    setTimeout(() => {
+        widgets.classList.add('visible');
+    }, 500); // задержка 0.5 секунды
+});
+</script>
 </head>
 <body>
 
@@ -108,21 +115,21 @@ header {
     <!-- Hero Text -->
     <div class="hero-text">Будущее уже здесь — 2027</div>
 
-    <!-- Widgets at bottom of the viewport -->
-    <div class="widgets">
-      <div class="widget">
-        <h3>End-to-End Development Support</h3>
-        <p>From concept to launch.</p>
-      </div>
-      <div class="widget">
-        <h3>User Acquisition & Ads</h3>
-        <p>To maximize your game's reach.</p>
-      </div>
-      <div class="widget">
-        <h3>Monetization Strategy & Growth</h3>
-        <p>Boost revenue with expert guidance.</p>
-      </div>
-    </div>
+   <!-- Widgets at bottom of the viewport -->
+<div class="widgets">
+  <div class="widget"> 
+    <h3>End-to-End Development Support</h3>
+    <p>From concept to launch.</p>
+  </div>
+  <div class="widget">
+    <h3>User Acquisition & Ads</h3>
+    <p>To maximize your game's reach.</p>
+  </div>
+  <div class="widget">
+    <h3>Monetization Strategy & Growth</h3>
+    <p>Boost revenue with expert guidance.</p>
+  </div>
+</div>
 
     <!-- Scroll down arrow -->
     <div class="scroll-down" onclick="document.getElementById('about').scrollIntoView({behavior:'smooth'})">
