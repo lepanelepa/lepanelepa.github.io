@@ -3,396 +3,77 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Sinta Soft</title>
-
+<title>Sinta Soft — Tech Minimal</title>
 <style>
-/* ===== Общие стили ===== */
-* {
-  box-sizing: border-box;
-}
-
 html, body {
-  margin: 0;
-  padding: 0;
-  height: 100%;
+  margin: 0; padding: 0;
   font-family: 'Segoe UI', sans-serif;
-  background-color: #0a0710;
+  background: radial-gradient(circle at 50% 50%, #090a12, #05050a 80%);
   color: #fff;
   overflow-x: hidden;
 }
-
-/* ===== Hero ===== */
-.hero-viva {
-  position: relative;
-  width: 100%;
+.hero {
   min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  overflow: hidden;
-}
-
-.hero-bg {
-  position: absolute;
-  inset: 0;
-  z-index: 0; /* ниже всего */
-}
-
-.hero-bg-gradient {
-  position: absolute;
-  inset: 0;
-  background:
-    radial-gradient(circle at 30% 20%, #331a4d, #0a0710 70%),
-    linear-gradient(to bottom, rgba(10,7,16,0) 70%, rgba(10,7,16,1) 100%);
-}
-
-.hero-bg-image {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 40vw;
-  height: 100%;
-  background: url("img/phone.png") no-repeat left bottom;
-  background-size: contain;
-  pointer-events: none;
-}
-#bg3d {
-  position: absolute;
-  inset: 0;
-  z-index: 1; /* выше фона, ниже контента */
-}
-
-
-
-/* 📱 На мобильных картинку уменьшаем */
-@media (max-width: 768px) {
-  .hero-bg-image {
-    width: 60vw;
-    background-size: contain;
-    opacity: 0.9;
-  }
-}
-
-
-/* ===== Верхняя панель ===== */
-.top-bar {
-  position: absolute;
-  top: 20px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: calc(100% - 40px);
-  max-width: 1200px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  z-index: 5;
-}
-
-.brand {
-  font-size: 1.5rem;
-  font-weight: 700;
-  text-shadow: 0 0 12px rgba(255, 255, 255, 0.4);
-}
-
-.contact-btn {
-  background: linear-gradient(135deg, #ff7f50, #ff66c4);
-  color: #fff;
-  padding: 12px 24px;
-  border-radius: 12px;
-  font-weight: bold;
-  cursor: pointer;
-  transition: transform 0.3s, box-shadow 0.3s;
-  box-shadow: 0 0 15px rgba(255, 105, 180, 0.4);
-  white-space: nowrap;
-}
-.contact-btn:hover {
-  transform: scale(1.05);
-  box-shadow: 0 0 30px rgba(255, 105, 180, 0.7);
-}
-
-/* ===== Контент ===== */
-.hero-content {
-  position: relative;
-  z-index: 3;
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
   text-align: center;
-  max-width: 900px;
-  padding: 0 20px;
+  position: relative;
 }
-
-.hero-title {
+h1 {
   font-size: clamp(2rem, 5vw, 3.5rem);
-  margin-bottom: 0.5em;
-  background: linear-gradient(90deg, #ff7f50, #ff66c4);
+  background: linear-gradient(90deg, #6cf, #8f6cff);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  text-shadow: 0 0 40px rgba(255,105,180,0.3);
 }
-
-.hero-subtitle {
-  font-size: clamp(1rem, 2.5vw, 1.3rem);
-  opacity: 0.9;
-  margin-bottom: 1.5em;
-  color: #ffddee;
-}
-
-.hero-cta {
-  display: inline-block;
-  padding: 12px 32px;
-  background: linear-gradient(135deg, #ff7f50, #ff66c4);
-  border-radius: 8px;
-  color: white;
-  font-weight: bold;
-  text-decoration: none;
-  transition: transform 0.3s, box-shadow 0.3s;
-  box-shadow: 0 0 15px rgba(255,105,180,0.3);
-}
-.hero-cta:hover {
-  transform: scale(1.05);
-  box-shadow: 0 0 30px rgba(255,105,180,0.6);
-}
-
-/* ===== 3D Canvas ===== */
-#bg3d {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  z-index: 2;
-  display: block;
-}
-
-/* ===== Виджеты ===== */
-.widgets-container {
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-  gap: 24px;
+p { opacity: 0.8; color: #ccd; }
+.widgets {
+  display: flex; flex-wrap: wrap;
+  justify-content: center; gap: 24px;
   margin-top: 60px;
-  z-index: 3;
-  position: relative;
-  max-width: 1000px;
-  margin-left: auto;
-  margin-right: auto;
 }
-
-.icon-box {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 12px;
-  background: rgba(255, 105, 180, 0.08);
+.widget {
+  background: rgba(255,255,255,0.08);
+  backdrop-filter: blur(8px);
+  border-radius: 16px;
   padding: 24px;
-  border-radius: 20px;
-  min-width: 220px;
-  max-width: 260px;
-  flex: 1 1 220px;
+  width: 240px;
   text-align: center;
-  box-shadow: 0 0 25px rgba(255,105,180,0.2);
-  color: white;
-  backdrop-filter: blur(6px);
-  transition: transform 0.3s, box-shadow 0.3s;
+  box-shadow: 0 0 30px rgba(140,160,255,0.1);
+  transition: transform .3s, box-shadow .3s;
 }
-.icon-box:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 0 40px rgba(255,105,180,0.5);
+.widget:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 0 40px rgba(140,160,255,0.4);
 }
-.icon {
-  font-size: 2.5rem;
-}
-.icon-box h3 {
-  margin: 0;
-  font-size: 1.2rem;
-  text-shadow: 0 0 8px #ff66c4;
-}
-.icon-box p {
-  margin: 0;
-  font-size: 0.95rem;
-  opacity: 0.85;
-}
-
-/* ===== Кнопка вниз ===== */
-.scroll-down {
+.scroll {
   position: absolute;
-  bottom: 20px;
-  left: 50%;
-  transform: translateX(-50%);
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  padding: 10px 24px;
-  background: rgba(255,105,180,0.15);
+  bottom: 40px;
+  padding: 12px 28px;
   border-radius: 50px;
+  background: rgba(140,160,255,0.15);
   cursor: pointer;
-  z-index: 5;
-  transition: transform 0.3s, background 0.3s;
-  box-shadow: 0 0 15px rgba(255,105,180,0.3);
+  transition: .3s;
 }
-.scroll-down:hover {
-  transform: translateX(-50%) translateY(-3px);
-  background: rgba(255,105,180,0.25);
+.scroll:hover {
+  background: rgba(140,160,255,0.25);
+  transform: translateY(-3px);
 }
-.scroll-text {
-  font-weight: bold;
-  color: #ffddee;
-}
-.scroll-icon {
-  width: 20px;
-  height: 20px;
-  filter: invert(1);
-}
-
-/* ===== Секция About ===== */
-#about {
-  padding: 80px 20px;
-  text-align: center;
-  background: #10091a;
-}
-#about h2 {
-  font-size: 2rem;
-  color: #ff66c4;
-}
-#about p {
-  max-width: 600px;
-  margin: 1em auto 0;
-  line-height: 1.6;
-  opacity: 0.9;
-}
-
-/* ===== Адаптив ===== */
-@media (max-width: 768px) {
-  .top-bar {
-    top: 10px;
-  }
-
-  .brand {
-    font-size: 1.2rem;
-  }
-
-  .contact-btn {
-    padding: 10px 18px;
-    font-size: 0.9rem;
-  }
-
-  .hero-content {
-    padding-top: 100px; /* ✅ Добавили отступ, чтобы не наезжало */
-  }
-
-  .widgets-container {
-    flex-direction: column;
-    align-items: center;
-    margin-top: 40px;
-  }
-
-  .icon-box {
-    width: 90%;
-    max-width: 400px;
-  }
-}
-
 </style>
 </head>
 <body>
-<section class="hero-viva">
-  <!-- Фон -->
-  <div class="hero-bg">
-    <div class="hero-bg-gradient"></div>
-    <div class="hero-bg-image"></div>
+<section class="hero">
+  <h1>Sinta Soft</h1>
+  <p>Создаём цифровые решения будущего</p>
+  <div class="widgets">
+    <div class="widget">⚙️ <br> Automation</div>
+    <div class="widget">🎮 <br> Games & Apps</div>
+    <div class="widget">🚀 <br> Innovation</div>
   </div>
-
-  <!-- 3D Canvas -->
-  <canvas id="bg3d"></canvas>
-
-  <!-- Верхняя панель -->
-  <div class="top-bar">
-    <div class="brand">Helena Systems</div>
-    <button class="contact-btn">Контакты</button>
-  </div>
-
-  <!-- Контент -->
-  <div class="hero-content">
-    <h1 class="hero-title">Создаем будущее игр</h1>
-    <p class="hero-subtitle">Где искусство встречает код и вдохновляет миллионы</p>
-    <a href="#about" class="hero-cta">Подробнее</a>
-
-    <!-- Виджеты -->
-    <div class="widgets-container">
-      <div class="icon-box">
-        <div class="icon">🎮</div>
-        <h3>Game Development</h3>
-        <p>Next-gen experiences powered by passion.</p>
-      </div>
-      <div class="icon-box">
-        <div class="icon">🚀</div>
-        <h3>Innovation</h3>
-        <p>Always moving forward to new horizons.</p>
-      </div>
-      <div class="icon-box">
-        <div class="icon">💡</div>
-        <h3>Creative Vision</h3>
-        <p>Ideas that transform digital worlds.</p>
-      </div>
-    </div>
-  </div>
-
-  <!-- Scroll down -->
-  <div class="scroll-down" onclick="document.getElementById('about').scrollIntoView({behavior:'smooth'})">
-    <span class="scroll-text">Далее</span>
-    <img src="https://cdn-icons-png.flaticon.com/32/271/271228.png" alt="arrow" class="scroll-icon">
-  </div>
+  <div class="scroll" onclick="document.getElementById('about').scrollIntoView({behavior:'smooth'})">⬇ Далее</div>
 </section>
-
-<section id="about">
+<section id="about" style="padding:80px 20px;text-align:center;">
   <h2>О проекте</h2>
-  <p>Футуристический лендинг в стиле 2027 — отражает энергию, технологии и креативность.</p>
+  <p>Минималистичный технологичный стиль для современных продуктов.</p>
 </section>
-
-<!-- Three.js -->
-<script src="https://cdn.jsdelivr.net/npm/three@0.128.0/build/three.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
-<script>
-const scene = new THREE.Scene();
-const camera = new THREE.PerspectiveCamera(75, window.innerWidth/window.innerHeight, 0.1, 1000);
-const renderer = new THREE.WebGLRenderer({ canvas: document.getElementById('bg3d'), antialias: true });
-renderer.setPixelRatio(window.devicePixelRatio);
-renderer.setSize(window.innerWidth, window.innerHeight);
-
-const light = new THREE.PointLight(0xffffff, 1.2);
-light.position.set(5,5,5);
-scene.add(light);
-
-const geometry = new THREE.TorusKnotGeometry(1, 0.3, 100, 16);
-const material = new THREE.MeshStandardMaterial({
-  color: 0xff66c4,
-  metalness: 0.8,
-  roughness: 0.25,
-  emissive: 0xff7f50,
-  emissiveIntensity: 0.4
-});
-const torusKnot = new THREE.Mesh(geometry, material);
-torusKnot.position.set(1, 0.5, 0);
-scene.add(torusKnot);
-
-camera.position.z = 5;
-
-const controls = new THREE.OrbitControls(camera, renderer.domElement);
-controls.enableDamping = true;
-controls.enableZoom = false;
-
-function animate() {
-  requestAnimationFrame(animate);
-  torusKnot.rotation.x += 0.01;
-  torusKnot.rotation.y += 0.01;
-  controls.update();
-  renderer.render(scene, camera);
-}
-animate();
-
-window.addEventListener('resize', () => {
-  camera.aspect = window.innerWidth / window.innerHeight;
-  camera.updateProjectionMatrix();
-  renderer.setSize(window.innerWidth, window.innerHeight);
-});
-</script>
 </body>
 </html>
