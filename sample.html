@@ -33,11 +33,25 @@ html, body {
   overflow: hidden;
 }
 
-.hero-bg {
+/* .hero-bg {
   position: absolute;
   inset: 0;
   background: radial-gradient(circle at 30% 20%, #331a4d, #0a0710 70%);
   z-index: 1;
+} */
+
+.hero-bg {
+  position: absolute;
+  inset: 0;
+  background:
+    /* мягкий нижний градиент */
+    linear-gradient(to bottom, rgba(10, 7, 16, 0) 70%, rgba(10, 7, 16, 1) 100%),
+    /* картинка телефона */
+    url("img/phone.png") no-repeat left top / auto 60%,
+    /* основной фон */
+    radial-gradient(circle at 30% 20%, #331a4d, #0a0710 70%);
+  z-index: 1;
+  background-blend-mode: normal;
 }
 
 /* ===== Верхняя панель ===== */
