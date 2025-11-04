@@ -70,16 +70,34 @@ header {
 }
 
 /* Виджеты */
-.widgets-container { display: flex; justify-content: center; width: 100%; margin-top: 60vh; z-index:3; position: relative; }
+.widgets-container { 
+  display: flex; 
+  justify-content: center; 
+  width: 100%; 
+  margin-top: 70vh; /* Достаточный отступ от Hero */
+  padding-bottom: 80px; /* чтобы на мобильных не резался */
+  z-index:3; 
+  position: relative; 
+}
+.icon-box {
+  display: flex; 
+  align-items: center; 
+  gap: 16px; 
+  background: rgba(0,0,0,0.15); 
+  color:#fff; 
+  min-width:250px; 
+  padding:16px; 
+  border-radius:20px; 
+  box-shadow:0 0 20px rgba(0,255,255,0.3); 
+  flex-direction: column; 
+  text-align:center;
+}
 .widgets-grid { display: flex; gap: 24px; flex-wrap: wrap; justify-content: center; }
-.icon-box { display: flex; align-items: center; gap: 16px; background: rgba(0,0,0,0.1); color:#fff; min-width:250px; padding:16px; border-radius:20px; box-shadow:0 0 20px rgba(0,255,255,0.3); }
+
 .icon-box-icon { width:80px; height:80px; flex-shrink:0; }
 .icon-box-content h3 { margin:0 0 4px 0; font-size:1.2rem; text-shadow:0 0 8px #0ff; }
 .icon-box-content p { margin:0; font-size:0.95rem; opacity:0.85; }
-/* Анимация */
-.animated { opacity: 0; transform: translateY(40px); animation-fill-mode: forwards; }
-.bounceInUp { animation-name: bounceInUp; animation-duration: 0.8s; }
-@keyframes bounceInUp { 0%{opacity:0; transform:translateY(40px);} 60%{opacity:1; transform:translateY(-10px);} 80%{transform:translateY(5px);} 100%{transform:translateY(0);} }
+
 /* Адаптив */
 @media(max-width:768px) { .widgets-grid{flex-direction:column; gap:20px;} .icon-box{width:90%; max-width:400px;} }
 
@@ -129,10 +147,10 @@ header {
     <div class="hero-text">Будущее уже здесь — 2027</div>
 
     <!-- Виджеты -->
- <section class="widgets-container">
+<section class="widgets-container">
   <div class="widgets-grid">
     <!-- Виджет 1 -->
-    <div class="icon-box animated bounceInUp" style="animation-delay: 0.1s;">
+    <div class="icon-box">
       <div class="icon-box-icon">
         <svg width="80" height="80" viewBox="0 0 80 80">
           <defs>
@@ -152,7 +170,7 @@ header {
     </div>
 
     <!-- Виджет 2 -->
-    <div class="icon-box animated bounceInUp" style="animation-delay: 0.3s;">
+    <div class="icon-box">
       <div class="icon-box-icon">
         <svg width="80" height="80" viewBox="0 0 80 80">
           <defs>
@@ -172,7 +190,7 @@ header {
     </div>
 
     <!-- Виджет 3 -->
-    <div class="icon-box animated bounceInUp" style="animation-delay: 0.5s;">
+    <div class="icon-box">
       <div class="icon-box-icon">
         <svg width="80" height="80" viewBox="0 0 80 80">
           <defs>
@@ -192,7 +210,6 @@ header {
     </div>
   </div>
 </section>
-
     <!-- Scroll down -->
     <div class="scroll-down" onclick="document.getElementById('about').scrollIntoView({behavior:'smooth'})">
         <span class="scroll-text">Далее</span>
