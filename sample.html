@@ -70,61 +70,19 @@ header {
 }
 
 /* Виджеты */
-.widgets-container {
-    display: flex;
-    justify-content: center;
-    width: 100%;
-    margin-top: 60vh; /* отступ от Hero */
-    z-index: 3;
-    position: relative;
-}
-.widgets-grid {
-    display: flex;
-    gap: 24px;
-    flex-wrap: wrap;
-    justify-content: center;
-}
-.icon-box {
-    display: flex;
-    align-items: center;
-    gap: 16px;
-    background: transparent;
-    color: #fff;
-    min-width: 250px;
-    cursor: default;
-    transition: transform 0.3s;
-}
-.icon-box:hover {
-    transform: translateY(-5px);
-}
-.icon-box-icon {
-    width: 80px;
-    height: 80px;
-    flex-shrink: 0;
-}
-.icon-box-content h3 {
-    margin: 0 0 4px 0;
-    font-size: 1.1rem;
-}
-.icon-box-content p {
-    margin: 0;
-    font-size: 0.9rem;
-    opacity: 0.85;
-}
-
-/* Анимация bounceInUp */
-.animated {
-    opacity: 0;
-    transform: translateY(40px);
-    animation-fill-mode: forwards;
-}
-@keyframes bounceInUp {
-    0% { opacity: 0; transform: translateY(40px); }
-    60% { opacity: 1; transform: translateY(-10px); }
-    80% { transform: translateY(5px); }
-    100% { transform: translateY(0); }
-}
+.widgets-container { display: flex; justify-content: center; width: 100%; margin-top: 60vh; z-index:3; position: relative; }
+.widgets-grid { display: flex; gap: 24px; flex-wrap: wrap; justify-content: center; }
+.icon-box { display: flex; align-items: center; gap: 16px; background: rgba(0,0,0,0.1); color:#fff; min-width:250px; padding:16px; border-radius:20px; box-shadow:0 0 20px rgba(0,255,255,0.3); }
+.icon-box-icon { width:80px; height:80px; flex-shrink:0; }
+.icon-box-content h3 { margin:0 0 4px 0; font-size:1.2rem; text-shadow:0 0 8px #0ff; }
+.icon-box-content p { margin:0; font-size:0.95rem; opacity:0.85; }
+/* Анимация */
+.animated { opacity: 0; transform: translateY(40px); animation-fill-mode: forwards; }
 .bounceInUp { animation-name: bounceInUp; animation-duration: 0.8s; }
+@keyframes bounceInUp { 0%{opacity:0; transform:translateY(40px);} 60%{opacity:1; transform:translateY(-10px);} 80%{transform:translateY(5px);} 100%{transform:translateY(0);} }
+/* Адаптив */
+@media(max-width:768px) { .widgets-grid{flex-direction:column; gap:20px;} .icon-box{width:90%; max-width:400px;} }
+
 
 /* Кнопка вниз */
 .scroll-down {
@@ -171,69 +129,69 @@ header {
     <div class="hero-text">Будущее уже здесь — 2027</div>
 
     <!-- Виджеты -->
-    <section class="widgets-container">
-      <div class="widgets-grid">
-        <!-- Виджет 1 -->
-        <div class="icon-box animated bounceInUp" style="animation-delay: 0.2s;">
-          <div class="icon-box-icon">
-            <svg width="80" height="80" viewBox="0 0 80 80">
-              <defs>
-                <linearGradient id="grad1" x1="0" y1="0" x2="0" y2="1">
-                  <stop offset="0%" stop-color="#e06818"/>
-                  <stop offset="100%" stop-color="#e4831f"/>
-                </linearGradient>
-              </defs>
-              <rect width="80" height="80" rx="12" fill="url(#grad1)"/>
-              <text x="40" y="50" fill="#fff" font-size="28" text-anchor="middle" alignment-baseline="middle">🎮</text>
-            </svg>
-          </div>
-          <div class="icon-box-content">
-            <h3>End-to-End Development Support</h3>
-            <p>From concept to launch.</p>
-          </div>
-        </div>
-
-        <!-- Виджет 2 -->
-        <div class="icon-box animated bounceInUp" style="animation-delay: 0.4s;">
-          <div class="icon-box-icon">
-            <svg width="80" height="80" viewBox="0 0 80 80">
-              <defs>
-                <linearGradient id="grad2" x1="0" y1="0" x2="0" y2="1">
-                  <stop offset="0%" stop-color="#e06818"/>
-                  <stop offset="100%" stop-color="#e4831f"/>
-                </linearGradient>
-              </defs>
-              <rect width="80" height="80" rx="12" fill="url(#grad2)"/>
-              <text x="40" y="50" fill="#fff" font-size="28" text-anchor="middle" alignment-baseline="middle">📈</text>
-            </svg>
-          </div>
-          <div class="icon-box-content">
-            <h3>User Acquisition & Ads</h3>
-            <p>To maximize your game's reach.</p>
-          </div>
-        </div>
-
-        <!-- Виджет 3 -->
-        <div class="icon-box animated bounceInUp" style="animation-delay: 0.6s;">
-          <div class="icon-box-icon">
-            <svg width="80" height="80" viewBox="0 0 80 80">
-              <defs>
-                <linearGradient id="grad3" x1="0" y1="0" x2="0" y2="1">
-                  <stop offset="0%" stop-color="#e06818"/>
-                  <stop offset="100%" stop-color="#e4831f"/>
-                </linearGradient>
-              </defs>
-              <rect width="80" height="80" rx="12" fill="url(#grad3)"/>
-              <text x="40" y="50" fill="#fff" font-size="28" text-anchor="middle" alignment-baseline="middle">💰</text>
-            </svg>
-          </div>
-          <div class="icon-box-content">
-            <h3>Monetization Strategy & Growth</h3>
-            <p>Boost revenue with expert guidance.</p>
-          </div>
-        </div>
+ <section class="widgets-container">
+  <div class="widgets-grid">
+    <!-- Виджет 1 -->
+    <div class="icon-box animated bounceInUp" style="animation-delay: 0.1s;">
+      <div class="icon-box-icon">
+        <svg width="80" height="80" viewBox="0 0 80 80">
+          <defs>
+            <radialGradient id="gradAI" cx="50%" cy="50%" r="50%">
+              <stop offset="0%" stop-color="#0ff"/>
+              <stop offset="100%" stop-color="#00f"/>
+            </radialGradient>
+          </defs>
+          <rect width="80" height="80" rx="20" fill="url(#gradAI)" opacity="0.9"/>
+          <text x="40" y="50" fill="#fff" font-size="28" text-anchor="middle" alignment-baseline="middle">🤖</text>
+        </svg>
       </div>
-    </section>
+      <div class="icon-box-content">
+        <h3>AI & Automation</h3>
+        <p>Smart systems for the future.</p>
+      </div>
+    </div>
+
+    <!-- Виджет 2 -->
+    <div class="icon-box animated bounceInUp" style="animation-delay: 0.3s;">
+      <div class="icon-box-icon">
+        <svg width="80" height="80" viewBox="0 0 80 80">
+          <defs>
+            <radialGradient id="gradData" cx="50%" cy="50%" r="50%">
+              <stop offset="0%" stop-color="#ff0"/>
+              <stop offset="100%" stop-color="#f80"/>
+            </radialGradient>
+          </defs>
+          <rect width="80" height="80" rx="20" fill="url(#gradData)" opacity="0.9"/>
+          <text x="40" y="50" fill="#fff" font-size="28" text-anchor="middle" alignment-baseline="middle">📊</text>
+        </svg>
+      </div>
+      <div class="icon-box-content">
+        <h3>Data Visualization</h3>
+        <p>Insights at a glance.</p>
+      </div>
+    </div>
+
+    <!-- Виджет 3 -->
+    <div class="icon-box animated bounceInUp" style="animation-delay: 0.5s;">
+      <div class="icon-box-icon">
+        <svg width="80" height="80" viewBox="0 0 80 80">
+          <defs>
+            <radialGradient id="gradCyber" cx="50%" cy="50%" r="50%">
+              <stop offset="0%" stop-color="#f0f"/>
+              <stop offset="100%" stop-color="#800080"/>
+            </radialGradient>
+          </defs>
+          <rect width="80" height="80" rx="20" fill="url(#gradCyber)" opacity="0.9"/>
+          <text x="40" y="50" fill="#fff" font-size="28" text-anchor="middle" alignment-baseline="middle">🛡️</text>
+        </svg>
+      </div>
+      <div class="icon-box-content">
+        <h3>Cybersecurity</h3>
+        <p>Protect your digital world.</p>
+      </div>
+    </div>
+  </div>
+</section>
 
     <!-- Scroll down -->
     <div class="scroll-down" onclick="document.getElementById('about').scrollIntoView({behavior:'smooth'})">
