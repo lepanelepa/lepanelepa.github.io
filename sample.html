@@ -79,13 +79,18 @@ header {
 .widget {
     flex: 1 1 250px;
     max-width: 300px;
-    background: linear-gradient(135deg, #00b894, #1abc9c);
-    color: #fff;
+    /* Градиент под цвет 3D модели и подсветки текста */
+    background: linear-gradient(135deg, #00ffff, #33ffff);
+    color: #000; /* черный текст на светлом градиенте */
     padding: 30px;
     border-radius: 12px;
     text-align: center;
-    box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+    box-shadow: 0 8px 20px rgba(0,255,255,0.3);
     transition: transform 0.3s, box-shadow 0.3s;
+}
+.widget:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 30px rgba(0,255,255,0.5);
 }
 .widget h3 {
     margin-bottom: 10px;
