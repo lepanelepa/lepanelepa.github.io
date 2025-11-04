@@ -47,16 +47,35 @@ header {
 /* Scroll down button */
 .scroll-down {
     position: absolute;
-    bottom: 10px;
+    bottom: 20px;
     left: 50%;
     transform: translateX(-50%);
-    font-size: 1.2rem;
-    color: #fff;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 20px;
+    background: rgba(0,255,255,0.2);
+    border-radius: 50px;
     cursor: pointer;
-    z-index: 3;
+    z-index: 4;
+    transition: transform 0.3s, background 0.3s;
+}
+.scroll-down:hover {
+    transform: translateX(-50%) translateY(-3px);
+    background: rgba(0,255,255,0.35);
+}
+.scroll-text {
+    color: #fff;
+    font-weight: bold;
+    font-size: 1rem;
+}
+.scroll-icon {
+    width: 20px;
+    height: 20px;
+    filter: invert(1); /* белая стрелка */
 }
 
-/* Виджеты */
+/* Widgets */
 .widgets {
     position: absolute;
     bottom: 40px;
@@ -164,9 +183,10 @@ window.addEventListener('load', () => {
 </div>
 
     <!-- Scroll down arrow -->
-    <div class="scroll-down" onclick="document.getElementById('about').scrollIntoView({behavior:'smooth'})">
-        ⬇ Прокрутить вниз
-    </div>
+   <div class="scroll-down" onclick="document.getElementById('about').scrollIntoView({behavior:'smooth'})">
+    <span class="scroll-text">Далее</span>
+    <img src="https://cdn-icons-png.flaticon.com/32/271/271228.png" alt="arrow" class="scroll-icon">
+</div>
 </header>
 
 <section id="about">
