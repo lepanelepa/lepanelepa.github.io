@@ -59,16 +59,13 @@ header {
 /* Виджеты */
 .widgets {
     position: absolute;
-    bottom: 60px;  /* чуть выше стрелки */
+    bottom: 40px;
     left: 50%;
     transform: translateX(-50%);
     display: flex;
     gap: 20px;
     z-index: 3;
-
-    /* Анимация появления */
     opacity: 0;
-    transform: translateX(-50%) translateY(50px);
     transition: opacity 1s ease, transform 1s ease;
 }
 .widgets.visible {
@@ -77,50 +74,49 @@ header {
 }
 
 .widget {
-    flex: 1 1 250px;
-    max-width: 300px;
-    /* Градиент под цвет 3D модели и подсветки текста */
-    background: linear-gradient(135deg, #00ffff, #33ffff);
-    color: #000; /* черный текст на светлом градиенте */
-    padding: 30px;
-    border-radius: 12px;
-    text-align: center;
-    box-shadow: 0 8px 20px rgba(0,255,255,0.3);
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 15px 20px;
+    border-radius: 10px;
+    background: rgba(0,255,255,0.1); /* легкий полупрозрачный фон */
+    box-shadow: 0 4px 12px rgba(0,255,255,0.15);
     transition: transform 0.3s, box-shadow 0.3s;
 }
+
 .widget:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 12px 30px rgba(0,255,255,0.5);
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(0,255,255,0.25);
 }
-.widget h3 {
-    margin-bottom: 10px;
-    font-size: 1.3em;
+
+.widget img.icon {
+    width: 40px;
+    height: 40px;
 }
-.widget p {
+
+.widget-text h3 {
+    margin: 0 0 5px 0;
     font-size: 1em;
-    line-height: 1.5;
-}
-.widget:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 12px 30px rgba(0,0,0,0.35);
+    color: #fff; /* белый текст */
 }
 
-/* Секция ниже */
-section {
-    padding: 80px 20px;
-    text-align: center;
-    background: #111;
-    color: #fff;
+.widget-text p {
+    margin: 0;
+    font-size: 0.85em;
+    color: #ddd;
 }
 
-/* Адаптив */
+/* Мобильные устройства */
 @media (max-width: 768px) {
     .widgets {
+        position: relative;
+        bottom: auto;
+        transform: none;
         flex-direction: column;
-        align-items: center;
+        margin-top: 20px; /* ниже 3D модели и hero */
     }
     .widget {
-        max-width: 90%;
+        width: 90%;
     }
 }
 </style>
@@ -142,21 +138,30 @@ window.addEventListener('load', () => {
     <!-- Hero Text -->
     <div class="hero-text">Будущее уже здесь — 2027</div>
 
-    <!-- Widgets at bottom of the viewport -->
-    <div class="widgets">
-      <div class="widget"> 
-        <h3>End-to-End Development Support</h3>
-        <p>From concept to launch.</p>
-      </div>
-      <div class="widget">
-        <h3>User Acquisition & Ads</h3>
-        <p>To maximize your game's reach.</p>
-      </div>
-      <div class="widget">
-        <h3>Monetization Strategy & Growth</h3>
-        <p>Boost revenue with expert guidance.</p>
-      </div>
+    <!-- Widgets Section -->
+<div class="widgets">
+  <div class="widget">
+    <img src="https://cdn-icons-png.flaticon.com/64/3135/3135715.png" alt="dev" class="icon">
+    <div class="widget-text">
+      <h3>End-to-End Development Support</h3>
+      <p>From concept to launch.</p>
     </div>
+  </div>
+  <div class="widget">
+    <img src="https://cdn-icons-png.flaticon.com/64/3135/3135715.png" alt="ads" class="icon">
+    <div class="widget-text">
+      <h3>User Acquisition & Ads</h3>
+      <p>To maximize your game's reach.</p>
+    </div>
+  </div>
+  <div class="widget">
+    <img src="https://cdn-icons-png.flaticon.com/64/3135/3135715.png" alt="monetize" class="icon">
+    <div class="widget-text">
+      <h3>Monetization Strategy & Growth</h3>
+      <p>Boost revenue with expert guidance.</p>
+    </div>
+  </div>
+</div>
 
     <!-- Scroll down arrow -->
     <div class="scroll-down" onclick="document.getElementById('about').scrollIntoView({behavior:'smooth'})">
