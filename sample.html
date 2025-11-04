@@ -15,94 +15,88 @@
         font-family: 'Segoe UI', sans-serif;
     }
 
-    header {
-        height: 100vh;
-        position: relative;
-    }
-
-    #bg3d {
-        position: absolute;
-        top: 0; left: 0;
-        width: 100%;
-        height: 100%;
-    }
-
-    .hero-text {
-        position: relative;
-        z-index: 2;
-        text-align: center;
-        top: 40%;
-        transform: translateY(-50%);
-        font-size: 3rem;
-        text-shadow: 0 0 15px #0ff, 0 0 30px #0ff;
-        animation: glow 2s ease-in-out infinite alternate;
-    }
-
-    @keyframes glow {
-        from { text-shadow: 0 0 15px #0ff; }
-        to   { text-shadow: 0 0 30px #0ff, 0 0 60px #0ff; }
-    }
-
-    .scroll-down {
-        position: absolute;
-        bottom: 20px;
-        left: 50%;
-        transform: translateX(-50%);
-        font-size: 1.2rem;
-        cursor: pointer;
-        z-index: 2;
-    }
-
-    section {
-        padding: 80px 20px;
-        text-align: center;
-        background: #111;
-    }
-    /* widgets */
-
+  /* Header & Hero */
+header {
+    height: 100vh;
+    position: relative;
+}
+#bg3d {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%;
+    height: 100%;
+}
+.hero-text {
+    position: absolute;
+    top: 40%;
+    width: 100%;
+    text-align: center;
+    z-index: 2;
+    font-size: 3rem;
+    color: #fff;
+    text-shadow: 0 0 15px #0ff, 0 0 30px #0ff;
+    animation: glow 2s ease-in-out infinite alternate;
+}
+@keyframes glow {
+    from { text-shadow: 0 0 15px #0ff; }
+    to   { text-shadow: 0 0 30px #0ff, 0 0 60px #0ff; }
+}
+/* Widgets positioned at bottom */
 .widgets {
-  position: relative;      /* Чтобы располагались поверх канваса */
-  z-index: 3;              /* Выше hero-текста и канваса */
-  display: flex;
-  justify-content: center;
-  gap: 20px;
-  margin-top: 200px;       /* Отступ под заголовком */
-  padding: 0 20px;
+    position: absolute;
+    bottom: 40px;  /* отступ от низа экрана */
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 20px;
+    z-index: 3;
 }
 
 .widget {
-  flex: 1 1 250px;
-  max-width: 300px;
-  background: linear-gradient(135deg, #00b894, #1abc9c); /* изумрудно-тифани */
-  color: #fff;
-  padding: 30px;
-  border-radius: 12px;
-  text-align: center;
-  box-shadow: 0 8px 20px rgba(0,0,0,0.3);
-  transition: transform 0.3s, box-shadow 0.3s;
+    flex: 1 1 250px;
+    max-width: 300px;
+    background: linear-gradient(135deg, #00b894, #1abc9c);
+    color: #fff;
+    padding: 30px;
+    border-radius: 12px;
+    text-align: center;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+    transition: transform 0.3s, box-shadow 0.3s;
 }
 .widget h3 {
-  margin-bottom: 10px;
-  font-size: 1.3em;
+    margin-bottom: 10px;
+    font-size: 1.3em;
 }
 .widget p {
-  font-size: 1em;
-  line-height: 1.5;
+    font-size: 1em;
+    line-height: 1.5;
 }
 .widget:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 12px 30px rgba(0,0,0,0.35);
+    transform: translateY(-5px);
+    box-shadow: 0 12px 30px rgba(0,0,0,0.35);
 }
 
+/* Scroll down arrow */
+.scroll-down {
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 1.2rem;
+    color: #fff;
+    cursor: pointer;
+    z-index: 3;
+}
+
+/* Responsive */
 @media (max-width: 768px) {
-  .widgets {
-    flex-direction: column;
-    align-items: center;
-    margin-top: 150px;
-  }
-  .widget {
-    max-width: 90%;
-  }
+    .widgets {
+        flex-direction: column;
+        align-items: center;
+    }
+    .widget {
+        max-width: 90%;
+    }
 }
 </style>
 </head>
@@ -110,9 +104,11 @@
 
 <header>
     <canvas id="bg3d"></canvas>
+
+    <!-- Hero Text -->
     <div class="hero-text">Будущее уже здесь — 2027</div>
 
-    <!-- Widgets Section -->
+    <!-- Widgets at bottom of the viewport -->
     <div class="widgets">
       <div class="widget">
         <h3>End-to-End Development Support</h3>
@@ -128,6 +124,7 @@
       </div>
     </div>
 
+    <!-- Scroll down arrow -->
     <div class="scroll-down" onclick="document.getElementById('about').scrollIntoView({behavior:'smooth'})">
         ⬇ Прокрутить вниз
     </div>
