@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Landing NeoSunset</title>
+<title>Sinta Soft</title>
 <style>
 /* ===== Общие стили ===== */
 body, html {
@@ -25,10 +25,9 @@ body, html {
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: flex-start;
+    justify-content: center;
 }
 
-/* Фон */
 .hero-bg {
     position: absolute;
     top:0; left:0;
@@ -38,18 +37,33 @@ body, html {
     z-index:1;
 }
 
-/* Контакты */
-.contact-btn {
+/* ===== Верхняя панель ===== */
+.top-bar {
     position: absolute;
     top: 20px;
     right: 20px;
+    left: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 5;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+.brand {
+    font-size: 1.4rem;
+    font-weight: bold;
+    color: white;
+    letter-spacing: 1px;
+    text-shadow: 0 0 12px rgba(255, 255, 255, 0.4);
+}
+.contact-btn {
     background: linear-gradient(135deg, #ff7f50, #ff66c4);
     color: white;
     padding: 12px 24px;
     border-radius: 12px;
     font-weight: bold;
     cursor: pointer;
-    z-index: 5;
     transition: transform 0.3s, box-shadow 0.3s;
     box-shadow: 0 0 15px rgba(255, 105, 180, 0.4);
 }
@@ -58,12 +72,14 @@ body, html {
     box-shadow: 0 0 30px rgba(255, 105, 180, 0.7);
 }
 
-/* Hero-текст */
+/* ===== Контент ===== */
 .hero-content {
     position: relative;
     z-index: 3;
-    margin-top: 15vh;
     text-align: center;
+    max-width: 900px;
+    padding: 0 20px;
+    margin: 0 auto;
 }
 .hero-title {
     font-size: 3rem;
@@ -95,7 +111,7 @@ body, html {
     box-shadow: 0 0 30px rgba(255,105,180,0.6);
 }
 
-/* 3D Canvas */
+/* ===== 3D Canvas ===== */
 #bg3d {
     position: absolute;
     top: 0; left: 0;
@@ -113,7 +129,7 @@ body, html {
     margin-top: 60px;
     z-index:3;
     position: relative;
-    max-width: 1200px;
+    max-width: 1000px;
 }
 .icon-box {
     display: flex;
@@ -152,7 +168,7 @@ body, html {
     opacity: 0.85;
 }
 
-/* Кнопка вниз */
+/* ===== Кнопка вниз ===== */
 .scroll-down {
     position: absolute;
     bottom: 20px;
@@ -182,7 +198,9 @@ body, html {
     .hero-subtitle { font-size: 1rem; }
     .widgets-container { flex-direction: column; align-items: center; margin-top: 40px; gap:16px; }
     .icon-box { width: 90%; max-width: 400px; }
-    .contact-btn { top: 10px; right: 10px; padding: 10px 16px; font-size:0.9rem; }
+    .contact-btn { padding: 10px 16px; font-size:0.9rem; }
+    .brand { font-size: 1.1rem; }
+    .top-bar { top: 10px; left: 10px; right: 10px; }
 }
 </style>
 </head>
@@ -190,36 +208,36 @@ body, html {
 
 <section class="hero-viva">
     <div class="hero-bg"></div>
-
-    <!-- 3D Canvas -->
     <canvas id="bg3d"></canvas>
 
-    <!-- Контакты -->
-    <div class="contact-btn">Контакты</div>
+    <!-- Верхняя панель -->
+    <div class="top-bar">
+        <div class="brand">Sinta Soft</div>
+        <div class="contact-btn">Контакты</div>
+    </div>
 
-    <!-- Hero Content -->
+    <!-- Контент -->
     <div class="hero-content">
         <h1 class="hero-title">Создаем будущее игр</h1>
         <p class="hero-subtitle">Где искусство встречает код и вдохновляет миллионы</p>
         <a href="#about" class="hero-cta">Подробнее</a>
-    </div>
 
-    <!-- Виджеты -->
-    <div class="widgets-container">
-        <div class="icon-box">
-            <div class="icon">🎮</div>
-            <h3>Game Development</h3>
-            <p>Next-gen experiences powered by passion.</p>
-        </div>
-        <div class="icon-box">
-            <div class="icon">🚀</div>
-            <h3>Innovation</h3>
-            <p>Always moving forward to new horizons.</p>
-        </div>
-        <div class="icon-box">
-            <div class="icon">💡</div>
-            <h3>Creative Vision</h3>
-            <p>Ideas that transform digital worlds.</p>
+        <div class="widgets-container">
+            <div class="icon-box">
+                <div class="icon">🎮</div>
+                <h3>Game Development</h3>
+                <p>Next-gen experiences powered by passion.</p>
+            </div>
+            <div class="icon-box">
+                <div class="icon">🚀</div>
+                <h3>Innovation</h3>
+                <p>Always moving forward to new horizons.</p>
+            </div>
+            <div class="icon-box">
+                <div class="icon">💡</div>
+                <h3>Creative Vision</h3>
+                <p>Ideas that transform digital worlds.</p>
+            </div>
         </div>
     </div>
 
@@ -244,12 +262,10 @@ let camera = new THREE.PerspectiveCamera(75, window.innerWidth/window.innerHeigh
 let renderer = new THREE.WebGLRenderer({ canvas: document.getElementById('bg3d'), antialias:true });
 renderer.setSize(window.innerWidth, window.innerHeight);
 
-// Свет
 const light = new THREE.PointLight(0xffffff, 1.2);
 light.position.set(5,5,5);
 scene.add(light);
 
-// 3D объект
 const geometry = new THREE.TorusKnotGeometry(1,0.3,100,16);
 const material = new THREE.MeshStandardMaterial({ 
     color:0xff66c4, 
@@ -277,13 +293,11 @@ function animate(){
 }
 animate();
 
-// Адаптация под экран
 window.addEventListener('resize', ()=>{
     camera.aspect = window.innerWidth/window.innerHeight;
     camera.updateProjectionMatrix();
     renderer.setSize(window.innerWidth, window.innerHeight);
 });
 </script>
-
 </body>
 </html>
