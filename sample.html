@@ -3,56 +3,56 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Sinta Soft — Warm Futurism</title>
+<title>Sinta Soft — Eco Digital</title>
 <style>
 html, body {
   margin: 0; padding: 0;
-  font-family: 'Poppins', sans-serif;
-  background: radial-gradient(circle at 50% 50%, #1b0e08, #050202 90%);
-  color: #fff;
+  font-family: 'Inter', sans-serif;
+  background: radial-gradient(circle at 50% 50%, #eafaf1, #b7d9c9);
+  color: #0a1a10;
   overflow-x: hidden;
 }
 .hero {
   min-height: 100vh;
   display: flex; flex-direction: column;
   align-items: center; justify-content: center;
-  text-align: center; position: relative;
+  text-align: center;
+  position: relative;
 }
 h1 {
   font-size: clamp(2rem, 5vw, 3.5rem);
-  background: linear-gradient(90deg, #ffcc70, #ff8177);
+  background: linear-gradient(90deg, #00b09b, #96c93d);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
-p { opacity: 0.9; color: #ffefdb; }
+p { opacity: 0.8; }
 .widgets {
   display: flex; flex-wrap: wrap;
   justify-content: center; gap: 24px;
   margin-top: 60px;
 }
 .widget {
-  background: rgba(255,200,150,0.08);
-  backdrop-filter: blur(6px);
-  border-radius: 20px;
+  background: rgba(255,255,255,0.6);
+  border-radius: 16px;
   padding: 24px;
   width: 240px;
-  box-shadow: 0 0 25px rgba(255,180,100,0.15);
+  box-shadow: 0 0 25px rgba(0,0,0,0.1);
   transition: transform .3s, box-shadow .3s;
 }
 .widget:hover {
   transform: translateY(-5px);
-  box-shadow: 0 0 40px rgba(255,180,100,0.5);
+  box-shadow: 0 0 40px rgba(0,0,0,0.2);
 }
 .scroll {
   position: absolute; bottom: 40px;
   padding: 12px 28px;
   border-radius: 50px;
-  background: rgba(255,160,100,0.15);
+  background: rgba(0,176,155,0.2);
   cursor: pointer;
   transition: .3s;
 }
 .scroll:hover {
-  background: rgba(255,160,100,0.3);
+  background: rgba(0,176,155,0.35);
   transform: translateY(-3px);
 }
 </style>
@@ -60,17 +60,17 @@ p { opacity: 0.9; color: #ffefdb; }
 <body>
 <section class="hero">
   <h1>Sinta Soft</h1>
-  <p>Тёплое будущее технологий и креатива</p>
+  <p>Гармония технологий и природы</p>
   <div class="widgets">
-    <div class="widget">🔥 <br> Design</div>
-    <div class="widget">🧠 <br> Smart Systems</div>
-    <div class="widget">🌌 <br> Innovation</div>
+    <div class="widget">🌱 <br> Sustainability</div>
+    <div class="widget">💻 <br> Smart Apps</div>
+    <div class="widget">🤝 <br> Human-first Tech</div>
   </div>
   <div class="scroll" onclick="document.getElementById('about').scrollIntoView({behavior:'smooth'})">⬇ Далее</div>
 </section>
 <section id="about" style="padding:80px 20px;text-align:center;">
   <h2>О проекте</h2>
-  <p>Премиальный стиль для бренда с душой и амбицией.</p>
+  <p>Мягкий и чистый дизайн с балансом технологий и живости.</p>
 </section>
 </body>
 </html>
