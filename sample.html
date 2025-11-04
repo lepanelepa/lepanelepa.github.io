@@ -58,6 +58,49 @@
         text-align: center;
         background: #111;
     }
+
+    .widgets {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+  padding: 80px 20px;
+  background: #f8f8f8;
+}
+.widget {
+  flex: 1 1 250px;
+  max-width: 300px;
+  background: linear-gradient(135deg, #00b894, #1abc9c); /* изумрудно-тифани */
+  color: #fff;
+  padding: 30px;
+  border-radius: 12px;
+  text-align: center;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+.widget h3 {
+  margin-bottom: 10px;
+  font-size: 1.3em;
+}
+.widget p {
+  font-size: 1em;
+  line-height: 1.5;
+}
+.widget:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 30px rgba(0,0,0,0.15);
+}
+
+/* Адаптив для мобильных */
+@media (max-width: 768px) {
+  .widgets {
+    flex-direction: column;
+    align-items: center;
+  }
+  .widget {
+    max-width: 90%;
+  }
+}
 </style>
 </head>
 <body>
@@ -65,6 +108,22 @@
 <header>
     <canvas id="bg3d"></canvas>
     <div class="hero-text">Будущее уже здесь — 2027</div>
+    <!-- Widgets Section -->
+<section class="widgets">
+  <div class="widget">
+    <h3>End-to-End Development Support</h3>
+    <p>From concept to launch.</p>
+  </div>
+  <div class="widget">
+    <h3>User Acquisition & Ads</h3>
+    <p>To maximize your game's reach.</p>
+  </div>
+  <div class="widget">
+    <h3>Monetization Strategy & Growth</h3>
+    <p>Boost revenue with expert guidance.</p>
+  </div>
+</section>
+
     <div class="scroll-down" onclick="document.getElementById('about').scrollIntoView({behavior:'smooth'})">
         ⬇ Прокрутить вниз
     </div>
