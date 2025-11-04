@@ -76,52 +76,70 @@ header {
 }
 
 /* Widgets */
-.widgets {
-    position: absolute;
-    bottom: 40px;
-    left: 50%;
-    transform: translateX(-50%);
-    display: flex;
-    gap: 24px;
-    z-index: 3;
-    opacity: 0;
-    transition: opacity 1s ease, transform 1s ease;
+.widgets-container {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  margin-top: 40px;
+  z-index: 3;
+  position: relative;
 }
-.widgets.visible {
-    opacity: 1;
-    transform: translateX(-50%) translateY(0);
+.widgets-grid {
+  display: flex;
+  gap: 24px;
+  flex-wrap: wrap;
+  justify-content: center;
 }
-.widget {
-    display: flex;
-    align-items: center;
-    gap: 16px;
-    padding: 20px 24px;
-    background-color: #ff7f00; /* фирменный оранжевый */
-    border-radius: 8px;
-    color: #fff;
-    box-shadow: 0 4px 16px rgba(0,0,0,0.25);
-    transition: transform 0.3s, box-shadow 0.3s;
+.icon-box {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  background: transparent; /* без цвета, как у Viva */
+  color: #fff;
+  min-width: 250px;
+  cursor: default;
 }
-.widget:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 8px 24px rgba(0,0,0,0.30);
+.icon-box-icon {
+  width: 80px;
+  height: 80px;
+  flex-shrink: 0;
 }
-.widget .icon {
-    font-size: 2rem;
-    flex-shrink: 0;
+.icon-box-content h3 {
+  margin: 0 0 4px 0;
+  font-size: 1.1rem;
 }
-.widget-text h3 {
-    margin: 0 0 4px 0;
-    font-size: 1.1rem;
-    line-height: 1.2;
-}
-.widget-text p {
-    margin: 0;
-    font-size: 0.9rem;
-    line-height: 1.3;
-    opacity: 0.9;
+.icon-box-content p {
+  margin: 0;
+  font-size: 0.9rem;
+  opacity: 0.85;
 }
 
+/* Анимация bounceInUp */
+.animated {
+  opacity: 0;
+  transform: translateY(40px);
+  animation-fill-mode: forwards;
+}
+@keyframes bounceInUp {
+  0% {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  60% {
+    opacity: 1;
+    transform: translateY(-10px);
+  }
+  80% {
+    transform: translateY(5px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+.bounceInUp {
+  animation-name: bounceInUp;
+  animation-duration: 0.8s;
+}
 /* Адаптив */
 @media (max-width: 768px) {
     .widgets {
@@ -156,30 +174,70 @@ window.addEventListener('load', () => {
     <div class="hero-text">Будущее уже здесь — 2027</div>
 
 <!-- Widgets Section -->
-<div class="widgets">
-  <div class="widget">
-    <div class="icon">🎮</div>
-    <div class="widget-text">
-      <h3>End‑to‑End Development Support</h3>
-      <p>From concept to launch.</p>
+<section class="widgets-container">
+  <div class="widgets-grid">
+    <!-- Виджет 1 -->
+    <div class="icon-box animated bounceInUp" style="animation-delay: 0.2s;">
+      <div class="icon-box-icon">
+        <!-- SVG как у Viva -->
+        <svg width="80" height="80" viewBox="0 0 80 80">
+          <defs>
+            <linearGradient id="grad1" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stop-color="#e06818"/>
+              <stop offset="100%" stop-color="#e4831f"/>
+            </linearGradient>
+          </defs>
+          <rect width="80" height="80" rx="12" fill="url(#grad1)"/>
+          <text x="40" y="50" fill="#fff" font-size="28" text-anchor="middle" alignment-baseline="middle">🎮</text>
+        </svg>
+      </div>
+      <div class="icon-box-content">
+        <h3>End-to-End Development Support</h3>
+        <p>From concept to launch.</p>
+      </div>
     </div>
-  </div>
-  <div class="widget">
-    <div class="icon">📈</div>
-    <div class="widget-text">
-      <h3>User Acquisition & Ads</h3>
-      <p>To maximize your game's reach.</p>
-    </div>
-  </div>
-  <div class="widget">
-    <div class="icon">💰</div>
-    <div class="widget-text">
-      <h3>Monetization Strategy & Growth</h3>
-      <p>Boost revenue with expert guidance.</p>
-    </div>
-  </div>
-</div>
 
+    <!-- Виджет 2 -->
+    <div class="icon-box animated bounceInUp" style="animation-delay: 0.4s;">
+      <div class="icon-box-icon">
+        <svg width="80" height="80" viewBox="0 0 80 80">
+          <defs>
+            <linearGradient id="grad2" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stop-color="#e06818"/>
+              <stop offset="100%" stop-color="#e4831f"/>
+            </linearGradient>
+          </defs>
+          <rect width="80" height="80" rx="12" fill="url(#grad2)"/>
+          <text x="40" y="50" fill="#fff" font-size="28" text-anchor="middle" alignment-baseline="middle">📈</text>
+        </svg>
+      </div>
+      <div class="icon-box-content">
+        <h3>User Acquisition & Ads</h3>
+        <p>To maximize your game's reach.</p>
+      </div>
+    </div>
+
+    <!-- Виджет 3 -->
+    <div class="icon-box animated bounceInUp" style="animation-delay: 0.6s;">
+      <div class="icon-box-icon">
+        <svg width="80" height="80" viewBox="0 0 80 80">
+          <defs>
+            <linearGradient id="grad3" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stop-color="#e06818"/>
+              <stop offset="100%" stop-color="#e4831f"/>
+            </linearGradient>
+          </defs>
+          <rect width="80" height="80" rx="12" fill="url(#grad3)"/>
+          <text x="40" y="50" fill="#fff" font-size="28" text-anchor="middle" alignment-baseline="middle">💰</text>
+        </svg>
+      </div>
+      <div class="icon-box-content">
+        <h3>Monetization Strategy & Growth</h3>
+        <p>Boost revenue with expert guidance.</p>
+      </div>
+    </div>
+  </div>
+</section>
 
     <!-- Scroll down arrow -->
    <div class="scroll-down" onclick="document.getElementById('about').scrollIntoView({behavior:'smooth'})">
