@@ -3,11 +3,11 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Landing 2027 - Soft Hi-Tech</title>
+<title>Landing 2027 - Metallic Futurism</title>
 <style>
 body, html {
   margin:0; padding:0; font-family:'Segoe UI', sans-serif; overflow-x:hidden;
-  background:#10141f; color:#fff;
+  background:#0c0f14; color:#fff;
 }
 
 /* Header & Hero */
@@ -16,32 +16,32 @@ header { position:relative; height:100vh; overflow:hidden; }
 
 .hero-text {
   position:absolute; top:30%; left:50%; transform:translateX(-50%);
-  font-size:3rem; color:#a2ffe6; text-shadow: 0 0 10px #a2ffe6, 0 0 20px #f6b3ff; z-index:2;
+  font-size:3rem; color:#00cfff; text-shadow:0 0 10px #00cfff,0 0 20px #ffffff; z-index:2;
   text-align:center;
 }
 
 /* Contact button top-right */
 .contact-btn {
   position:absolute; top:30px; right:30px; padding:12px 24px; border-radius:12px;
-  background: linear-gradient(135deg,#a2ffe6,#f6b3ff); color:#10141f; font-weight:bold; text-decoration:none; z-index:3;
+  background: linear-gradient(135deg,#00cfff,#a0a0ff); color:#0c0f14; font-weight:bold; text-decoration:none; z-index:3;
 }
 
 /* 3D Figure */
-.figure-wrapper { position:absolute; top:30%; left:57%; width:300px; height:300px; z-index:2; }
+.figure-wrapper { position:absolute; top:30%; left:55%; width:300px; height:300px; z-index:2; }
 
 /* Widgets Section */
 .widgets-container { position:relative; max-width:1200px; margin:60vh auto 80px; display:flex; justify-content:center; z-index:2; }
 .widgets-grid { display:flex; gap:24px; flex-wrap:wrap; justify-content:center; }
 .icon-box {
   display:flex; flex-direction:column; align-items:center; gap:12px;
-  min-width:200px; text-align:center; color:#10141f; background: rgba(242,242,255,0.1); padding:20px; border-radius:16px;
-  box-shadow:0 0 20px rgba(162,255,230,0.4),0 0 40px rgba(246,179,255,0.3);
+  min-width:200px; text-align:center; color:#0c0f14; background: rgba(200,200,255,0.1); padding:20px; border-radius:16px;
+  box-shadow:0 0 20px rgba(0,207,255,0.4),0 0 40px rgba(160,160,255,0.3);
 }
 .icon-box-icon svg { width:80px; height:80px; }
 
 /* Scroll down */
 .scroll-down { position:absolute; bottom:20px; left:50%; transform:translateX(-50%); z-index:4;
-  display:flex; align-items:center; gap:10px; cursor:pointer; font-weight:bold; color:#a2ffe6;
+  display:flex; align-items:center; gap:10px; cursor:pointer; font-weight:bold; color:#00cfff;
 }
 
 /* Responsive */
@@ -58,30 +58,30 @@ header { position:relative; height:100vh; overflow:hidden; }
   <canvas id="bg3d"></canvas>
   <a href="#contact" class="contact-btn">Контакты</a>
   <div class="hero-text">Будущее уже здесь — 2027</div>
-  <div class="figure-wrapper" id="figure2"></div>
+  <div class="figure-wrapper" id="figure3"></div>
 
   <section class="widgets-container">
     <div class="widgets-grid">
       <div class="icon-box">
         <div class="icon-box-icon">
-          <svg viewBox="0 0 80 80"><rect width="80" height="80" rx="12" fill="#a2ffe6"/><text x="40" y="50" text-anchor="middle" alignment-baseline="middle" fill="#10141f" font-size="28">🧠</text></svg>
+          <svg viewBox="0 0 80 80"><rect width="80" height="80" rx="12" fill="#00cfff"/><text x="40" y="50" text-anchor="middle" alignment-baseline="middle" fill="#0c0f14" font-size="28">⚙️</text></svg>
         </div>
-        <h3>AI Integration</h3>
-        <p>Smart automation for your workflow.</p>
+        <h3>Advanced Robotics</h3>
+        <p>Precision automation for industry 4.0</p>
       </div>
       <div class="icon-box">
         <div class="icon-box-icon">
-          <svg viewBox="0 0 80 80"><rect width="80" height="80" rx="12" fill="#f6b3ff"/><text x="40" y="50" text-anchor="middle" alignment-baseline="middle" fill="#10141f" font-size="28">☁️</text></svg>
+          <svg viewBox="0 0 80 80"><rect width="80" height="80" rx="12" fill="#a0a0ff"/><text x="40" y="50" text-anchor="middle" alignment-baseline="middle" fill="#0c0f14" font-size="28">🛰️</text></svg>
         </div>
-        <h3>Cloud Solutions</h3>
-        <p>Scale instantly with zero hassle.</p>
+        <h3>Space Tech</h3>
+        <p>Next-gen satellites & exploration.</p>
       </div>
       <div class="icon-box">
         <div class="icon-box-icon">
-          <svg viewBox="0 0 80 80"><rect width="80" height="80" rx="12" fill="#80fff0"/><text x="40" y="50" text-anchor="middle" alignment-baseline="middle" fill="#10141f" font-size="28">🔒</text></svg>
+          <svg viewBox="0 0 80 80"><rect width="80" height="80" rx="12" fill="#00aaff"/><text x="40" y="50" text-anchor="middle" alignment-baseline="middle" fill="#0c0f14" font-size="28">🔧</text></svg>
         </div>
-        <h3>Cybersecurity</h3>
-        <p>Protect your data with AI monitoring.</p>
+        <h3>Futuristic Engineering</h3>
+        <p>Cutting-edge mechanical solutions.</p>
       </div>
     </div>
   </section>
@@ -105,8 +105,8 @@ camera.position.z = 5;
 
 const light = new THREE.PointLight(0xffffff,1); light.position.set(5,5,5); scene.add(light);
 
-const geometry = new THREE.IcosahedronGeometry(1,0);
-const material = new THREE.MeshStandardMaterial({ color:0xa2ffe6, metalness:0.7, roughness:0.3 });
+const geometry = new THREE.DodecahedronGeometry(1,0);
+const material = new THREE.MeshStandardMaterial({ color:0x00cfff, metalness:0.8, roughness:0.2 });
 const shape = new THREE.Mesh(geometry, material);
 scene.add(shape);
 
