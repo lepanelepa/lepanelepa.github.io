@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Landing 2027</title>
 <style>
+/* ===== Общие стили ===== */
 body, html {
     margin: 0;
     padding: 0;
@@ -15,42 +16,43 @@ body, html {
     font-family: 'Segoe UI', sans-serif;
 }
 
-/* Header / Hero */
+/* ===== Header + Hero ===== */
 header {
     position: relative;
-    height: 100vh;
     width: 100%;
+    height: 100vh;
+    overflow: hidden;
 }
 
-/* Контакты в правом верхнем углу */
+/* Кнопка Контакты */
 .contact-btn {
     position: absolute;
     top: 20px;
     right: 20px;
-    background: rgba(0,255,255,0.2);
+    background: linear-gradient(135deg, #e06818, #e4831f);
     color: #fff;
-    border: none;
-    border-radius: 12px;
     padding: 12px 20px;
-    cursor: pointer;
+    border-radius: 12px;
     font-weight: bold;
+    cursor: pointer;
     z-index: 5;
-    transition: background 0.3s;
+    transition: transform 0.3s;
 }
 .contact-btn:hover {
-    background: rgba(0,255,255,0.35);
+    transform: scale(1.05);
 }
 
-/* Hero Text */
+/* Hero текст */
 .hero-text {
     position: absolute;
-    top: 30%;
-    left: 10%;
-    max-width: 50%;
+    top: 35%;
+    left: 50%;
+    transform: translateX(-50%);
+    text-align: center;
+    z-index: 3;
     font-size: 3rem;
     color: #fff;
     text-shadow: 0 0 15px #0ff, 0 0 30px #0ff;
-    z-index: 3;
     animation: glow 2s ease-in-out infinite alternate;
 }
 @keyframes glow {
@@ -61,20 +63,19 @@ header {
 /* 3D Canvas */
 #bg3d {
     position: absolute;
-    top: 0;
-    left: 0;
+    top: 0; left: 0;
     width: 100%;
     height: 100%;
     z-index: 1;
 }
 
-/* Widgets Section */
+/* Виджеты */
 .widgets-container {
     display: flex;
     justify-content: center;
     width: 100%;
-    margin-top: 60vh; /* отступ после hero */
-    z-index: 2;
+    margin-top: 60vh; /* отступ от Hero */
+    z-index: 3;
     position: relative;
 }
 .widgets-grid {
@@ -91,6 +92,10 @@ header {
     color: #fff;
     min-width: 250px;
     cursor: default;
+    transition: transform 0.3s;
+}
+.icon-box:hover {
+    transform: translateY(-5px);
 }
 .icon-box-icon {
     width: 80px;
@@ -107,7 +112,21 @@ header {
     opacity: 0.85;
 }
 
-/* Scroll down button */
+/* Анимация bounceInUp */
+.animated {
+    opacity: 0;
+    transform: translateY(40px);
+    animation-fill-mode: forwards;
+}
+@keyframes bounceInUp {
+    0% { opacity: 0; transform: translateY(40px); }
+    60% { opacity: 1; transform: translateY(-10px); }
+    80% { transform: translateY(5px); }
+    100% { transform: translateY(0); }
+}
+.bounceInUp { animation-name: bounceInUp; animation-duration: 0.8s; }
+
+/* Кнопка вниз */
 .scroll-down {
     position: absolute;
     bottom: 20px;
@@ -127,67 +146,43 @@ header {
     transform: translateX(-50%) translateY(-3px);
     background: rgba(0,255,255,0.35);
 }
-.scroll-text {
-    color: #fff;
-    font-weight: bold;
-    font-size: 1rem;
-}
-.scroll-icon {
-    width: 20px;
-    height: 20px;
-    filter: invert(1);
-}
+.scroll-text { color: #fff; font-weight: bold; font-size: 1rem; }
+.scroll-icon { width: 20px; height: 20px; filter: invert(1); }
 
-/* Анимация bounceInUp */
-.animated {
-  opacity: 0;
-  transform: translateY(40px);
-  animation-fill-mode: forwards;
-}
-@keyframes bounceInUp {
-  0% { opacity: 0; transform: translateY(40px); }
-  60% { opacity: 1; transform: translateY(-10px); }
-  80% { transform: translateY(5px); }
-  100% { transform: translateY(0); }
-}
-.bounceInUp { animation-name: bounceInUp; animation-duration: 0.8s; }
-
-/* Адаптив */
+/* ===== Адаптив ===== */
 @media (max-width: 768px) {
-    .hero-text {
-        left: 5%;
-        top: 20%;
-        max-width: 90%;
-        font-size: 2rem;
-        text-align: left;
-    }
-    .widgets-container {
-        margin-top: 50vh;
-        flex-direction: column;
-    }
-    .icon-box { min-width: 80%; }
+    .hero-text { font-size: 2rem; top: 30%; }
+    .widgets-grid { flex-direction: column; margin-top: 50px; gap: 16px; }
+    .icon-box { width: 90%; max-width: 400px; }
+    .contact-btn { top: 10px; right: 10px; padding: 10px 16px; font-size: 0.9rem; }
 }
 </style>
 </head>
 <body>
 
 <header>
+    <!-- 3D Canvas -->
     <canvas id="bg3d"></canvas>
 
-    <button class="contact-btn">Контакты</button>
+    <!-- Контакты -->
+    <div class="contact-btn">Контакты</div>
 
+    <!-- Hero Text -->
     <div class="hero-text">Будущее уже здесь — 2027</div>
 
-    <!-- Widgets Section -->
+    <!-- Виджеты -->
     <section class="widgets-container">
       <div class="widgets-grid">
+        <!-- Виджет 1 -->
         <div class="icon-box animated bounceInUp" style="animation-delay: 0.2s;">
           <div class="icon-box-icon">
             <svg width="80" height="80" viewBox="0 0 80 80">
-              <defs><linearGradient id="grad1" x1="0" y1="0" x2="0" y2="1">
-                <stop offset="0%" stop-color="#e06818"/>
-                <stop offset="100%" stop-color="#e4831f"/>
-              </linearGradient></defs>
+              <defs>
+                <linearGradient id="grad1" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="0%" stop-color="#e06818"/>
+                  <stop offset="100%" stop-color="#e4831f"/>
+                </linearGradient>
+              </defs>
               <rect width="80" height="80" rx="12" fill="url(#grad1)"/>
               <text x="40" y="50" fill="#fff" font-size="28" text-anchor="middle" alignment-baseline="middle">🎮</text>
             </svg>
@@ -198,13 +193,16 @@ header {
           </div>
         </div>
 
+        <!-- Виджет 2 -->
         <div class="icon-box animated bounceInUp" style="animation-delay: 0.4s;">
           <div class="icon-box-icon">
             <svg width="80" height="80" viewBox="0 0 80 80">
-              <defs><linearGradient id="grad2" x1="0" y1="0" x2="0" y2="1">
-                <stop offset="0%" stop-color="#e06818"/>
-                <stop offset="100%" stop-color="#e4831f"/>
-              </linearGradient></defs>
+              <defs>
+                <linearGradient id="grad2" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="0%" stop-color="#e06818"/>
+                  <stop offset="100%" stop-color="#e4831f"/>
+                </linearGradient>
+              </defs>
               <rect width="80" height="80" rx="12" fill="url(#grad2)"/>
               <text x="40" y="50" fill="#fff" font-size="28" text-anchor="middle" alignment-baseline="middle">📈</text>
             </svg>
@@ -215,13 +213,16 @@ header {
           </div>
         </div>
 
+        <!-- Виджет 3 -->
         <div class="icon-box animated bounceInUp" style="animation-delay: 0.6s;">
           <div class="icon-box-icon">
             <svg width="80" height="80" viewBox="0 0 80 80">
-              <defs><linearGradient id="grad3" x1="0" y1="0" x2="0" y2="1">
-                <stop offset="0%" stop-color="#e06818"/>
-                <stop offset="100%" stop-color="#e4831f"/>
-              </linearGradient></defs>
+              <defs>
+                <linearGradient id="grad3" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="0%" stop-color="#e06818"/>
+                  <stop offset="100%" stop-color="#e4831f"/>
+                </linearGradient>
+              </defs>
               <rect width="80" height="80" rx="12" fill="url(#grad3)"/>
               <text x="40" y="50" fill="#fff" font-size="28" text-anchor="middle" alignment-baseline="middle">💰</text>
             </svg>
@@ -234,17 +235,19 @@ header {
       </div>
     </section>
 
+    <!-- Scroll down -->
     <div class="scroll-down" onclick="document.getElementById('about').scrollIntoView({behavior:'smooth'})">
         <span class="scroll-text">Далее</span>
         <img src="https://cdn-icons-png.flaticon.com/32/271/271228.png" alt="arrow" class="scroll-icon">
     </div>
 </header>
 
-<section id="about">
+<section id="about" style="padding: 80px 20px; text-align: center; background: #111;">
     <h2>О проекте</h2>
-    <p>Это демонстрация футуристического лендинга с 3D-графикой и минималистичным дизайном.</p>
+    <p>Демонстрация футуристического лендинга с 3D-графикой и минималистичным дизайном.</p>
 </section>
 
+<!-- Three.js -->
 <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/build/three.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
 <script>
@@ -258,16 +261,17 @@ const light = new THREE.PointLight(0xffffff, 1);
 light.position.set(5, 5, 5);
 scene.add(light);
 
-// 3D объект
+// Тест 3D объект
 const geometry = new THREE.TorusKnotGeometry(1, 0.3, 100, 16);
 const material = new THREE.MeshStandardMaterial({ color: 0x00ffff, metalness: 0.7, roughness: 0.2 });
 const torusKnot = new THREE.Mesh(geometry, material);
+torusKnot.position.x = 1; // чуть правее
+torusKnot.position.y = 0.5; // чуть выше центра
 scene.add(torusKnot);
 
-// Начальная позиция правее и за текстом
-torusKnot.position.set(2, 0, -1);
-
 camera.position.z = 5;
+
+// Контролы
 let controls = new THREE.OrbitControls(camera, renderer.domElement);
 controls.enableDamping = true;
 controls.enableZoom = false;
@@ -281,17 +285,19 @@ function animate() {
 }
 animate();
 
+// Адаптация под экран
 window.addEventListener('resize', () => {
     camera.aspect = window.innerWidth / window.innerHeight;
     camera.updateProjectionMatrix();
     renderer.setSize(window.innerWidth, window.innerHeight);
 });
-</script>
 
-<script>
+// Анимация виджетов
 window.addEventListener('load', () => {
-    const widgets = document.querySelector('.widgets-grid');
-    setTimeout(() => widgets.classList.add('visible'), 500);
+    const widgets = document.querySelectorAll('.icon-box');
+    widgets.forEach((w, i) => {
+        setTimeout(() => w.classList.add('animated', 'bounceInUp'), i*200);
+    });
 });
 </script>
 
