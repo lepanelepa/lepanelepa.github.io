@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Landing Viva Style</title>
+<title>Landing Viva Style — Tiffany Edition</title>
 <style>
 /* ===== Общие стили ===== */
 body, html {
@@ -11,7 +11,7 @@ body, html {
     padding: 0;
     height: 100%;
     font-family: 'Segoe UI', sans-serif;
-    background-color: #0a0a0a;
+    background-color: #0a0f0f;
     color: white;
     overflow-x: hidden;
 }
@@ -34,7 +34,7 @@ body, html {
     top:0; left:0;
     width: 100%;
     height: 100%;
-    background: linear-gradient(120deg, #1a1a1a, #111111 80%);
+    background: radial-gradient(circle at 30% 20%, #163c3c, #0a0f0f 80%);
     z-index:1;
 }
 
@@ -43,17 +43,19 @@ body, html {
     position: absolute;
     top: 20px;
     right: 20px;
-    background: linear-gradient(135deg, #ff7f50, #ffb347);
+    background: linear-gradient(135deg, #40e0d0, #66f2d9);
     color: white;
     padding: 12px 24px;
     border-radius: 12px;
     font-weight: bold;
     cursor: pointer;
     z-index: 5;
-    transition: transform 0.3s;
+    transition: transform 0.3s, box-shadow 0.3s;
+    box-shadow: 0 0 15px rgba(64, 224, 208, 0.4);
 }
 .contact-btn:hover {
     transform: scale(1.05);
+    box-shadow: 0 0 25px rgba(102, 242, 217, 0.6);
 }
 
 /* Hero-текст */
@@ -66,26 +68,30 @@ body, html {
 .hero-title {
     font-size: 3rem;
     margin-bottom: 0.5em;
-    text-shadow: 0 0 20px #ff7f50, 0 0 40px #ffb347;
+    text-shadow: 0 0 25px #40e0d0, 0 0 60px #66f2d9;
+    background: linear-gradient(135deg, #40e0d0, #66f2d9);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
 }
 .hero-subtitle {
     font-size: 1.3rem;
-    opacity: 0.85;
+    opacity: 0.9;
     margin-bottom: 1.5em;
+    color: #dffdf9;
 }
 .hero-cta {
     display: inline-block;
     padding: 12px 32px;
-    background: #ff7f50;
+    background: linear-gradient(135deg, #40e0d0, #66f2d9);
     border-radius: 8px;
-    color: white;
+    color: #002220;
     font-weight: bold;
     text-decoration: none;
     transition: background 0.3s, transform 0.3s;
 }
 .hero-cta:hover {
-    background: #ffb347;
     transform: scale(1.05);
+    background: linear-gradient(135deg, #66f2d9, #a0fff1);
 }
 
 /* 3D Canvas */
@@ -97,7 +103,7 @@ body, html {
     z-index:2;
 }
 
-/* Виджеты */
+/* ===== Виджеты ===== */
 .widgets-container {
     display: flex;
     justify-content: center;
@@ -113,14 +119,20 @@ body, html {
     flex-direction: column;
     align-items: center;
     gap: 12px;
-    background: rgba(255, 127, 80, 0.1);
-    padding: 20px;
+    background: rgba(64, 224, 208, 0.08);
+    padding: 24px;
     border-radius: 20px;
     min-width: 220px;
     max-width: 260px;
     text-align: center;
-    box-shadow: 0 0 20px rgba(255,127,80,0.3);
+    box-shadow: 0 0 25px rgba(64,224,208,0.2);
     color: white;
+    backdrop-filter: blur(6px);
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+.icon-box:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 0 40px rgba(102,242,217,0.4);
 }
 .icon-box .icon {
     width: 80px;
@@ -131,7 +143,7 @@ body, html {
 .icon-box h3 {
     margin: 0;
     font-size: 1.2rem;
-    text-shadow: 0 0 8px #ff7f50;
+    text-shadow: 0 0 8px #66f2d9;
 }
 .icon-box p {
     margin:0;
@@ -148,18 +160,19 @@ body, html {
     display: flex;
     align-items: center;
     gap: 10px;
-    padding: 10px 20px;
-    background: rgba(255,127,80,0.2);
+    padding: 10px 24px;
+    background: rgba(64,224,208,0.15);
     border-radius: 50px;
     cursor: pointer;
     z-index: 5;
     transition: transform 0.3s, background 0.3s;
+    box-shadow: 0 0 15px rgba(64,224,208,0.25);
 }
 .scroll-down:hover {
     transform: translateX(-50%) translateY(-3px);
-    background: rgba(255,127,80,0.35);
+    background: rgba(102,242,217,0.25);
 }
-.scroll-text { font-weight: bold; }
+.scroll-text { font-weight: bold; color: #dffdf9; }
 .scroll-icon { width: 20px; height: 20px; filter: invert(1); }
 
 /* ===== Адаптив ===== */
@@ -237,7 +250,7 @@ scene.add(light);
 
 // 3D объект
 const geometry = new THREE.TorusKnotGeometry(1,0.3,100,16);
-const material = new THREE.MeshStandardMaterial({ color:0xff7f50, metalness:0.7, roughness:0.2 });
+const material = new THREE.MeshStandardMaterial({ color:0x40e0d0, metalness:0.8, roughness:0.25, emissive:0x66f2d9, emissiveIntensity:0.3 });
 const torusKnot = new THREE.Mesh(geometry, material);
 torusKnot.position.x = 1; torusKnot.position.y = 0.5;
 scene.add(torusKnot);
