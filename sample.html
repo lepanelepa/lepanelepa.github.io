@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Landing Viva Style — Tiffany Edition</title>
+<title>Landing NeoSunset</title>
 <style>
 /* ===== Общие стили ===== */
 body, html {
@@ -11,7 +11,7 @@ body, html {
     padding: 0;
     height: 100%;
     font-family: 'Segoe UI', sans-serif;
-    background-color: #0a0f0f;
+    background-color: #0a0710;
     color: white;
     overflow-x: hidden;
 }
@@ -34,7 +34,7 @@ body, html {
     top:0; left:0;
     width: 100%;
     height: 100%;
-    background: radial-gradient(circle at 30% 20%, #163c3c, #0a0f0f 80%);
+    background: radial-gradient(circle at 30% 20%, #331a4d, #0a0710 70%);
     z-index:1;
 }
 
@@ -43,7 +43,7 @@ body, html {
     position: absolute;
     top: 20px;
     right: 20px;
-    background: linear-gradient(135deg, #40e0d0, #66f2d9);
+    background: linear-gradient(135deg, #ff7f50, #ff66c4);
     color: white;
     padding: 12px 24px;
     border-radius: 12px;
@@ -51,11 +51,11 @@ body, html {
     cursor: pointer;
     z-index: 5;
     transition: transform 0.3s, box-shadow 0.3s;
-    box-shadow: 0 0 15px rgba(64, 224, 208, 0.4);
+    box-shadow: 0 0 15px rgba(255, 105, 180, 0.4);
 }
 .contact-btn:hover {
     transform: scale(1.05);
-    box-shadow: 0 0 25px rgba(102, 242, 217, 0.6);
+    box-shadow: 0 0 30px rgba(255, 105, 180, 0.7);
 }
 
 /* Hero-текст */
@@ -68,30 +68,31 @@ body, html {
 .hero-title {
     font-size: 3rem;
     margin-bottom: 0.5em;
-    text-shadow: 0 0 25px #40e0d0, 0 0 60px #66f2d9;
-    background: linear-gradient(135deg, #40e0d0, #66f2d9);
+    background: linear-gradient(90deg, #ff7f50, #ff66c4);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
+    text-shadow: 0 0 40px rgba(255,105,180,0.3);
 }
 .hero-subtitle {
     font-size: 1.3rem;
     opacity: 0.9;
     margin-bottom: 1.5em;
-    color: #dffdf9;
+    color: #ffddee;
 }
 .hero-cta {
     display: inline-block;
     padding: 12px 32px;
-    background: linear-gradient(135deg, #40e0d0, #66f2d9);
+    background: linear-gradient(135deg, #ff7f50, #ff66c4);
     border-radius: 8px;
-    color: #002220;
+    color: white;
     font-weight: bold;
     text-decoration: none;
-    transition: background 0.3s, transform 0.3s;
+    transition: transform 0.3s, box-shadow 0.3s;
+    box-shadow: 0 0 15px rgba(255,105,180,0.3);
 }
 .hero-cta:hover {
     transform: scale(1.05);
-    background: linear-gradient(135deg, #66f2d9, #a0fff1);
+    box-shadow: 0 0 30px rgba(255,105,180,0.6);
 }
 
 /* 3D Canvas */
@@ -119,20 +120,20 @@ body, html {
     flex-direction: column;
     align-items: center;
     gap: 12px;
-    background: rgba(64, 224, 208, 0.08);
+    background: rgba(255, 105, 180, 0.08);
     padding: 24px;
     border-radius: 20px;
     min-width: 220px;
     max-width: 260px;
     text-align: center;
-    box-shadow: 0 0 25px rgba(64,224,208,0.2);
+    box-shadow: 0 0 25px rgba(255,105,180,0.2);
     color: white;
     backdrop-filter: blur(6px);
     transition: transform 0.3s, box-shadow 0.3s;
 }
 .icon-box:hover {
     transform: translateY(-6px);
-    box-shadow: 0 0 40px rgba(102,242,217,0.4);
+    box-shadow: 0 0 40px rgba(255,105,180,0.5);
 }
 .icon-box .icon {
     width: 80px;
@@ -143,7 +144,7 @@ body, html {
 .icon-box h3 {
     margin: 0;
     font-size: 1.2rem;
-    text-shadow: 0 0 8px #66f2d9;
+    text-shadow: 0 0 8px #ff66c4;
 }
 .icon-box p {
     margin:0;
@@ -161,18 +162,18 @@ body, html {
     align-items: center;
     gap: 10px;
     padding: 10px 24px;
-    background: rgba(64,224,208,0.15);
+    background: rgba(255,105,180,0.15);
     border-radius: 50px;
     cursor: pointer;
     z-index: 5;
     transition: transform 0.3s, background 0.3s;
-    box-shadow: 0 0 15px rgba(64,224,208,0.25);
+    box-shadow: 0 0 15px rgba(255,105,180,0.3);
 }
 .scroll-down:hover {
     transform: translateX(-50%) translateY(-3px);
-    background: rgba(102,242,217,0.25);
+    background: rgba(255,105,180,0.25);
 }
-.scroll-text { font-weight: bold; color: #dffdf9; }
+.scroll-text { font-weight: bold; color: #ffddee; }
 .scroll-icon { width: 20px; height: 20px; filter: invert(1); }
 
 /* ===== Адаптив ===== */
@@ -198,27 +199,27 @@ body, html {
 
     <!-- Hero Content -->
     <div class="hero-content">
-        <h1 class="hero-title">Будущее уже здесь — 2027</h1>
-        <p class="hero-subtitle">Мы создаем игры, которые изменят мир мобильного гейминга</p>
-        <a href="#about" class="hero-cta">Узнать больше</a>
+        <h1 class="hero-title">Создаем будущее игр</h1>
+        <p class="hero-subtitle">Где искусство встречает код и вдохновляет миллионы</p>
+        <a href="#about" class="hero-cta">Подробнее</a>
     </div>
 
     <!-- Виджеты -->
     <div class="widgets-container">
         <div class="icon-box">
-            <div class="icon">🤖</div>
-            <h3>AI & Automation</h3>
-            <p>Smart systems for the future.</p>
+            <div class="icon">🎮</div>
+            <h3>Game Development</h3>
+            <p>Next-gen experiences powered by passion.</p>
         </div>
         <div class="icon-box">
-            <div class="icon">📊</div>
-            <h3>Data Visualization</h3>
-            <p>Insights at a glance.</p>
+            <div class="icon">🚀</div>
+            <h3>Innovation</h3>
+            <p>Always moving forward to new horizons.</p>
         </div>
         <div class="icon-box">
-            <div class="icon">🛡️</div>
-            <h3>Cybersecurity</h3>
-            <p>Protect your digital world.</p>
+            <div class="icon">💡</div>
+            <h3>Creative Vision</h3>
+            <p>Ideas that transform digital worlds.</p>
         </div>
     </div>
 
@@ -229,9 +230,9 @@ body, html {
     </div>
 </section>
 
-<section id="about" style="padding: 80px 20px; text-align:center; background:#111;">
+<section id="about" style="padding: 80px 20px; text-align:center; background:#10091a;">
     <h2>О проекте</h2>
-    <p>Демонстрация футуристического лендинга с 3D-графикой и минималистичным дизайном.</p>
+    <p>Футуристический лендинг в стиле 2027 — отражает энергию, технологии и креативность.</p>
 </section>
 
 <!-- Three.js -->
@@ -244,13 +245,19 @@ let renderer = new THREE.WebGLRenderer({ canvas: document.getElementById('bg3d')
 renderer.setSize(window.innerWidth, window.innerHeight);
 
 // Свет
-const light = new THREE.PointLight(0xffffff, 1);
+const light = new THREE.PointLight(0xffffff, 1.2);
 light.position.set(5,5,5);
 scene.add(light);
 
 // 3D объект
 const geometry = new THREE.TorusKnotGeometry(1,0.3,100,16);
-const material = new THREE.MeshStandardMaterial({ color:0x40e0d0, metalness:0.8, roughness:0.25, emissive:0x66f2d9, emissiveIntensity:0.3 });
+const material = new THREE.MeshStandardMaterial({ 
+    color:0xff66c4, 
+    metalness:0.8, 
+    roughness:0.25, 
+    emissive:0xff7f50, 
+    emissiveIntensity:0.4 
+});
 const torusKnot = new THREE.Mesh(geometry, material);
 torusKnot.position.x = 1; torusKnot.position.y = 0.5;
 scene.add(torusKnot);
