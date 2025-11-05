@@ -1,4 +1,4 @@
-<!-- <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="ru">
 <head>
   <meta charset="utf-8" />
@@ -18,10 +18,10 @@
     a{color:inherit;text-decoration:none}
     header{display:flex;align-items:center;justify-content:space-between;padding:28px 48px}
     .logo{display:flex;gap:12px;align-items:center}
-    .brand-mark{width:44px;height:44px;border-radius:10px;background:linear-gradient(135deg,#8b5cf6,#00d4ff);display:flex;align-items:center;justify-content:center;font-weight:800;color:#06030a}
+    .brand-mark{width:44px;height:44px;border-radius:10px;background:linear-gradient(135deg,#8b5cf6,#00d4ff);display:flex;align-items:center;justify-content:center;font-weight:800;color:#ffffff}
     nav{display:flex;gap:18px;align-items:center}
     nav a{font-weight:600;opacity:0.9}
-    .cta{background:linear-gradient(90deg,#ff6b6b,#ffb86b);padding:10px 16px;border-radius:10px;color:#0b0610;font-weight:700}
+    .cta{background:linear-gradient(90deg,#ff6b6b,#ffb86b);padding:10px 16px;border-radius:10px;color:#ffffff;font-weight:700}
 
     /* Hero */
     .hero{display:grid;grid-template-columns:1fr 420px;gap:48px;align-items:center;padding:80px 48px}
@@ -29,7 +29,7 @@
     .hero h1{font-size:48px;line-height:1.02;margin:0 0 18px}
     .hero p{color:var(--muted);margin:0 0 24px;max-width:62ch}
     .cta-row{display:flex;gap:12px}
-    .btn-primary{background:var(--accent-1);padding:14px 18px;border-radius:12px;font-weight:700;color:#06030a;box-shadow:0 6px 30px rgba(124,77,255,0.18);border:none}
+    .btn-primary{background:var(--accent-1);padding:14px 18px;border-radius:12px;font-weight:700;color:#ffffff;box-shadow:0 6px 30px rgba(124,77,255,0.18);border:none}
     .btn-ghost{background:transparent;border:1px solid rgba(255,255,255,0.06);padding:12px 16px;border-radius:12px}
 
     /* Right card */
@@ -83,17 +83,17 @@
 <body>
   <header>
     <div class="logo">
-      <div class="brand-mark">VS</div>
+      <div class="brand-mark">AC</div>
       <div>
         <div style="font-weight:800">Studio</div>
-        <div style="font-size:12px;color:var(--muted);margin-top:2px">Game Publishing & Development</div>
+        <div style="font-size:12px;color:var(--muted);margin-top:2px">Application Development</div>
       </div>
     </div>
     <nav>
-      <a href="#about">About</a>
+<!--       <a href="#about">About</a>
       <a href="#services">Services</a>
       <a href="#cases">Cases</a>
-      <a href="#careers">Careers</a>
+      <a href="#careers">Careers</a> -->
       <a class="cta" href="#contact">Contact</a>
     </nav>
   </header>
@@ -102,19 +102,19 @@
     <section class="hero">
       <div>
         <div class="kicker">We empower great ideas</div>
-        <h1>Мы публикуем хиты. От идеи до топ-чартов.</h1>
+        <h1>Мы пишем софт. От идеи до топ-чартов.</h1>
         <p>End-to-end создание и маркетинг мобильных игр — концепт, разработка, запуск и масштабирование. Пользовательский рост, монетизация и удержание — сделаем так, чтобы ваша игра заговорила с миллионами игроков.</p>
         <div class="cta-row">
-          <button class="btn-primary">Submit your game</button>
-          <a class="btn-ghost" href="#cases">See success cases</a>
+          <button class="btn-primary">Отправить запрос на разработку</button>
+          <a class="btn-ghost" href="#cases">Посмотреть успешные кейсы</a>
         </div>
-        <div style="margin-top:22px;color:var(--muted);font-size:13px">Trusted by — Mattel, Sony, Disney and many indie hits</div>
+      <!--   <div style="margin-top:22px;color:var(--muted);font-size:13px">Trusted by — Mattel, Sony, Disney and many indie hits</div> -->
       </div>
 
       <aside class="card floating">
         <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px">
           <div style="font-weight:700">Our impact</div>
-          <div style="font-size:13px;color:var(--muted)">Since 2016</div>
+          <div style="font-size:13px;color:var(--muted)">Since 2025</div>
         </div>
         <div class="stat"><div><div class="num">120M+</div><div class="label">Lifetime downloads</div></div><div style="text-align:right;color:var(--muted);font-size:13px">▲ 24% Y/Y</div></div>
         <div class="stat"><div><div class="num">$4.8M</div><div class="label">Monthly revenue peak</div></div><div style="text-align:right;color:var(--muted);font-size:13px">Top title</div></div>
@@ -173,7 +173,7 @@
     <section id="contact" class="contact">
       <div class="info">
         <h3>Have additional questions?</h3>
-        <p style="color:var(--muted)">Напишите нам — мы дадим фидбек по вашей игре и предложим пути роста.</p>
+        <p style="color:var(--muted)">Напишите нам — мы дадим фидбек по вашему запросу и предложим пути роста.</p>
         <div style="margin-top:18px">
           <div style="font-weight:700">hello@studio.example</div>
           <div style="color:var(--muted);font-size:13px;margin-top:6px">We respond within 48 hours</div>
@@ -184,7 +184,7 @@
         <input id="name" placeholder="Your name" required>
         <label for="email">Email*</label>
         <input id="email" type="email" placeholder="you@mail.com" required>
-        <label for="about">About your game*</label>
+        <label for="about">About you*</label>
         <textarea id="about" placeholder="Short description, genre, platform" required></textarea>
         <div style="display:flex;gap:10px;margin-top:12px">
           <button type="submit" class="btn-primary">Request review</button>
@@ -202,8 +202,8 @@
 
 </body>
 </html>
- -->
-<!doctype html>
+
+<!-- <!doctype html>
 <html lang="ru">
 <head>
 <meta charset="utf-8" />
@@ -460,3 +460,4 @@
 </div>
 </body>
 </html>
+ -->
