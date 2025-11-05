@@ -12,7 +12,6 @@
       --accent-1:linear-gradient(90deg,#7c4dff 0%, #00d4ff 100%);
       --glass: rgba(255,255,255,0.04);
       --card: rgba(255,255,255,0.03);
-  /*     --card: rgba(47,79,79,0.95) 0%; */
     }
     *{box-sizing:border-box}
     body{margin:0;font-family:Inter,system-ui,-apple-system,'Segoe UI',Roboto; background: radial-gradient(1200px 600px at 10% 10%, rgba(7,2,11,0.6), transparent), radial-gradient(800px 500px at 90% 90%, rgba(4,10,30,0.5), transparent), var(--bg); color:#e9eef8; -webkit-font-smoothing:antialiased}
@@ -30,37 +29,34 @@
     .hero h1{font-size:48px;line-height:1.02;margin:0 0 18px}
     .hero p{color:var(--muted);margin:0 0 24px;max-width:62ch}
     .cta-row{display:flex;gap:12px}
-    .btn-primary{background:var(--accent-1);padding:14px 18px;border-radius:12px;font-weight:700;color:#ffffff;box-shadow:0 6px 30px rgba(124,77,255,0.18);border:none}
-    .btn-ghost{background:transparent;border:1px solid rgba(255,255,255,0.06);padding:12px 16px;border-radius:12px}
+    .btn-primary{background:var(--accent-1);padding:14px 18px;border-radius:12px;font-weight:700;color:#ffffff;box-shadow:0 6px 30px rgba(124,77,255,0.18);border:none;cursor:pointer}
+    .btn-ghost{background:transparent;border:1px solid rgba(255,255,255,0.06);padding:12px 16px;border-radius:12px;color:#ffffff;cursor:pointer}
 
     /* Right card */
     .card {
-  background: linear-gradient(180deg, darkslategrey 0%, #b3d1ff 100%);
-  padding: 22px;
-  border-radius: 18px;
-  /* border: 1px solid rgba(255, 255, 255, 0.03); */
-}
+      background: linear-gradient(180deg, darkslategrey 0%, #b3d1ff 100%);
+      padding: 22px;
+      border-radius: 18px;
+    }
     .stat{display:flex;justify-content:space-between;gap:12px;margin-bottom:8px}
     .stat .num{font-weight:800;font-size:20px}
     .stat .label{color:var(--muted);font-size:13px}
 
     /* Features */
     .features{display:flex;gap:16px;padding:40px 48px}
-    .feature{background:var(--card);padding:18px;border-radius:14px;flex:1;border:1px solid rgba(255,255,255,0.02)}
+    .feature{background:var(--card);padding:18px;border-radius:14px;flex:1;border:1px solid rgba(255,255,255,0.12)}
     .feature h3{margin:0 0 8px}
     .feature p{margin:0;color:var(--muted);font-size:14px}
 
     /* Case studies */
     .cases{padding:40px 48px}
     .cases-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:18px}
-    /* .case{border-radius:12px;overflow:hidden;background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));border:1px solid rgba(255,255,255,0.03)} */
-   .case {
-  border-radius: 12px;
-  overflow: hidden;
-  background: linear-gradient(180deg, darkslategray 0%, #2f4f4f 100%);
-  border: 1px solid rgba(255, 255, 255, 0.03);
-}
-
+    .case {
+      border-radius: 12px;
+      overflow: hidden;
+      background: linear-gradient(180deg, darkslategray 0%, #2f4f4f 100%);
+      border: 1px solid rgba(255, 255, 255, 0.03);
+    }
     .case .media{height:150px;background-size:cover;background-position:center}
     .case .body{padding:14px}
     .case h4{margin:0 0 8px}
@@ -71,11 +67,32 @@
     .partners img{height:28px;opacity:0.86;filter:grayscale(100%) brightness(150%)}
 
     /* Contact */
-    .contact{padding:40px 48px;display:flex;gap:30px;align-items:stretch}
-    .contact form{flex:1;background:var(--card);padding:22px;border-radius:12px;border:1px solid rgba(255,255,255,0.02)}
-    .contact .info{max-width:360px}
+    .contact{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap:30px;
+      align-items:start;
+      padding:40px 48px;
+    }
+    .contact .info{max-width:420px}
+    .contact form{
+      display:flex;
+      flex-direction:column;
+      gap:10px;
+      background:var(--card);
+      padding:22px;
+      border-radius:12px;
+      border:1px solid rgba(255,255,255,0.02);
+    }
     label{display:block;font-size:13px;margin-bottom:6px;color:var(--muted)}
-    input,textarea,select{width:100%;padding:12px;border-radius:10px;border:1px solid rgba(255,255,255,0.04);background:transparent;color:inherit}
+    input,textarea,select{
+      width:100%;
+      padding:12px;
+      border-radius:10px;
+      border:1px solid rgba(255,255,255,0.04);
+      background:transparent;
+      color:inherit;
+    }
     textarea{min-height:120px}
 
     footer{padding:28px 48px;color:var(--muted);display:flex;justify-content:space-between;align-items:center}
@@ -86,6 +103,16 @@
       header{padding:18px 24px}
       .features{flex-direction:column;padding:24px}
       .cases, .partners, .contact, footer{padding:24px}
+    }
+
+    /* 🟦 Contact: mobile layout */
+    @media (max-width:768px){
+      .contact{
+        grid-template-columns:1fr;
+        gap:28px;
+      }
+      .contact .info{order:1;}
+      .contact form{order:2;width:100%;}
     }
 
     /* Small animation */
@@ -103,10 +130,6 @@
       </div>
     </div>
     <nav>
-<!--       <a href="#about">About</a>
-      <a href="#services">Services</a>
-      <a href="#cases">Cases</a>
-      <a href="#careers">Careers</a> -->
       <a class="cta" href="#contact">Contact</a>
     </nav>
   </header>
@@ -121,7 +144,6 @@
           <button class="btn-primary">Отправить запрос на разработку</button>
           <a class="btn-ghost" href="#cases">Посмотреть успешные кейсы</a>
         </div>
-      <!--   <div style="margin-top:22px;color:var(--muted);font-size:13px">Trusted by — Mattel, Sony, Disney and many indie hits</div> -->
       </div>
 
       <aside class="card floating">
@@ -162,15 +184,15 @@
       <div class="cases-grid">
         <article class="case">
           <div class="media" style="background-image:url('https://images.unsplash.com/photo-1511512578047-dfb367046420?auto=format&fit=crop&w=1200&q=60')"></div>
-          <div class="body"><h4>Mini Soccer Star</h4><p>Прототип → 50M скачиваний. Полный цикл: дизайн матчей, монетизация, UA.</p></div>
+          <div class="body"><h4>Mini Soccer Star</h4><p>Прототип → 50 M скачиваний. Полный цикл: дизайн матчей, монетизация, UA.</p></div>
         </article>
         <article class="case">
           <div class="media" style="background-image:url('https://images.unsplash.com/photo-1526378722959-6a3e02d3a4a6?auto=format&fit=crop&w=1200&q=60')"></div>
-          <div class="body"><h4>Talking Gummy</h4><p>Игра для детей с высокой вовлечённостью и низким оттоком — удержание +30%.</p></div>
+          <div class="body"><h4>Talking Gummy</h4><p>Игра для детей с высокой вовлечённостью и низким оттоком — удержание +30 %.</p></div>
         </article>
         <article class="case">
           <div class="media" style="background-image:url('https://images.unsplash.com/photo-1526378722959-6a3e02d3a4a6?auto=format&fit=crop&w=1200&q=60')"></div>
-          <div class="body"><h4>Cover Fire</h4><p>AAA-подход к мобильному шутеру: улучшили ARPDAU на 42%.</p></div>
+          <div class="body"><h4>Cover Fire</h4><p>AAA-подход к мобильному шутеру: улучшили ARPDAU на 42 %.</p></div>
         </article>
       </div>
     </section>
@@ -205,14 +227,11 @@
         </div>
       </form>
     </section>
-
   </main>
 
   <footer>
     <div>© Studio 2025</div>
     <div style="display:flex;gap:16px;align-items:center"><a href="#">Privacy</a><a href="#">Terms</a></div>
   </footer>
-
 </body>
 </html>
-
