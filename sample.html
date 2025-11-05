@@ -149,18 +149,23 @@
           <div style="font-weight:700">hello@studio.example</div>
         </div>
       </div>
-      <form onsubmit="event.preventDefault(); alert('Спасибо! Мы свяжемся с вами.');">
-        <label data-i18n="name" for="name">Name*</label>
-        <input data-i18n="your_name" id="name" placeholder="Your name" required>
-        <label for="email">Email*</label>
-        <input id="email" type="email" placeholder="you@mail.com" required>
-        <label data-i18n="your_request" for="about">Your request*</label>
-        <textarea id="about" placeholder="Short description" required></textarea>
-        <div style="display:flex;gap:10px;margin-top:12px">
-          <button type="submit" class="btn-primary" data-i18n="btn_send">Request review</button>
-          <button type="button" class="btn-ghost" onclick="document.querySelector('#name').value='';document.querySelector('#email').value='';document.querySelector('#about').value='';" data-i18n="btn_clear">Clear</button>
-        </div>
-      </form>
+    <form onsubmit="event.preventDefault(); alert('Спасибо! Мы свяжемся с вами.');">
+  <label data-i18n="name" for="name">Name*</label>
+  <input id="name" data-i18n-placeholder="your_name" placeholder="Your name" required>
+
+  <label data-i18n="email" for="email">Email*</label>
+  <input id="email" type="email" data-i18n-placeholder="your_email" placeholder="you@mail.com" required>
+
+  <label data-i18n="your_request" for="about">Your request*</label>
+  <textarea id="about" data-i18n-placeholder="your_description" placeholder="Short description" required></textarea>
+
+  <div style="display:flex;gap:10px;margin-top:12px">
+    <button type="submit" class="btn-primary" data-i18n="btn_send">Request review</button>
+    <button type="button" class="btn-ghost"
+      onclick="document.querySelector('#name').value='';document.querySelector('#email').value='';document.querySelector('#about').value='';"
+      data-i18n="btn_clear">Clear</button>
+  </div>
+</form>
     </section>
   </main>
 
@@ -192,11 +197,16 @@
     feature2_text: "Кампании по привлечению пользователей на основе данных, креативы и A/B тестирование для максимального количества установок и LTV.",
     feature3_title: "Монетизация и рост",
     feature3_text: "Проектирование экономики, аналитика и стратегии удержания для увеличения дохода и вовлечённости игроков.",
-    lifetime_downloads: "Загрузок",
-    name: "Имя",
-    your_name: "Ваше имя",
-       your_request: "Ваш запрос",
-       policy: "Политика конфиденциальности"
+    lifetime_downloads: "Загрузок",   
+    your_name: "Ваше имя",      
+       policy: "Политика конфиденциальности",
+       name: "Имя*",  
+      email: "Эл. почта*",
+      your_email: "you@mail.com",
+      your_request: "Ваш запрос*",
+      your_description: "Краткое описание",
+      btn_send: "Отправить запрос",
+      btn_clear: "Очистить"
       },
       en: {
         contacts: "Contacts",
@@ -220,23 +230,41 @@
     feature3_title: "Monetization & Growth",
     feature3_text: "Economy design, analytics and retention strategies to boost revenue and player engagement.",
     lifetime_downloads: "Lifetime downdoads",
-     name: "Name",
-     your_name: "Your name",
-     your_request: "Your request",
+
+    name: "Name*",
+      your_name: "Your name",
+      email: "Email*",
+      your_email: "you@mail.com",
+      your_request: "Your request*",
+      your_description: "Short description",
+      btn_send: "Request review",
+      btn_clear: "Clear",
+
+  
       policy: "Policy"
       }
     };
 
     const btn = document.getElementById('langBtn');
-    let currentLang = 'ru';
+    let currentLang = 'en';
 
     btn.addEventListener('click', () => {
       currentLang = currentLang === 'ru' ? 'en' : 'ru';
       btn.textContent = currentLang.toUpperCase();
-      document.querySelectorAll('[data-i18n]').forEach(el => {
+
+       document.querySelectorAll("[data-i18n]").forEach(el => {
+      const key = el.dataset.i18n;
+      if (translations[lang][key]) el.textContent = translations[currentLang][key];
+    });
+    document.querySelectorAll("[data-i18n-placeholder]").forEach(el => {
+      const key = el.dataset.i18nPlaceholder;
+      if (translations[lang][key]) el.placeholder = translations[currentLang][key];
+    });
+
+    /*   document.querySelectorAll('[data-i18n]').forEach(el => {
         const key = el.getAttribute('data-i18n');
         el.textContent = translations[currentLang][key];
-      });
+      }); */
     });
   </script>
 </body>
