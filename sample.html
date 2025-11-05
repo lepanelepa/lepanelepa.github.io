@@ -12,11 +12,6 @@
       --accent-1:linear-gradient(90deg,#7c4dff 0%, #00d4ff 100%);
       --glass: rgba(255,255,255,0.04);
       --card: rgba(255,255,255,0.03);
-
-
-  --light-bg:#f5f6fa;
-
-
     }
     *{box-sizing:border-box}
     body{margin:0;font-family:Inter,system-ui,-apple-system,'Segoe UI',Roboto; background: radial-gradient(1200px 600px at 10% 10%, rgba(7,2,11,0.6), transparent), radial-gradient(800px 500px at 90% 90%, rgba(4,10,30,0.5), transparent), var(--bg); color:#e9eef8; -webkit-font-smoothing:antialiased}
@@ -63,41 +58,12 @@
     .partners img{height:28px;opacity:0.86;filter:grayscale(100%) brightness(150%)}
 
     /* Contact */
-   /*  .contact{padding:40px 48px;display:flex;gap:30px;align-items:stretch}
+    .contact{padding:40px 48px;display:flex;gap:30px;align-items:stretch}
     .contact form{flex:1;background:var(--card);padding:22px;border-radius:12px;border:1px solid rgba(255,255,255,0.02)}
     .contact .info{max-width:360px}
     label{display:block;font-size:13px;margin-bottom:6px;color:var(--muted)}
     input,textarea,select{width:100%;padding:12px;border-radius:10px;border:1px solid rgba(255,255,255,0.04);background:transparent;color:inherit}
     textarea{min-height:120px}
- */
-
- .contact{
-  background:var(--light-bg);
-  color:#111;
-}
-.contact form{
-  background:#fff;
-  border:none;
-  box-shadow:0 6px 32px rgba(0,0,0,0.06);
-}
-.contact input,
-.contact textarea{
-  border:1px solid #ddd;
-  background:#fff;
-  color:#111;
-}
-.contact .info p{
-  color:#444!important;
-}
-.btn-primary{
-  background:linear-gradient(90deg,#ff7f41,#ffb65c);
-  color:#fff;
-  border:none;
-}
-.btn-ghost{
-  border:1px solid #ddd;
-  color:#444;
-}
 
     footer{padding:28px 48px;color:var(--muted);display:flex;justify-content:space-between;align-items:center}
 
@@ -203,35 +169,6 @@
       <img src="https://via.placeholder.com/120x28?text=Hasbro" alt="Hasbro">
       <img src="https://via.placeholder.com/120x28?text=Paramount" alt="Paramount">
     </section>
-
-    <section id="contact" class="contact">
-  <div class="info">
-    <h3 style="margin-top:0">Have additional questions?</h3>
-    <p>Напишите нам — мы дадим фидбек по вашей игре и предложим пути роста.</p>
-
-    <div style="margin-top:22px">
-      <div style="font-weight:700;font-size:18px;color:#111">hello@studio.example</div>
-      <div style="color:#666;font-size:14px;margin-top:4px">Ответим в течение 48 часов</div>
-    </div>
-  </div>
-
-  <form onsubmit="event.preventDefault(); alert('Спасибо! Мы свяжемся с вами.');">
-    <label for="name">Name*</label>
-    <input id="name" placeholder="Your name" required>
-
-    <label for="email">Email*</label>
-    <input id="email" type="email" placeholder="you@mail.com" required>
-
-    <label for="about">About your game*</label>
-    <textarea id="about" placeholder="Short description, genre, platform" required></textarea>
-
-    <div style="display:flex;gap:10px;margin-top:14px">
-      <button type="submit" class="btn-primary">Request review</button>
-      <button type="button" class="btn-ghost" onclick="this.form.reset()">Clear</button>
-    </div>
-  </form>
-</section>
-
 
     <section id="contact" class="contact">
       <div class="info">
