@@ -76,7 +76,7 @@
     </div>
     <nav>
       <button class="lang-switch" id="langBtn">RU</button>
-      <a class="cta" href="#contact">Contact</a>
+      <a data-i18n="contacts" class="cta" href="#contact">Contacts</a>
     </nav>
   </header>
 
@@ -150,8 +150,8 @@
         </div>
       </div>
       <form onsubmit="event.preventDefault(); alert('Спасибо! Мы свяжемся с вами.');">
-        <label for="name">Name*</label>
-        <input id="name" placeholder="Your name" required>
+        <label data-i18n="name" for="name">Name*</label>
+        <input data-i18n="your_name" id="name" placeholder="Your name" required>
         <label for="email">Email*</label>
         <input id="email" type="email" placeholder="you@mail.com" required>
         <label for="about">About you*</label>
@@ -172,11 +172,12 @@
   <script>
     const translations = {
       ru: {
+        contacts: "Контакты",
         kicker: "Мы усиливаем идеи",
         headline: "Мы пишем софт. От идеи до топ-чартов.",
         subtext: "Полный цикл разработки и продвижения мобильных игр — от концепта до масштабирования.",
         btn_request: "Отправить запрос на разработку",
-        btn_cases: "Посмотреть кейсы",
+        btn_cases: "Посмотреть успешные кейсы",
         impact_title: "Наш вклад",
         cases_title: "Успешные кейсы",
         case1: "Прототип → 50M скачиваний. Полный цикл: дизайн матчей, монетизация, UA.",
@@ -191,9 +192,12 @@
     feature2_text: "Кампании по привлечению пользователей на основе данных, креативы и A/B тестирование для максимального количества установок и LTV.",
     feature3_title: "Монетизация и рост",
     feature3_text: "Проектирование экономики, аналитика и стратегии удержания для увеличения дохода и вовлечённости игроков.",
-    lifetime_downloads: "Загрузок"
+    lifetime_downloads: "Загрузок",
+    name: "Имя",
+    your_name: "Ваше имя"
       },
       en: {
+        contacts: "Contacts",
         kicker: "We empower great ideas",
         headline: "We build software. From concept to top charts.",
         subtext: "Full-cycle development and publishing for mobile games — concept, launch and growth.",
@@ -213,7 +217,9 @@
     feature2_text: "Data-driven acquisition campaigns, creatives and A/B testing to maximize installs and LTV.",
     feature3_title: "Monetization & Growth",
     feature3_text: "Economy design, analytics and retention strategies to boost revenue and player engagement.",
-    lifetime_downloads: "Lifetime downdoads"
+    lifetime_downloads: "Lifetime downdoads",
+     name: "Name",
+     your_name: "Your name"
       }
     };
 
