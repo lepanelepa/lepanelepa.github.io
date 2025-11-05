@@ -22,6 +22,8 @@
     nav{display:flex;gap:18px;align-items:center}
     nav a{font-weight:600;opacity:0.9}
     .cta{background:linear-gradient(90deg,#ff6b6b,#ffb86b);padding:10px 16px;border-radius:10px;color:#ffffff;font-weight:700}
+    .lang-switch{background:var(--glass);border:1px solid rgba(255,255,255,0.1);border-radius:8px;padding:6px 10px;font-size:13px;color:#e9eef8;cursor:pointer;transition:0.2s}
+    .lang-switch:hover{background:rgba(255,255,255,0.1)}
 
     /* Hero */
     .hero{display:grid;grid-template-columns:1fr 420px;gap:48px;align-items:center;padding:80px 48px}
@@ -32,93 +34,35 @@
     .btn-primary{background:var(--accent-1);padding:14px 18px;border-radius:12px;font-weight:700;color:#ffffff;box-shadow:0 6px 30px rgba(124,77,255,0.18);border:none;cursor:pointer}
     .btn-ghost{background:transparent;border:1px solid rgba(255,255,255,0.9);padding:12px 16px;border-radius:12px;color:#ffffff;cursor:pointer;}
 
-    /* Right card */
-    .card {
-    /*   background: linear-gradient(180deg, darkslateblue 0%, #b3d1ff 100%); */
-      background: darkslateblue;
-      padding: 22px;
-      border-radius: 18px;
-    }
+    .card {background: darkslateblue; padding: 22px; border-radius: 18px;}
     .stat{display:flex;justify-content:space-between;gap:12px;margin-bottom:8px}
     .stat .num{font-weight:800;font-size:20px}
     .stat .label{color:var(--muted);font-size:13px}
 
-    /* Features */
     .features{display:flex;gap:16px;padding:40px 48px}
     .feature{background:var(--card);padding:18px;border-radius:14px;flex:1;border:1px solid rgba(255,255,255,0.12)}
     .feature h3{margin:0 0 8px}
     .feature p{margin:0;color:var(--muted);font-size:14px}
 
-    /* Case studies */
     .cases{padding:40px 48px}
     .cases-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:18px}
-    .case {
-      border-radius: 12px;
-      overflow: hidden;
-      background: var(--card);
-      border: 1px solid rgba(255, 255, 255, 0.03);
-    }
+    .case {border-radius: 12px;overflow: hidden;background: var(--card);border: 1px solid rgba(255, 255, 255, 0.03);}
     .case .media{height:150px;background-size:cover;background-position:center}
     .case .body{padding:14px}
     .case h4{margin:0 0 8px}
     .case p{margin:0;color:var(--muted);font-size:13px}
 
-    /* Logos */
-    .partners{padding:28px 48px;display:flex;gap:22px;align-items:center;flex-wrap:wrap;justify-content:flex-start}
-    .partners img{height:28px;opacity:0.86;filter:grayscale(100%) brightness(150%)}
-
-    /* Contact */
-    .contact{
-      display:grid;
-      grid-template-columns: 1fr 1fr;
-      gap:30px;
-      align-items:start;
-      padding:40px 48px;
-    }
+    .contact{display:grid;grid-template-columns:1fr 1fr;gap:30px;align-items:start;padding:40px 48px;}
     .contact .info{max-width:420px}
-    .contact form{
-      display:flex;
-      flex-direction:column;
-      gap:10px;
-      background:var(--card);
-      padding:22px;
-      border-radius:12px;
-      border:1px solid rgba(255,255,255,0.02);
-    }
+    .contact form{display:flex;flex-direction:column;gap:10px;background:var(--card);padding:22px;border-radius:12px;border:1px solid rgba(255,255,255,0.02);}
     label{display:block;font-size:13px;margin-bottom:6px;color:var(--muted)}
-    input,textarea,select{
-      width:100%;
-      padding:12px;
-      border-radius:10px;
-      border:1px solid rgba(255,255,255,0.04);
-      background:transparent;
-      color:inherit;
-    }
+    input,textarea{width:100%;padding:12px;border-radius:10px;border:1px solid rgba(255,255,255,0.04);background:transparent;color:inherit;}
     textarea{min-height:120px}
 
     footer{padding:28px 48px;color:var(--muted);display:flex;justify-content:space-between;align-items:center}
 
-    /* Responsive */
-    @media (max-width:920px){
-      .hero{grid-template-columns:1fr;padding:48px 24px}
-      header{padding:18px 24px}
-      .features{flex-direction:column;padding:24px}
-      .cases, .partners, .contact, footer{padding:24px}
-    }
-
-    /* 🟦 Contact: mobile layout */
-    @media (max-width:768px){
-      .contact{
-        grid-template-columns:1fr;
-        gap:28px;
-      }
-      .contact .info{order:1;}
-      .contact form{order:2;width:100%;}
-    }
-
-    /* Small animation */
-    .floating{animation:float 6s ease-in-out infinite}
-    @keyframes float{0%{transform:translateY(0)}50%{transform:translateY(-8px)}100%{transform:translateY(0)}}
+    @media (max-width:920px){.hero{grid-template-columns:1fr;padding:48px 24px}header{padding:18px 24px}.features{flex-direction:column;padding:24px}.cases,.contact,footer{padding:24px}}
+    @media (max-width:768px){.contact{grid-template-columns:1fr;gap:28px;}.contact .info{order:1}.contact form{order:2;width:100%}}
   </style>
 </head>
 <body>
@@ -131,6 +75,7 @@
       </div>
     </div>
     <nav>
+      <button class="lang-switch" id="langBtn">RU</button>
       <a class="cta" href="#contact">Contact</a>
     </nav>
   </header>
@@ -138,81 +83,34 @@
   <main>
     <section class="hero">
       <div>
-        <div class="kicker">We empower great ideas</div>
-        <h1>Мы пишем софт. От идеи до топ-чартов.</h1>
-        <p>End-to-end создание и маркетинг мобильных игр — концепт, разработка, запуск и масштабирование. Пользовательский рост, монетизация и удержание — сделаем так, чтобы ваша игра заговорила с миллионами игроков.</p>
+        <div class="kicker" data-i18n="kicker">We empower great ideas</div>
+        <h1 data-i18n="headline">Мы пишем софт. От идеи до топ-чартов.</h1>
+        <p data-i18n="subtext">End-to-end создание и маркетинг мобильных игр — концепт, разработка, запуск и масштабирование.</p>
         <div class="cta-row">
-          <button class="btn-primary">Отправить запрос на разработку</button>
-          <a class="btn-ghost" href="#cases">Посмотреть успешные кейсы</a>
+          <button class="btn-primary" data-i18n="btn_request">Отправить запрос на разработку</button>
+          <a class="btn-ghost" href="#cases" data-i18n="btn_cases">Посмотреть успешные кейсы</a>
         </div>
       </div>
-
       <aside class="card floating">
-        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px">
-          <div style="font-weight:700">Our impact</div>
-          <div style="font-size:13px;color:var(--muted)">Since 2025</div>
-        </div>
-        <div class="stat"><div><div class="num">120M+</div><div class="label">Lifetime downloads</div></div><div style="text-align:right;color:var(--muted);font-size:13px">▲ 24% Y/Y</div></div>
-        <div class="stat"><div><div class="num">$4.8M</div><div class="label">Monthly revenue peak</div></div><div style="text-align:right;color:var(--muted);font-size:13px">Top title</div></div>
-        <div style="height:12px"></div>
-        <div style="background:linear-gradient(90deg,#0b1220, rgba(255,255,255,0.02));padding:10px;border-radius:10px;display:flex;gap:10px;align-items:center">
-          <div style="width:48px;height:48px;border-radius:8px;background:url('https://images.unsplash.com/photo-1542751371-adc38448a05e?auto=format&fit=crop&w=800&q=60') center/cover"></div>
-          <div>
-            <div style="font-weight:700">Mini Soccer Star</div>
-            <div style="font-size:13px;color:var(--muted)">Top-grossing sports title</div>
-          </div>
-        </div>
+        <div style="font-weight:700;margin-bottom:10px" data-i18n="impact_title">Our impact</div>
+        <div class="stat"><div><div class="num">120M+</div><div class="label">Downloads</div></div></div>
       </aside>
     </section>
 
-    <section id="services" class="features">
-      <div class="feature">
-        <h3>End-to-end Development</h3>
-        <p>From prototyping and production to live-ops — we build and polish gameplay, art and systems to launch at scale.</p>
-      </div>
-      <div class="feature">
-        <h3>User Acquisition & Ads</h3>
-        <p>Data-driven acquisition campaigns, creatives and A/B testing to maximize installs and LTV.</p>
-      </div>
-      <div class="feature">
-        <h3>Monetization & Growth</h3>
-        <p>Economy design, analytics and retention strategies to boost revenue and player engagement.</p>
-      </div>
-    </section>
-
     <section id="cases" class="cases">
-      <h2 style="margin:0 0 18px">Success cases</h2>
+      <h2 data-i18n="cases_title">Success cases</h2>
       <div class="cases-grid">
-        <article class="case">
-          <div class="media" style="background-image:url('https://images.unsplash.com/photo-1511512578047-dfb367046420?auto=format&fit=crop&w=1200&q=60')"></div>
-          <div class="body"><h4>Mini Soccer Star</h4><p>Прототип → 50 M скачиваний. Полный цикл: дизайн матчей, монетизация, UA.</p></div>
-        </article>
-        <article class="case">
-          <div class="media" style="background-image:url('https://images.unsplash.com/photo-1526378722959-6a3e02d3a4a6?auto=format&fit=crop&w=1200&q=60')"></div>
-          <div class="body"><h4>Talking Gummy</h4><p>Игра для детей с высокой вовлечённостью и низким оттоком — удержание +30 %.</p></div>
-        </article>
-        <article class="case">
-          <div class="media" style="background-image:url('https://images.unsplash.com/photo-1526378722959-6a3e02d3a4a6?auto=format&fit=crop&w=1200&q=60')"></div>
-          <div class="body"><h4>Cover Fire</h4><p>AAA-подход к мобильному шутеру: улучшили ARPDAU на 42 %.</p></div>
-        </article>
+        <article class="case"><div class="media" style="background-image:url('https://images.unsplash.com/photo-1511512578047-dfb367046420?auto=format&fit=crop&w=1200&q=60')"></div><div class="body"><h4>Mini Soccer Star</h4><p data-i18n="case1">Прототип → 50M скачиваний. Полный цикл: дизайн матчей, монетизация, UA.</p></div></article>
+        <article class="case"><div class="media" style="background-image:url('https://images.unsplash.com/photo-1526378722959-6a3e02d3a4a6?auto=format&fit=crop&w=1200&q=60')"></div><div class="body"><h4>Cover Fire</h4><p data-i18n="case2">AAA-подход к мобильному шутеру: улучшили ARPDAU на 42 %.</p></div></article>
       </div>
     </section>
-
-<!--     <section class="partners">
-      <img src="https://via.placeholder.com/120x28?text=Mattel" alt="Mattel">
-      <img src="https://via.placeholder.com/120x28?text=Sony" alt="Sony">
-      <img src="https://via.placeholder.com/120x28?text=Disney" alt="Disney">
-      <img src="https://via.placeholder.com/120x28?text=Hasbro" alt="Hasbro">
-      <img src="https://via.placeholder.com/120x28?text=Paramount" alt="Paramount">
-    </section> -->
 
     <section id="contact" class="contact">
       <div class="info">
-        <h3>Have additional questions?</h3>
-        <p style="color:var(--muted)">Напишите нам — мы дадим фидбек по вашему запросу и предложим пути роста.</p>
+        <h3 data-i18n="contact_title">Have additional questions?</h3>
+        <p style="color:var(--muted)" data-i18n="contact_text">Напишите нам — мы дадим фидбек по вашему запросу и предложим пути роста.</p>
         <div style="margin-top:18px">
           <div style="font-weight:700">hello@studio.example</div>
-          <div style="color:var(--muted);font-size:13px;margin-top:6px">We respond within 48 hours</div>
         </div>
       </div>
       <form onsubmit="event.preventDefault(); alert('Спасибо! Мы свяжемся с вами.');">
@@ -221,10 +119,10 @@
         <label for="email">Email*</label>
         <input id="email" type="email" placeholder="you@mail.com" required>
         <label for="about">About you*</label>
-        <textarea id="about" placeholder="Short description, genre, platform" required></textarea>
+        <textarea id="about" placeholder="Short description" required></textarea>
         <div style="display:flex;gap:10px;margin-top:12px">
-          <button type="submit" class="btn-primary">Request review</button>
-          <button type="button" class="btn-ghost" onclick="document.querySelector('#name').value='';document.querySelector('#email').value='';document.querySelector('#about').value='';">Clear</button>
+          <button type="submit" class="btn-primary" data-i18n="btn_send">Request review</button>
+          <button type="button" class="btn-ghost" onclick="document.querySelector('#name').value='';document.querySelector('#email').value='';document.querySelector('#about').value='';" data-i18n="btn_clear">Clear</button>
         </div>
       </form>
     </section>
@@ -232,7 +130,54 @@
 
   <footer>
     <div>© Studio 2025</div>
-    <div style="display:flex;gap:16px;align-items:center"><a href="#">Privacy</a><a href="#">Terms</a></div>
+    <div style="display:flex;gap:16px"><a href="#">Privacy</a><a href="#">Terms</a></div>
   </footer>
+
+  <script>
+    const translations = {
+      ru: {
+        kicker: "Мы усиливаем идеи",
+        headline: "Мы пишем софт. От идеи до топ-чартов.",
+        subtext: "Полный цикл разработки и продвижения мобильных игр — от концепта до масштабирования.",
+        btn_request: "Отправить запрос на разработку",
+        btn_cases: "Посмотреть кейсы",
+        impact_title: "Наш вклад",
+        cases_title: "Успешные кейсы",
+        case1: "Прототип → 50M скачиваний. Полный цикл: дизайн матчей, монетизация, UA.",
+        case2: "AAA-подход к мобильному шутеру: улучшили ARPDAU на 42 %.",
+        contact_title: "Есть дополнительные вопросы?",
+        contact_text: "Напишите нам — мы дадим фидбек по вашему запросу и предложим пути роста.",
+        btn_send: "Отправить",
+        btn_clear: "Очистить"
+      },
+      en: {
+        kicker: "We empower great ideas",
+        headline: "We build software. From concept to top charts.",
+        subtext: "Full-cycle development and publishing for mobile games — concept, launch and growth.",
+        btn_request: "Request development",
+        btn_cases: "View success cases",
+        impact_title: "Our impact",
+        cases_title: "Success stories",
+        case1: "Prototype → 50M downloads. Full cycle: match design, monetization, UA.",
+        case2: "AAA approach to a mobile shooter: improved ARPDAU by 42%.",
+        contact_title: "Have additional questions?",
+        contact_text: "Write to us — we’ll review your request and suggest growth paths.",
+        btn_send: "Send",
+        btn_clear: "Clear"
+      }
+    };
+
+    const btn = document.getElementById('langBtn');
+    let currentLang = 'ru';
+
+    btn.addEventListener('click', () => {
+      currentLang = currentLang === 'ru' ? 'en' : 'ru';
+      btn.textContent = currentLang.toUpperCase();
+      document.querySelectorAll('[data-i18n]').forEach(el => {
+        const key = el.getAttribute('data-i18n');
+        el.textContent = translations[currentLang][key];
+      });
+    });
+  </script>
 </body>
 </html>
