@@ -1,76 +1,204 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Sinta Soft — Eco Digital</title>
-<style>
-html, body {
-  margin: 0; padding: 0;
-  font-family: 'Inter', sans-serif;
-  background: radial-gradient(circle at 50% 50%, #eafaf1, #b7d9c9);
-  color: #0a1a10;
-  overflow-x: hidden;
-}
-.hero {
-  min-height: 100vh;
-  display: flex; flex-direction: column;
-  align-items: center; justify-content: center;
-  text-align: center;
-  position: relative;
-}
-h1 {
-  font-size: clamp(2rem, 5vw, 3.5rem);
-  background: linear-gradient(90deg, #00b09b, #96c93d);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
-p { opacity: 0.8; }
-.widgets {
-  display: flex; flex-wrap: wrap;
-  justify-content: center; gap: 24px;
-  margin-top: 60px;
-}
-.widget {
-  background: rgba(255,255,255,0.6);
-  border-radius: 16px;
-  padding: 24px;
-  width: 240px;
-  box-shadow: 0 0 25px rgba(0,0,0,0.1);
-  transition: transform .3s, box-shadow .3s;
-}
-.widget:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 0 40px rgba(0,0,0,0.2);
-}
-.scroll {
-  position: absolute; bottom: 40px;
-  padding: 12px 28px;
-  border-radius: 50px;
-  background: rgba(0,176,155,0.2);
-  cursor: pointer;
-  transition: .3s;
-}
-.scroll:hover {
-  background: rgba(0,176,155,0.35);
-  transform: translateY(-3px);
-}
-</style>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Studio — Game Publishing & Dev</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg:#07020b;
+      --muted:#9aa0a6;
+      --accent-1:linear-gradient(90deg,#7c4dff 0%, #00d4ff 100%);
+      --glass: rgba(255,255,255,0.04);
+      --card: rgba(255,255,255,0.03);
+    }
+    *{box-sizing:border-box}
+    body{margin:0;font-family:Inter,system-ui,-apple-system,'Segoe UI',Roboto; background: radial-gradient(1200px 600px at 10% 10%, rgba(7,2,11,0.6), transparent), radial-gradient(800px 500px at 90% 90%, rgba(4,10,30,0.5), transparent), var(--bg); color:#e9eef8; -webkit-font-smoothing:antialiased}
+    a{color:inherit;text-decoration:none}
+    header{display:flex;align-items:center;justify-content:space-between;padding:28px 48px}
+    .logo{display:flex;gap:12px;align-items:center}
+    .brand-mark{width:44px;height:44px;border-radius:10px;background:linear-gradient(135deg,#8b5cf6,#00d4ff);display:flex;align-items:center;justify-content:center;font-weight:800;color:#06030a}
+    nav{display:flex;gap:18px;align-items:center}
+    nav a{font-weight:600;opacity:0.9}
+    .cta{background:linear-gradient(90deg,#ff6b6b,#ffb86b);padding:10px 16px;border-radius:10px;color:#0b0610;font-weight:700}
+
+    /* Hero */
+    .hero{display:grid;grid-template-columns:1fr 420px;gap:48px;align-items:center;padding:80px 48px}
+    .hero .kicker{display:inline-block;background:var(--glass);padding:8px 12px;border-radius:999px;color:var(--muted);font-weight:600;margin-bottom:18px}
+    .hero h1{font-size:48px;line-height:1.02;margin:0 0 18px}
+    .hero p{color:var(--muted);margin:0 0 24px;max-width:62ch}
+    .cta-row{display:flex;gap:12px}
+    .btn-primary{background:var(--accent-1);padding:14px 18px;border-radius:12px;font-weight:700;color:#06030a;box-shadow:0 6px 30px rgba(124,77,255,0.18);border:none}
+    .btn-ghost{background:transparent;border:1px solid rgba(255,255,255,0.06);padding:12px 16px;border-radius:12px}
+
+    /* Right card */
+    .card{background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));padding:22px;border-radius:18px;border:1px solid rgba(255,255,255,0.03)}
+    .stat{display:flex;justify-content:space-between;gap:12px;margin-bottom:8px}
+    .stat .num{font-weight:800;font-size:20px}
+    .stat .label{color:var(--muted);font-size:13px}
+
+    /* Features */
+    .features{display:flex;gap:16px;padding:40px 48px}
+    .feature{background:var(--card);padding:18px;border-radius:14px;flex:1;border:1px solid rgba(255,255,255,0.02)}
+    .feature h3{margin:0 0 8px}
+    .feature p{margin:0;color:var(--muted);font-size:14px}
+
+    /* Case studies */
+    .cases{padding:40px 48px}
+    .cases-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:18px}
+    .case{border-radius:12px;overflow:hidden;background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));border:1px solid rgba(255,255,255,0.03)}
+    .case .media{height:150px;background-size:cover;background-position:center}
+    .case .body{padding:14px}
+    .case h4{margin:0 0 8px}
+    .case p{margin:0;color:var(--muted);font-size:13px}
+
+    /* Logos */
+    .partners{padding:28px 48px;display:flex;gap:22px;align-items:center;flex-wrap:wrap;justify-content:flex-start}
+    .partners img{height:28px;opacity:0.86;filter:grayscale(100%) brightness(150%)}
+
+    /* Contact */
+    .contact{padding:40px 48px;display:flex;gap:30px;align-items:stretch}
+    .contact form{flex:1;background:var(--card);padding:22px;border-radius:12px;border:1px solid rgba(255,255,255,0.02)}
+    .contact .info{max-width:360px}
+    label{display:block;font-size:13px;margin-bottom:6px;color:var(--muted)}
+    input,textarea,select{width:100%;padding:12px;border-radius:10px;border:1px solid rgba(255,255,255,0.04);background:transparent;color:inherit}
+    textarea{min-height:120px}
+
+    footer{padding:28px 48px;color:var(--muted);display:flex;justify-content:space-between;align-items:center}
+
+    /* Responsive */
+    @media (max-width:920px){
+      .hero{grid-template-columns:1fr;padding:48px 24px}
+      header{padding:18px 24px}
+      .features{flex-direction:column;padding:24px}
+      .cases, .partners, .contact, footer{padding:24px}
+    }
+
+    /* Small animation */
+    .floating{animation:float 6s ease-in-out infinite}
+    @keyframes float{0%{transform:translateY(0)}50%{transform:translateY(-8px)}100%{transform:translateY(0)}}
+  </style>
 </head>
 <body>
-<section class="hero">
-  <h1>Sinta Soft</h1>
-  <p>Гармония технологий и природы</p>
-  <div class="widgets">
-    <div class="widget">🌱 <br> Sustainability</div>
-    <div class="widget">💻 <br> Smart Apps</div>
-    <div class="widget">🤝 <br> Human-first Tech</div>
-  </div>
-  <div class="scroll" onclick="document.getElementById('about').scrollIntoView({behavior:'smooth'})">⬇ Далее</div>
-</section>
-<section id="about" style="padding:80px 20px;text-align:center;">
-  <h2>О проекте</h2>
-  <p>Мягкий и чистый дизайн с балансом технологий и живости.</p>
-</section>
+  <header>
+    <div class="logo">
+      <div class="brand-mark">VS</div>
+      <div>
+        <div style="font-weight:800">Studio</div>
+        <div style="font-size:12px;color:var(--muted);margin-top:2px">Game Publishing & Development</div>
+      </div>
+    </div>
+    <nav>
+      <a href="#about">About</a>
+      <a href="#services">Services</a>
+      <a href="#cases">Cases</a>
+      <a href="#careers">Careers</a>
+      <a class="cta" href="#contact">Contact</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div>
+        <div class="kicker">We empower great ideas</div>
+        <h1>Мы публикуем хиты. От идеи до топ-чартов.</h1>
+        <p>End-to-end создание и маркетинг мобильных игр — концепт, разработка, запуск и масштабирование. Пользовательский рост, монетизация и удержание — сделаем так, чтобы ваша игра заговорила с миллионами игроков.</p>
+        <div class="cta-row">
+          <button class="btn-primary">Submit your game</button>
+          <a class="btn-ghost" href="#cases">See success cases</a>
+        </div>
+        <div style="margin-top:22px;color:var(--muted);font-size:13px">Trusted by — Mattel, Sony, Disney and many indie hits</div>
+      </div>
+
+      <aside class="card floating">
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px">
+          <div style="font-weight:700">Our impact</div>
+          <div style="font-size:13px;color:var(--muted)">Since 2016</div>
+        </div>
+        <div class="stat"><div><div class="num">120M+</div><div class="label">Lifetime downloads</div></div><div style="text-align:right;color:var(--muted);font-size:13px">▲ 24% Y/Y</div></div>
+        <div class="stat"><div><div class="num">$4.8M</div><div class="label">Monthly revenue peak</div></div><div style="text-align:right;color:var(--muted);font-size:13px">Top title</div></div>
+        <div style="height:12px"></div>
+        <div style="background:linear-gradient(90deg,#0b1220, rgba(255,255,255,0.02));padding:10px;border-radius:10px;display:flex;gap:10px;align-items:center">
+          <div style="width:48px;height:48px;border-radius:8px;background:url('https://images.unsplash.com/photo-1542751371-adc38448a05e?auto=format&fit=crop&w=800&q=60') center/cover"></div>
+          <div>
+            <div style="font-weight:700">Mini Soccer Star</div>
+            <div style="font-size:13px;color:var(--muted)">Top-grossing sports title</div>
+          </div>
+        </div>
+      </aside>
+    </section>
+
+    <section id="services" class="features">
+      <div class="feature">
+        <h3>End-to-end Development</h3>
+        <p>From prototyping and production to live-ops — we build and polish gameplay, art and systems to launch at scale.</p>
+      </div>
+      <div class="feature">
+        <h3>User Acquisition & Ads</h3>
+        <p>Data-driven acquisition campaigns, creatives and A/B testing to maximize installs and LTV.</p>
+      </div>
+      <div class="feature">
+        <h3>Monetization & Growth</h3>
+        <p>Economy design, analytics and retention strategies to boost revenue and player engagement.</p>
+      </div>
+    </section>
+
+    <section id="cases" class="cases">
+      <h2 style="margin:0 0 18px">Success cases</h2>
+      <div class="cases-grid">
+        <article class="case">
+          <div class="media" style="background-image:url('https://images.unsplash.com/photo-1511512578047-dfb367046420?auto=format&fit=crop&w=1200&q=60')"></div>
+          <div class="body"><h4>Mini Soccer Star</h4><p>Прототип → 50M скачиваний. Полный цикл: дизайн матчей, монетизация, UA.</p></div>
+        </article>
+        <article class="case">
+          <div class="media" style="background-image:url('https://images.unsplash.com/photo-1526378722959-6a3e02d3a4a6?auto=format&fit=crop&w=1200&q=60')"></div>
+          <div class="body"><h4>Talking Gummy</h4><p>Игра для детей с высокой вовлечённостью и низким оттоком — удержание +30%.</p></div>
+        </article>
+        <article class="case">
+          <div class="media" style="background-image:url('https://images.unsplash.com/photo-1526378722959-6a3e02d3a4a6?auto=format&fit=crop&w=1200&q=60')"></div>
+          <div class="body"><h4>Cover Fire</h4><p>AAA-подход к мобильному шутеру: улучшили ARPDAU на 42%.</p></div>
+        </article>
+      </div>
+    </section>
+
+    <section class="partners">
+      <img src="https://via.placeholder.com/120x28?text=Mattel" alt="Mattel">
+      <img src="https://via.placeholder.com/120x28?text=Sony" alt="Sony">
+      <img src="https://via.placeholder.com/120x28?text=Disney" alt="Disney">
+      <img src="https://via.placeholder.com/120x28?text=Hasbro" alt="Hasbro">
+      <img src="https://via.placeholder.com/120x28?text=Paramount" alt="Paramount">
+    </section>
+
+    <section id="contact" class="contact">
+      <div class="info">
+        <h3>Have additional questions?</h3>
+        <p style="color:var(--muted)">Напишите нам — мы дадим фидбек по вашей игре и предложим пути роста.</p>
+        <div style="margin-top:18px">
+          <div style="font-weight:700">hello@studio.example</div>
+          <div style="color:var(--muted);font-size:13px;margin-top:6px">We respond within 48 hours</div>
+        </div>
+      </div>
+      <form onsubmit="event.preventDefault(); alert('Спасибо! Мы свяжемся с вами.');">
+        <label for="name">Name*</label>
+        <input id="name" placeholder="Your name" required>
+        <label for="email">Email*</label>
+        <input id="email" type="email" placeholder="you@mail.com" required>
+        <label for="about">About your game*</label>
+        <textarea id="about" placeholder="Short description, genre, platform" required></textarea>
+        <div style="display:flex;gap:10px;margin-top:12px">
+          <button type="submit" class="btn-primary">Request review</button>
+          <button type="button" class="btn-ghost" onclick="document.querySelector('#name').value='';document.querySelector('#email').value='';document.querySelector('#about').value='';">Clear</button>
+        </div>
+      </form>
+    </section>
+
+  </main>
+
+  <footer>
+    <div>© Studio 2025</div>
+    <div style="display:flex;gap:16px;align-items:center"><a href="#">Privacy</a><a href="#">Terms</a></div>
+  </footer>
+
 </body>
 </html>
