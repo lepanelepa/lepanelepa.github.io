@@ -1,11 +1,11 @@
-# Используем минимальный образ nginx
+# Берём лёгкий nginx
 FROM nginx:alpine
 
-# Копируем все файлы сайта в папку nginx
+# Копируем все файлы сайта
 COPY . /usr/share/nginx/html
 
-# Expose порт 8080
-EXPOSE 8080
+# Копируем кастомный конфиг nginx
+COPY nginx.conf /etc/nginx/nginx.conf
 
-# Запускаем nginx
+# Запуск
 CMD ["nginx", "-g", "daemon off;"]
