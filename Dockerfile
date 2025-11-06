@@ -1,11 +1,16 @@
-# Берём лёгкий nginx
 FROM nginx:alpine
 
-# Копируем все файлы сайта
+# Удаляем дефолтный конфиг
+RUN rm /etc/nginx/conf.d/default.conf
+
+# Копируем сайт
 COPY . /usr/share/nginx/html
 
-# Копируем кастомный конфиг nginx
-COPY nginx.conf /etc/nginx/nginx.conf
+# Копируем наш конфиг
+COPY nginx.conf /etc/nginx/conf.d/default.conf
 
-# Запуск
+# Cloud Run использует PORT, но nginx может слушать только фиксированный порт,
+# поэтому просто ставим 8080.
+EXPOSE 8080
+
 CMD ["nginx", "-g", "daemon off;"]
