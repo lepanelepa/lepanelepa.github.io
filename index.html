@@ -159,7 +159,8 @@
           <div style="font-weight:700">hello@anycodestudio.com</div>
         </div>
       </div>
-    <form onsubmit="event.preventDefault(); alert('Спасибо! Мы свяжемся с вами.');">
+ <!--    <form onsubmit="event.preventDefault(); alert('Спасибо! Мы свяжемся с вами.');"> -->
+  <form id="contactForm">
   <label data-i18n="name" for="name">Name*</label>
   <input id="name" data-i18n-placeholder="your_name" placeholder="Your name" required>
 
@@ -286,5 +287,28 @@
 });
 
   </script>
+  <script>
+document.getElementById('contactForm').addEventListener('submit', async (e) => {
+  e.preventDefault();
+  const payload = {
+    name: document.querySelector('#name').value,
+    email: document.querySelector('#email').value,
+    message: document.querySelector('#about').value
+  };
+
+  const res = await fetch('/api/send-mail', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(payload)
+  });
+
+  if (res.ok) {
+    alert('Ok!');
+  } else {
+    alert('Error');
+  }
+});
+</script>
+
 </body>
 </html>
