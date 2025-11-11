@@ -143,30 +143,20 @@
       <article class="case"><div class="media" style="background-image:url('./img/FleetMesh.PNG')"></div><div class="body"><h4>BalloonX</h4><p data-i18n="case2">Super Casual Game — mobile tapper: increased ARPDAU by 42%.</p></div></article>
     <article class="case">
 <div class="media-wrapper" style="position:relative;height:150px;border-radius:8px;overflow:hidden;">
-  <!-- Картинка по умолчанию -->
   <img src="./img/FleetMesh.PNG" 
        alt="Fleet Mesh" 
        class="media-img" 
-       style="width:100%;height:100%;object-fit:cover;display:block;position:absolute;top:0;left:0;">
-
-  <!-- Видео (скрыто по умолчанию) -->
+       style="position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;opacity:1;transition:opacity 0.3s;">
+  
   <video class="media-video" 
          src="./video/FleetTelematics.mp4" 
-         style="width:100%;height:100%;object-fit:cover;display:block;position:absolute;top:0;left:0;opacity:0;" 
+         style="position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity 0.3s;" 
          muted playsinline></video>
 
-  <!-- Кнопка play -->
   <button class="video-toggle" style="
-    position:absolute;
-    bottom:10px;
-    left:10px;
-    padding:10px 16px;
-    background:rgba(0,0,0,0.6);
-    color:white;
-    border:none;
-    border-radius:8px;
-    cursor:pointer;
-    font-weight:600;">
+    position:absolute;bottom:10px;left:10px;padding:10px 16px;
+    background:rgba(0,0,0,0.6);color:white;border:none;border-radius:8px;
+    cursor:pointer;font-weight:600;">
     ► Play
   </button>
 </div>
@@ -401,23 +391,26 @@ document.querySelectorAll('.video-toggle').forEach(btn => {
   const video = wrapper.querySelector('.media-video');
   const img = wrapper.querySelector('.media-img');
 
-  // Когда видео готово к воспроизведению
-  video.addEventListener('loadeddata', () => {
-    video.style.transition = 'opacity 0.3s ease';
+  // Когда видео доиграет до конца
+  video.addEventListener('ended', () => {
+    video.style.opacity = '0';
+    img.style.opacity = '1';
+    btn.textContent = '►';
+    video.currentTime = 0;
   });
 
   btn.addEventListener('click', () => {
     if (video.style.opacity === '0' || video.style.opacity === '') {
-      video.style.opacity = '1'; // показать видео
-      img.style.opacity = '0';   // спрятать картинку
+      video.style.opacity = '1';
+      img.style.opacity = '0';
       video.play();
-      btn.textContent = '❚❚ Stop';
+      btn.textContent = '❚❚';
     } else {
       video.pause();
+      video.style.opacity = '0';
+      img.style.opacity = '1';
       video.currentTime = 0;
-      video.style.opacity = '0'; // скрыть видео
-      img.style.opacity = '1';   // показать картинку
-      btn.textContent = '► Play';
+      btn.textContent = '►';
     }
   });
 });
