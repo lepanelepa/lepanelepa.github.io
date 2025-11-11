@@ -4,12 +4,11 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />  
   <meta property="og:title" content="Any Code Studio — Game & Application Development">
-<meta property="og:description" content="Full-cycle mobile game development, publishing and analytics.">
-<meta property="og:image" content="https://anycodestudio.com/preview.jpg">
-<meta property="og:type" content="website">
-<meta name="robots" content="index, follow">
-<meta http-equiv="Content-Security-Policy" content="default-src 'self' https:; style-src 'unsafe-inline' https:; script-src 'self' 'unsafe-inline';">
-
+  <meta property="og:description" content="Full-cycle mobile game development, publishing and analytics.">
+  <meta property="og:image" content="https://anycodestudio.com/preview.jpg">
+  <meta property="og:type" content="website">
+  <meta name="robots" content="index, follow">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self' https:; style-src 'unsafe-inline' https:; script-src 'self' 'unsafe-inline';">
 
   <title>Studio — Game Publishing & Dev</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
@@ -71,9 +70,14 @@
 
     @media (max-width:920px){.hero{grid-template-columns:1fr;padding:48px 24px}header{padding:18px 24px}.features{flex-direction:column;padding:24px}.cases,.contact,footer{padding:24px}}
     @media (max-width:768px){.contact{grid-template-columns:1fr;gap:28px;}.contact .info{order:1}.contact form{order:2;width:100%}}
-    @media (max-width:480px){.cta-row{flex-direction:column;}
-} 
- </style>
+    @media (max-width:480px){.cta-row{flex-direction:column;}}
+
+    @keyframes spin {0%{transform:rotate(0deg);}100%{transform:rotate(360deg);}}
+    .popup {display:none;opacity:0;position:fixed;inset:0;background: rgba(0,0,0,0.6);justify-content:center;align-items:center;z-index:1000;transition: opacity 0.3s ease;}
+    .popup.show {display:flex;opacity:1;}
+    .popup-content {background:#121212;color:white;padding:30px 24px;border-radius:16px;width:320px;text-align:center;transform: scale(0.9);transition: transform 0.3s ease;}
+    .popup.show .popup-content {transform: scale(1);}
+  </style>
 </head>
 <body>
   <header>
@@ -91,7 +95,8 @@
   </header>
 
   <main>
-     <section class="hero">
+    <!-- Hero -->
+    <section class="hero">
       <div>
         <div data-i18n="kicker" class="kicker">We empower great ideas</div>
         <h1 data-i18n="headline">We build software. From concept to top charts.</h1>
@@ -105,7 +110,6 @@
       <aside class="card floating">
         <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px">          
           <div style="font-weight:700" data-i18n="impact_title">Our impact</div>       
-
           <div data-i18n="since" style="font-size:13px;color:var(--muted)">Since 2025</div>
         </div>
         <div class="stat"><div><div class="num">120M+</div><div class="label" data-i18n="lifetime_downloads">Lifetime downloads</div></div><div style="text-align:right;color:var(--muted);font-size:13px">▲ 24% Y/Y</div></div>
@@ -121,36 +125,33 @@
       </aside>
     </section>
 
-    
+    <!-- Features -->
     <section id="services" class="features">
-     
       <div class="feature">
-  <h3 data-i18n="feature1_title">End-to-end Development</h3>
-  <p data-i18n="feature1_text">From prototyping and production to live-ops — we build and polish gameplay, art and systems to launch at scale.</p>
-</div>
-
-<div class="feature">
-  <h3 data-i18n="feature2_title">User Acquisition & Ads</h3>
-  <p data-i18n="feature2_text">Data-driven acquisition campaigns, creatives and A/B testing to maximize installs and LTV.</p>
-</div>
-
-<div class="feature">
-  <h3 data-i18n="feature3_title">Monetization & Growth</h3>
-  <p data-i18n="feature3_text">Economy design, analytics and retention strategies to boost revenue and player engagement.</p>
-</div>
-
+        <h3 data-i18n="feature1_title">End-to-end Development</h3>
+        <p data-i18n="feature1_text">From prototyping and production to live-ops — we build and polish gameplay, art and systems to launch at scale.</p>
+      </div>
+      <div class="feature">
+        <h3 data-i18n="feature2_title">User Acquisition & Ads</h3>
+        <p data-i18n="feature2_text">Data-driven acquisition campaigns, creatives and A/B testing to maximize installs and LTV.</p>
+      </div>
+      <div class="feature">
+        <h3 data-i18n="feature3_title">Monetization & Growth</h3>
+        <p data-i18n="feature3_text">Economy design, analytics and retention strategies to boost revenue and player engagement.</p>
+      </div>
     </section>
 
+    <!-- Cases -->
     <section id="cases" class="cases">
       <h2 data-i18n="cases_title">Success cases</h2>
       <div class="cases-grid">
         <article class="case"><div class="media" style="background-image:url('https://images.unsplash.com/photo-1511512578047-dfb367046420?auto=format&fit=crop&w=1200&q=60')"></div><div class="body"><h4>Tap-Tap Roach</h4><p data-i18n="case1">Prototype → 50K downloads. Full cycle: design, monetization, UA.</p></div></article>
         <article class="case"><div class="media" style="background-image:url('https://images.unsplash.com/photo-1526378722959-6a3e02d3a4a6?auto=format&fit=crop&w=1200&q=60')"></div><div class="body"><h4>BalloonX</h4><p data-i18n="case2">Super Casual Game — mobile tapper: increased ARPDAU by 42%.</p></div></article>
         <article class="case"><div class="media" style="background-image:url('https://images.unsplash.com/photo-1526378722959-6a3e02d3a4a6?auto=format&fit=crop&w=1200&q=60')"></div><div class="body"><h4>Fleet Mesh</h4><p data-i18n="case3">SaaS telematics platform for real-time vehicle monitoring.</p></div></article>
-
       </div>
     </section>
 
+    <!-- Contact -->
     <section id="contact" class="contact">
       <div class="info">
         <h3 data-i18n="contact_title">Have additional questions?</h3>
@@ -159,24 +160,23 @@
           <div style="font-weight:700">hello@anycodestudio.com</div>
         </div>
       </div>
- <!--    <form onsubmit="event.preventDefault(); alert('Спасибо! Мы свяжемся с вами.');"> -->
-  <form id="contactForm">
-  <label data-i18n="name" for="name">Name*</label>
-  <input id="name" data-i18n-placeholder="your_name" placeholder="Your name" required>
+      <form id="contactForm">
+        <label data-i18n="name" for="name">Name*</label>
+        <input id="name" data-i18n-placeholder="your_name" placeholder="Your name" required>
 
-  <label data-i18n="email" for="email">Email*</label>
-  <input id="email" type="email" data-i18n-placeholder="your_email" placeholder="you@mail.com" required>
+        <label data-i18n="email" for="email">Email*</label>
+        <input id="email" type="email" data-i18n-placeholder="your_email" placeholder="you@mail.com" required>
 
-  <label data-i18n="your_request" for="about">Your request*</label>
-  <textarea id="about" data-i18n-placeholder="your_description" placeholder="Short description" required></textarea>
+        <label data-i18n="your_request" for="about">Your request*</label>
+        <textarea id="about" data-i18n-placeholder="your_description" placeholder="Short description" required></textarea>
 
-  <div style="display:flex;gap:10px;margin-top:12px">
-    <button type="submit" class="btn-primary" data-i18n="btn_send">Request review</button>
-    <button type="button" class="btn-ghost"
-      onclick="document.querySelector('#name').value='';document.querySelector('#email').value='';document.querySelector('#about').value='';"
-      data-i18n="btn_clear">Clear</button>
-  </div>
-</form>
+        <div style="display:flex;gap:10px;margin-top:12px">
+          <button type="submit" class="btn-primary" data-i18n="btn_send">Request review</button>
+          <button type="button" class="btn-ghost"
+            onclick="document.querySelector('#name').value='';document.querySelector('#email').value='';document.querySelector('#about').value='';"
+            data-i18n="btn_clear">Clear</button>
+        </div>
+      </form>
     </section>
   </main>
 
@@ -184,57 +184,20 @@
     <div>© Any Code Studio 2025</div>
     <div style="display:flex;gap:16px"><a href="/privacy.html" data-i18n="policy">Policy</a></div>
   </footer>
-<!-- ПОПАП -->
-<!-- ПОПАП -->
-<div id="popup" class="popup">
-  <div class="popup-content">
-    <div class="loader"></div>
-    <div id="popup-text" data-i18n="popup_sending">Отправка письма...</div>
+
+  <!-- POPUP -->
+  <div id="popup" class="popup">
+    <div class="popup-content" id="popup-content">
+      <div class="loader"></div>
+      <div id="popup-text" data-i18n="popup_sending">Отправка письма...</div>
+    </div>
   </div>
-</div>
 
-
-<style>
-@keyframes spin {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
-}
-.popup {
-  display:none;
-  opacity:0;
-  position:fixed;
-  inset:0;
-  background: rgba(0,0,0,0.6);
-  justify-content:center;
-  align-items:center;
-  z-index:1000;
-  transition: opacity 0.3s ease;
-}
-
-.popup.show {
-  display:flex;
-  opacity:1;
-}
-
-.popup-content {
-  background:#121212;
-  color:white;
-  padding:30px 24px;
-  border-radius:16px;
-  width:320px;
-  text-align:center;
-  transform: scale(0.9);
-  transition: transform 0.3s ease;
-}
-
-.popup.show .popup-content {
-  transform: scale(1);
-}
-
-</style>
+  <!-- JS -->
   <script>
+    // Переключение языков
     const translations = {
-      ru: {
+    ru: {
         contacts: "Контакты",
         kicker: "Мы усиливаем идеи",
         headline: "Мы пишем софт. От идеи до топ-чартов.",
@@ -321,136 +284,51 @@ success: "Thank you! We will reply within 48 hours.",
   popup_error: 'Send error'
       }
     };
-
+ 
     const btn = document.getElementById('langBtn');
     let currentLang = 'en';
-
-   btn.addEventListener('click', () => {
-  // переключаем язык
-  currentLang = currentLang === 'en' ? 'ru' : 'en';
-
-  // обновляем тексты
-  document.querySelectorAll("[data-i18n-placeholder]").forEach(el => {
-    const key = el.getAttribute('data-i18n-placeholder');
-    el.placeholder = translations[currentLang][key];
-  });
-
-  document.querySelectorAll("[data-i18n]").forEach(el => {
-    const key = el.getAttribute('data-i18n');
-    el.textContent = translations[currentLang][key];
-  });
-
-  // обновляем кнопку после обновления языка
-  btn.textContent = currentLang === 'en' ? 'RU' : 'EN';
-});
-
-  </script>
- <script>
-const contactForm = document.getElementById('contactForm');
-const popup = document.getElementById('popup');
-const popupContent = document.getElementById('popup-content');
-
-contactForm.addEventListener('submit', async (e) => {
-  e.preventDefault();
-
-  // показать попап с loader
-  popup.classList.add('show');
-  popupContent.innerHTML = `
-    <div class="loader" style="
-        border: 4px solid #f3f3f3;
-        border-top: 4px solid #7c4dff;
-        border-radius: 50%;
-        width: 40px;
-        height: 40px;
-        margin: 0 auto 20px auto;
-        animation: spin 1s linear infinite;
-    "></div>
-    <div>Отправка письма...</div>
-  `;
-
-  const payload = {
-    name: document.querySelector('#name').value,
-    email: document.querySelector('#email').value,
-    message: document.querySelector('#about').value
-  };
-
-  try {
-    const res = await fetch('/api/send-mail', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(payload)
+    btn.addEventListener('click', () => {
+      currentLang = currentLang === 'en' ? 'ru' : 'en';
+      document.querySelectorAll("[data-i18n-placeholder]").forEach(el => {
+        el.placeholder = translations[currentLang][el.getAttribute('data-i18n-placeholder')];
+      });
+      document.querySelectorAll("[data-i18n]").forEach(el => {
+        el.textContent = translations[currentLang][el.getAttribute('data-i18n')];
+      });
+      btn.textContent = currentLang === 'en' ? 'RU' : 'EN';
     });
 
-    if (res.ok) {
-      popupContent.innerHTML = `
-        <div>✅ Спасибо! Мы ответим в течение 48 часов.</div>
-        <button id="popup-close" style="
-            margin-top:20px;
-            padding:10px 16px;
-            border:none;
-            border-radius:10px;
-            background:#7c4dff;
-            color:white;
-            font-weight:600;
-            cursor:pointer;
-        ">Закрыть</button>
-      `;
-      document.getElementById('popup-close').onclick = () => {
-        popup.classList.remove('show');
+    // Попап
+    const contactForm = document.getElementById('contactForm');
+    const popup = document.getElementById('popup');
+    const popupContent = document.getElementById('popup-content');
+
+    contactForm.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      popup.classList.add('show');
+      popupContent.innerHTML = `<div class="loader" style="border:4px solid #f3f3f3;border-top:4px solid #7c4dff;border-radius:50%;width:40px;height:40px;margin:0 auto 20px auto;animation:spin 1s linear infinite;"></div><div>Отправка письма...</div>`;
+      const payload = {
+        name: document.querySelector('#name').value,
+        email: document.querySelector('#email').value,
+        message: document.querySelector('#about').value
       };
-      contactForm.reset();
-    } else {
-      throw new Error('Ошибка при отправке');
-    }
-  } catch (err) {
-    popupContent.innerHTML = `
-      <div>❌ Ошибка! Попробуйте позже.</div>
-      <button id="popup-close" style="
-            margin-top:20px;
-            padding:10px 16px;
-            border:none;
-            border-radius:10px;
-            background:#ff6b6b;
-            color:white;
-            font-weight:600;
-            cursor:pointer;
-      ">Закрыть</button>
-    `;
-    document.getElementById('popup-close').onclick = () => {
-      popup.classList.remove('show');
-    };
-  }
-});
-
-</script>
-<script>
-  function showPopup(state) {
-  const popup = document.getElementById('popup');
-  const text = document.getElementById('popup-text');
-  popup.classList.add('show');
-  text.textContent = i18next.t(state);
-}
-
-function hidePopup() {
-  document.getElementById('popup').classList.remove('show');
-}
-</script>
-<script>
-  showPopup('popup_sending');
-
-fetch(url, {
-  method: 'POST',
-  body: formData
-})
-.then(res => {
-  showPopup('popup_success');
-  setTimeout(hidePopup, 2000);
-})
-.catch(() => {
-  showPopup('popup_error');
-  setTimeout(hidePopup, 3000);
-});
-
-</script>
+      try {
+        const res = await fetch('/api/send-mail', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(payload)
+        });
+        if (res.ok) {
+          popupContent.innerHTML = `<div>✅ Спасибо! Мы ответим в течение 48 часов.</div>
+          <button id="popup-close" style="margin-top:20px;padding:10px 16px;border:none;border-radius:10px;background:#7c4dff;color:white;font-weight:600;cursor:pointer;">Закрыть</button>`;
+          document.getElementById('popup-close').addEventListener('click', () => popup.classList.remove('show'));
+        } else {
+          popupContent.innerHTML = `<div>❌ Ошибка при отправке. Попробуйте позже.</div>`;
+        }
+      } catch(e) {
+        popupContent.innerHTML = `<div>❌ Ошибка при отправке. Попробуйте позже.</div>`;
+      }
+    });
+  </script>
 </body>
 </html>
