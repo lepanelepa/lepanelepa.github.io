@@ -184,7 +184,51 @@
     <div>© Any Code Studio 2025</div>
     <div style="display:flex;gap:16px"><a href="/privacy.html" data-i18n="policy">Policy</a></div>
   </footer>
-
+<!-- ПОПАП -->
+<div id="popup" style="
+    display:none;
+    position:fixed;
+    top:0; left:0; right:0; bottom:0;
+    background: rgba(0,0,0,0.6);
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    z-index:1000;
+    opacity:0;
+    transition: opacity 0.3s ease;
+">
+    <div style="
+        background:#121212;
+        color:white;
+        padding:30px 24px;
+        border-radius:16px;
+        text-align:center;
+        width:320px;
+        max-width:90%;
+        font-family:Inter, sans-serif;
+        transform: scale(0.9);
+        transition: transform 0.3s ease;
+    " id="popup-content">
+        <div class="loader" style="
+            border: 4px solid #f3f3f3;
+            border-top: 4px solid #7c4dff;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            margin: 0 auto 20px auto;
+            animation: spin 1s linear infinite;
+        "></div>
+        <div>Отправка письма...</div>
+    </div>
+</div>
+<style>
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+#popup.show { display:flex; opacity:1; }
+#popup.show #popup-content { transform: scale(1); }
+</style>
   <script>
     const translations = {
       ru: {
@@ -287,28 +331,85 @@
 });
 
   </script>
-  <script>
-document.getElementById('contactForm').addEventListener('submit', async (e) => {
+ <script>
+const contactForm = document.getElementById('contactForm');
+const popup = document.getElementById('popup');
+const popupContent = document.getElementById('popup-content');
+
+contactForm.addEventListener('submit', async (e) => {
   e.preventDefault();
+
+  // показать попап с loader
+  popup.classList.add('show');
+  popupContent.innerHTML = `
+    <div class="loader" style="
+        border: 4px solid #f3f3f3;
+        border-top: 4px solid #7c4dff;
+        border-radius: 50%;
+        width: 40px;
+        height: 40px;
+        margin: 0 auto 20px auto;
+        animation: spin 1s linear infinite;
+    "></div>
+    <div>Отправка письма...</div>
+  `;
+
   const payload = {
     name: document.querySelector('#name').value,
     email: document.querySelector('#email').value,
     message: document.querySelector('#about').value
   };
 
-  const res = await fetch('/api/send-mail', {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify(payload)
-  });
+  try {
+    const res = await fetch('/api/send-mail', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload)
+    });
 
-  if (res.ok) {
-    alert('Ok!');
-  } else {
-    alert('Error');
+    if (res.ok) {
+      popupContent.innerHTML = `
+        <div>✅ Спасибо! Мы ответим в течение 48 часов.</div>
+        <button id="popup-close" style="
+            margin-top:20px;
+            padding:10px 16px;
+            border:none;
+            border-radius:10px;
+            background:#7c4dff;
+            color:white;
+            font-weight:600;
+            cursor:pointer;
+        ">Закрыть</button>
+      `;
+      document.getElementById('popup-close').onclick = () => {
+        popup.classList.remove('show');
+      };
+      contactForm.reset();
+    } else {
+      throw new Error('Ошибка при отправке');
+    }
+  } catch (err) {
+    popupContent.innerHTML = `
+      <div>❌ Ошибка! Попробуйте позже.</div>
+      <button id="popup-close" style="
+            margin-top:20px;
+            padding:10px 16px;
+            border:none;
+            border-radius:10px;
+            background:#ff6b6b;
+            color:white;
+            font-weight:600;
+            cursor:pointer;
+      ">Закрыть</button>
+    `;
+    document.getElementById('popup-close').onclick = () => {
+      popup.classList.remove('show');
+    };
   }
 });
+
 </script>
+
 
 </body>
 </html>
