@@ -380,7 +380,7 @@ contactForm.addEventListener('submit', async (e) => {
   }
 });
 // video play button
-document.querySelectorAll('.video-toggle').forEach(btn => {
+/* document.querySelectorAll('.video-toggle').forEach(btn => {
   btn.addEventListener('click', () => {
     const wrapper = btn.closest('.media-wrapper');
     const img = wrapper.querySelector('.media-img');
@@ -401,7 +401,37 @@ document.querySelectorAll('.video-toggle').forEach(btn => {
       btn.textContent = '► Play';
     }
   });
+}); */
+document.querySelectorAll('.video-toggle').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const wrapper = btn.closest('.media-wrapper');
+    const img = wrapper.querySelector('.media-img');
+    const video = wrapper.querySelector('.media-video');
+
+    if (video.style.display === 'none') {
+      // Запустить видео
+      img.style.display = 'none';
+      video.style.display = 'block';
+      video.play();
+      btn.textContent = '❚❚ Stop';
+
+      // Когда видео закончится автоматически
+      video.onended = () => {
+        video.style.display = 'none';
+        img.style.display = 'block';
+        btn.textContent = '► Play';
+      };
+    } else {
+      // Остановить видео вручную
+      video.pause();
+      video.currentTime = 0;
+      video.style.display = 'none';
+      img.style.display = 'block';
+      btn.textContent = '► Play';
+    }
+  });
 });
+
 </script>
 </body>
 </html>
