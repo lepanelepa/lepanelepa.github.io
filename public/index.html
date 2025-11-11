@@ -185,47 +185,11 @@
     <div style="display:flex;gap:16px"><a href="/privacy.html" data-i18n="policy">Policy</a></div>
   </footer>
 <!-- ПОПАП -->
-<div id="popup" style="
-    display:none;
-    position:fixed;
-    inset:0;
-    background: rgba(0,0,0,0.6);
-    justify-content:center;
-    align-items:center;
-    z-index:1000;
-    opacity:0;
-    transition: opacity 0.3s ease;
-">
-  <div id="popup-content" style="
-      background:#121212;
-      color:white;
-      padding:30px 24px;
-      border-radius:16px;
-      text-align:center;
-      width:320px;
-      max-width:90%;
-      font-family:Inter, sans-serif;
-      transform: scale(0.9);
-      transition: transform 0.3s ease;
-  ">
-      <!-- ЛОАДЕР -->
-      <div id="popup-loader" style="
-          border: 4px solid #f3f3f3;
-          border-top: 4px solid #7c4dff;
-          border-radius: 50%;
-          width: 40px;
-          height: 40px;
-          margin: 0 auto 20px auto;
-          animation: spin 1s linear infinite;
-      "></div>
-
-      <!-- ТЕКСТ ПРИ ОТПРАВКЕ -->
-      <div id="popup-sending" data-i18n="sending">Отправка письма...</div>
-
-      <!-- ТЕКСТ УСПЕХА (скрыт до ответа) -->
-      <div id="popup-success" data-i18n="success" style="display:none; font-weight:600; font-size:16px;">
-        Спасибо! Мы свяжемся с вами в течение 48 часов.
-      </div>
+<!-- ПОПАП -->
+<div id="popup" class="popup">
+  <div class="popup-content">
+    <div class="loader"></div>
+    <div id="popup-text" data-i18n="popup_sending">Отправка письма...</div>
   </div>
 </div>
 
@@ -235,8 +199,38 @@
   0% { transform: rotate(0deg); }
   100% { transform: rotate(360deg); }
 }
-#popup.show { display:flex; opacity:1; }
-#popup.show #popup-content { transform: scale(1); }
+.popup {
+  display:none;
+  opacity:0;
+  position:fixed;
+  inset:0;
+  background: rgba(0,0,0,0.6);
+  justify-content:center;
+  align-items:center;
+  z-index:1000;
+  transition: opacity 0.3s ease;
+}
+
+.popup.show {
+  display:flex;
+  opacity:1;
+}
+
+.popup-content {
+  background:#121212;
+  color:white;
+  padding:30px 24px;
+  border-radius:16px;
+  width:320px;
+  text-align:center;
+  transform: scale(0.9);
+  transition: transform 0.3s ease;
+}
+
+.popup.show .popup-content {
+  transform: scale(1);
+}
+
 </style>
   <script>
     const translations = {
@@ -277,6 +271,9 @@
       btn_clear: "Очистить",
       sending: "Отправка письма...",
 success: "Спасибо! Мы свяжемся с вами в течение 48 часов.",
+ popup_sending: 'Отправка письма...',
+  popup_success: 'Письмо отправлено!',
+  popup_error: 'Ошибка отправки'
 
       },
       en: {
@@ -319,7 +316,9 @@ success: "Спасибо! Мы свяжемся с вами в течение 48
       policy: "Policy",
       sending: "Sending...",
 success: "Thank you! We will reply within 48 hours.",
-
+ popup_sending: 'Sending...',
+  popup_success: 'Message sent!',
+  popup_error: 'Send error'
       }
     };
 
@@ -424,7 +423,34 @@ contactForm.addEventListener('submit', async (e) => {
 });
 
 </script>
+<script>
+  function showPopup(state) {
+  const popup = document.getElementById('popup');
+  const text = document.getElementById('popup-text');
+  popup.classList.add('show');
+  text.textContent = i18next.t(state);
+}
 
+function hidePopup() {
+  document.getElementById('popup').classList.remove('show');
+}
+</script>
+<script>
+  showPopup('popup_sending');
 
+fetch(url, {
+  method: 'POST',
+  body: formData
+})
+.then(res => {
+  showPopup('popup_success');
+  setTimeout(hidePopup, 2000);
+})
+.catch(() => {
+  showPopup('popup_error');
+  setTimeout(hidePopup, 3000);
+});
+
+</script>
 </body>
 </html>
