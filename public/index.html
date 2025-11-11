@@ -188,39 +188,48 @@
 <div id="popup" style="
     display:none;
     position:fixed;
-    top:0; left:0; right:0; bottom:0;
+    inset:0;
     background: rgba(0,0,0,0.6);
-    display:flex;
     justify-content:center;
     align-items:center;
     z-index:1000;
     opacity:0;
     transition: opacity 0.3s ease;
 ">
-    <div style="
-        background:#121212;
-        color:white;
-        padding:30px 24px;
-        border-radius:16px;
-        text-align:center;
-        width:320px;
-        max-width:90%;
-        font-family:Inter, sans-serif;
-        transform: scale(0.9);
-        transition: transform 0.3s ease;
-    " id="popup-content">
-        <div class="loader" style="
-            border: 4px solid #f3f3f3;
-            border-top: 4px solid #7c4dff;
-            border-radius: 50%;
-            width: 40px;
-            height: 40px;
-            margin: 0 auto 20px auto;
-            animation: spin 1s linear infinite;
-        "></div>
-        <div>Отправка письма...</div>
-    </div>
+  <div id="popup-content" style="
+      background:#121212;
+      color:white;
+      padding:30px 24px;
+      border-radius:16px;
+      text-align:center;
+      width:320px;
+      max-width:90%;
+      font-family:Inter, sans-serif;
+      transform: scale(0.9);
+      transition: transform 0.3s ease;
+  ">
+      <!-- ЛОАДЕР -->
+      <div id="popup-loader" style="
+          border: 4px solid #f3f3f3;
+          border-top: 4px solid #7c4dff;
+          border-radius: 50%;
+          width: 40px;
+          height: 40px;
+          margin: 0 auto 20px auto;
+          animation: spin 1s linear infinite;
+      "></div>
+
+      <!-- ТЕКСТ ПРИ ОТПРАВКЕ -->
+      <div id="popup-sending" data-i18n="sending">Отправка письма...</div>
+
+      <!-- ТЕКСТ УСПЕХА (скрыт до ответа) -->
+      <div id="popup-success" data-i18n="success" style="display:none; font-weight:600; font-size:16px;">
+        Спасибо! Мы свяжемся с вами в течение 48 часов.
+      </div>
+  </div>
 </div>
+
+
 <style>
 @keyframes spin {
   0% { transform: rotate(0deg); }
@@ -265,7 +274,10 @@
       your_request: "Ваш запрос*",
       your_description: "Краткое описание",
       btn_send: "Отправить запрос",
-      btn_clear: "Очистить"
+      btn_clear: "Очистить",
+      sending: "Отправка письма...",
+success: "Спасибо! Мы свяжемся с вами в течение 48 часов.",
+
       },
       en: {
         contacts: "Contacts",
@@ -304,7 +316,10 @@
       btn_clear: "Clear",
 
   
-      policy: "Policy"
+      policy: "Policy",
+      sending: "Sending...",
+success: "Thank you! We will reply within 48 hours.",
+
       }
     };
 
