@@ -391,31 +391,26 @@ contactForm.addEventListener('submit', async (e) => {
 document.querySelectorAll('.video-toggle').forEach(btn => {
   const wrapper = btn.closest('.media-wrapper');
   const video = wrapper.querySelector('.media-video');
-  const img = wrapper.querySelector('.media-img');
 
   // Когда видео доиграет до конца
   video.addEventListener('ended', () => {
-    video.style.opacity = '0';
-    img.style.opacity = '1';
     btn.textContent = '►';
-    video.currentTime = 0;
+    video.currentTime = 0; // возвращаемся к первому кадру
   });
 
   btn.addEventListener('click', () => {
-    if (video.style.opacity === '0' || video.style.opacity === '') {
-      video.style.opacity = '1';
-      img.style.opacity = '0';
+    if (video.paused) {
       video.play();
       btn.textContent = '❚❚';
     } else {
       video.pause();
-      video.style.opacity = '0';
-      img.style.opacity = '1';
       video.currentTime = 0;
       btn.textContent = '►';
     }
   });
 });
+
+
 
 </script>
 </body>
