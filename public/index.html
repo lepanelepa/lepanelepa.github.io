@@ -141,44 +141,17 @@
     <div class="cases-grid">
       <article class="case"><div class="media" style="background-image:url('https://images.unsplash.com/photo-1511512578047-dfb367046420?auto=format&fit=crop&w=1200&q=60')"></div><div class="body"><h4>Tap-Tap Roach</h4><p data-i18n="case1">Prototype → 50K downloads. Full cycle: design, monetization, UA.</p></div></article>
       <article class="case"><div class="media" style="background-image:url('./img/FleetMesh.PNG')"></div><div class="body"><h4>BalloonX</h4><p data-i18n="case2">Super Casual Game — mobile tapper: increased ARPDAU by 42%.</p></div></article>
-    <article class="case">
-  <div class="media-wrapper" style="position:relative;height:150px;border-radius:8px;overflow:hidden;">
-    <!-- Картинка по умолчанию -->
-    <img src="./img/FleetMesh.PNG" 
-         alt="Fleet Mesh" 
-         class="media-img" 
-         style="width:100%;height:100%;object-fit:cover;display:block;">
-
-    <!-- Видео (скрыто по умолчанию) -->
-    <video class="media-video" 
-           src="https://anycodestudio/video/FleetTelematics.mp4" 
-           style="width:100%;height:100%;object-fit:cover;display:none;" 
-           muted playsinline></video>
-
-    <!-- Кнопка play -->
-    <button class="video-toggle" style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);
-            padding:10px 16px;background:rgba(0,0,0,0.6);color:white;border:none;border-radius:8px;
-            cursor:pointer;font-weight:600;">
-      ► Play
-    </button>
+ <article class="case">
+  <div class="media video-container">
+    <img src="img/FleetMesh.PNG" alt="Fleet Mesh Preview" class="preview">
+    <video class="video" src="" preload="metadata" style="display:none;"></video>
+    <button class="play-btn">▶️</button>
   </div>
-
   <div class="body">
     <h4>Fleet Mesh</h4>
     <p data-i18n="case3">SaaS telematics platform for real-time vehicle monitoring.</p>
   </div>
 </article>
-<!--       <article class="case">
-  <video class="media" 
-         src="https://anycodestudio.com/video/FleetTelematics.mp4" 
-         autoplay muted loop playsinline 
-         style="width:100%;height:150px;object-fit:cover;border-radius:8px;">
-  </video>
-  <div class="body">
-    <h4>Fleet Mesh</h4>
-    <p data-i18n="case3">SaaS telematics platform for real-time vehicle monitoring.</p>
-  </div>
-</article> -->
 
     </div>
   </section>
@@ -366,27 +339,34 @@ contactForm.addEventListener('submit', async (e) => {
   }
 });
 // video play button
-document.querySelectorAll('.video-toggle').forEach(btn => {
-  btn.addEventListener('click', () => {
-    const wrapper = btn.closest('.media-wrapper');
-    const img = wrapper.querySelector('.media-img');
-    const video = wrapper.querySelector('.media-video');
+const videoOptions = [
+  "video/EngineBlock.mp4",
+  "video/FleetTelematics.mp4"
+];
 
-    if (video.style.display === 'none') {
-      // Запустить видео
-      img.style.display = 'none';
-      video.style.display = 'block';
-      video.play();
-      btn.textContent = '❚❚ Stop';
-    } else {
-      // Остановить видео
-      video.pause();
-      video.currentTime = 0;
-      video.style.display = 'none';
-      img.style.display = 'block';
-      btn.textContent = '► Play';
-    }
-  });
+// Найти контейнер
+const container = document.querySelector(".video-container");
+const video = container.querySelector(".video");
+const preview = container.querySelector(".preview");
+const btn = container.querySelector(".play-btn");
+
+// Выбираем случайное видео
+const randomVideo = videoOptions[Math.floor(Math.random() * videoOptions.length)];
+video.src = randomVideo;
+
+// Кнопка Play/Stop
+btn.addEventListener("click", () => {
+  if (video.paused) {
+    preview.style.display = "none";
+    video.style.display = "block";
+    video.play();
+    btn.textContent = "⏸️";
+  } else {
+    video.pause();
+    video.style.display = "none";
+    preview.style.display = "block";
+    btn.textContent = "▶️";
+  }
 });
 </script>
 </body>
