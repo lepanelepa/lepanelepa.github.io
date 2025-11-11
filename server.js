@@ -1,8 +1,10 @@
 import express from "express";
 import nodemailer from "nodemailer";
+import path from "path";
 
 const app = express();
-app.use(express.json());
+// отдаём HTML/CSS/JS из папки public
+app.use(express.static(path.join(process.cwd(), "public")));
 
 // SMTP ТРАНСПОРТ
 const transporter = nodemailer.createTransport({
@@ -34,4 +36,4 @@ app.post("/api/send-mail", async (req, res) => {
   }
 });
 
-app.listen(process.env.PORT || 8080);
+app.listen(process.env.PORT || 8080, () => console.log("Server running..."));
