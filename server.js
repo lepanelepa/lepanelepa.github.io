@@ -3,6 +3,11 @@ import nodemailer from "nodemailer";
 import path from "path";
 
 const app = express();
+
+// ✅ Сначала парсеры тела запроса
+app.use(express.json()); // для JSON
+app.use(express.urlencoded({ extended: true })); // для form-data
+
 // отдаём HTML/CSS/JS из папки public
 app.use(express.static(path.join(process.cwd(), "public")));
 
