@@ -1,16 +1,17 @@
-FROM nginx:alpine
+FROM node:20
 
-# Удаляем дефолтный конфиг
-RUN rm /etc/nginx/conf.d/default.conf
+WORKDIR /app
 
-# Копируем сайт
-COPY . /usr/share/nginx/html
+# Копируем package.json и package-lock.json
+COPY package*.json ./
 
-# Копируем наш конфиг
-COPY nginx.conf /etc/nginx/conf.d/default.conf
+# Устанавливаем зависимости
+RUN npm install
 
-# Cloud Run использует PORT, но nginx может слушать только фиксированный порт,
-# поэтому просто ставим 8080.
+# Копируем серверный файл и фронтенд
+COPY server.js ./
+COPY public ./public
+
 EXPOSE 8080
 
-CMD ["nginx", "-g", "daemon off;"]
+CMD ["node", "server.js"]
