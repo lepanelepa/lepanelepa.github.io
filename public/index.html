@@ -1,334 +1,332 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />  
-  <meta property="og:title" content="Any Code Studio — Game & Application Development">
-  <meta property="og:description" content="Full-cycle mobile game development, publishing and analytics.">
-  <meta property="og:image" content="https://anycodestudio.com/preview.jpg">
-  <meta property="og:type" content="website">
-  <meta name="robots" content="index, follow">
-  <meta http-equiv="Content-Security-Policy" content="default-src 'self' https:; style-src 'unsafe-inline' https:; script-src 'self' 'unsafe-inline';">
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<meta property="og:title" content="Any Code Studio — Game & Application Development">
+<meta property="og:description" content="Full-cycle mobile game development, publishing and analytics.">
+<meta property="og:image" content="https://anycodestudio.com/preview.jpg">
+<meta property="og:type" content="website">
+<meta name="robots" content="index, follow">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self' https:; style-src 'unsafe-inline' https:; script-src 'self' 'unsafe-inline';">
+<title>Studio — Game Publishing & Dev</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#07020b;
+    --muted:#9aa0a6;
+    --accent-1:linear-gradient(90deg,#7c4dff 0%, #00d4ff 100%);
+    --glass: rgba(255,255,255,0.04);
+    --card: rgba(255,255,255,0.13);
+  }
+  *{box-sizing:border-box}
+  body{margin:0;font-family:Inter,system-ui,-apple-system,'Segoe UI',Roboto; background: radial-gradient(1200px 600px at 10% 10%, rgba(7,2,11,0.6), transparent), radial-gradient(800px 500px at 90% 90%, rgba(4,10,30,0.5), transparent), var(--bg); color:#e9eef8; -webkit-font-smoothing:antialiased}
+  a{color:inherit;text-decoration:none}
+  header{display:flex;align-items:center;justify-content:space-between;padding:28px 48px}
+  .logo{display:flex;gap:12px;align-items:center}
+  .brand-mark{width:44px;height:44px;border-radius:10px;background:linear-gradient(135deg,#8b5cf6,#00d4ff);display:flex;align-items:center;justify-content:center;font-weight:800;color:#ffffff}
+  nav{display:flex;gap:18px;align-items:center}
+  nav a{font-weight:600;opacity:0.9}
+  .cta{background:linear-gradient(90deg,#ff6b6b,#ffb86b);padding:10px 16px;border-radius:10px;color:#ffffff;font-weight:700}
+  .lang-switch{background:var(--glass);border:1px solid rgba(255,255,255,0.1);border-radius:8px;padding:6px 10px;font-size:13px;color:#e9eef8;cursor:pointer;transition:0.2s}
+  .lang-switch:hover{background:rgba(255,255,255,0.1)}
 
-  <title>Studio — Game Publishing & Dev</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
-  <style>
-    :root{
-      --bg:#07020b;
-      --muted:#9aa0a6;
-      --accent-1:linear-gradient(90deg,#7c4dff 0%, #00d4ff 100%);
-      --glass: rgba(255,255,255,0.04);
-      --card: rgba(255,255,255,0.13);
-    }
-    *{box-sizing:border-box}
-    body{margin:0;font-family:Inter,system-ui,-apple-system,'Segoe UI',Roboto; background: radial-gradient(1200px 600px at 10% 10%, rgba(7,2,11,0.6), transparent), radial-gradient(800px 500px at 90% 90%, rgba(4,10,30,0.5), transparent), var(--bg); color:#e9eef8; -webkit-font-smoothing:antialiased}
-    a{color:inherit;text-decoration:none}
-    header{display:flex;align-items:center;justify-content:space-between;padding:28px 48px}
-    .logo{display:flex;gap:12px;align-items:center}
-    .brand-mark{width:44px;height:44px;border-radius:10px;background:linear-gradient(135deg,#8b5cf6,#00d4ff);display:flex;align-items:center;justify-content:center;font-weight:800;color:#ffffff}
-    nav{display:flex;gap:18px;align-items:center}
-    nav a{font-weight:600;opacity:0.9}
-    .cta{background:linear-gradient(90deg,#ff6b6b,#ffb86b);padding:10px 16px;border-radius:10px;color:#ffffff;font-weight:700}
-    .lang-switch{background:var(--glass);border:1px solid rgba(255,255,255,0.1);border-radius:8px;padding:6px 10px;font-size:13px;color:#e9eef8;cursor:pointer;transition:0.2s}
-    .lang-switch:hover{background:rgba(255,255,255,0.1)}
+  /* Hero */
+  .hero{display:grid;grid-template-columns:1fr 420px;gap:48px;align-items:center;padding:80px 48px}
+  .hero .kicker{display:inline-block;background:var(--glass);padding:8px 12px;border-radius:999px;color:var(--muted);font-weight:600;margin-bottom:18px}
+  .hero h1{font-size:48px;line-height:1.02;margin:0 0 18px}
+  .hero p{color:var(--muted);margin:0 0 24px;max-width:62ch}
+  .cta-row{display:flex;gap:12px}
+  .btn-primary{background:var(--accent-1);padding:14px 18px;border-radius:12px;font-weight:700;color:#ffffff;box-shadow:0 6px 30px rgba(124,77,255,0.18);border:none;cursor:pointer}
+  .btn-ghost{background:transparent;border:1px solid rgba(255,255,255,0.9);padding:12px 16px;border-radius:12px;color:#ffffff;cursor:pointer;}
 
-    /* Hero */
-    .hero{display:grid;grid-template-columns:1fr 420px;gap:48px;align-items:center;padding:80px 48px}
-    .hero .kicker{display:inline-block;background:var(--glass);padding:8px 12px;border-radius:999px;color:var(--muted);font-weight:600;margin-bottom:18px}
-    .hero h1{font-size:48px;line-height:1.02;margin:0 0 18px}
-    .hero p{color:var(--muted);margin:0 0 24px;max-width:62ch}
-    .cta-row{display:flex;gap:12px}
-    .btn-primary{background:var(--accent-1);padding:14px 18px;border-radius:12px;font-weight:700;color:#ffffff;box-shadow:0 6px 30px rgba(124,77,255,0.18);border:none;cursor:pointer}
-    .btn-ghost{background:transparent;border:1px solid rgba(255,255,255,0.9);padding:12px 16px;border-radius:12px;color:#ffffff;cursor:pointer;}
+  .card {background: darkslateblue; padding: 22px; border-radius: 18px;}
+  .stat{display:flex;justify-content:space-between;gap:12px;margin-bottom:8px}
+  .stat .num{font-weight:800;font-size:20px}
+  .stat .label{color:var(--muted);font-size:13px}
 
-    .card {background: darkslateblue; padding: 22px; border-radius: 18px;}
-    .stat{display:flex;justify-content:space-between;gap:12px;margin-bottom:8px}
-    .stat .num{font-weight:800;font-size:20px}
-    .stat .label{color:var(--muted);font-size:13px}
+  .features{display:flex;gap:16px;padding:40px 48px}
+  .feature{background:var(--card);padding:18px;border-radius:14px;flex:1;border:1px solid rgba(255,255,255,0.12)}
+  .feature h3{margin:0 0 8px}
+  .feature p{margin:0;color:var(--muted);font-size:14px}
 
-    .features{display:flex;gap:16px;padding:40px 48px}
-    .feature{background:var(--card);padding:18px;border-radius:14px;flex:1;border:1px solid rgba(255,255,255,0.12)}
-    .feature h3{margin:0 0 8px}
-    .feature p{margin:0;color:var(--muted);font-size:14px}
+  .cases{padding:40px 48px}
+  .cases-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:18px}
+  .case {border-radius: 12px;overflow: hidden;background: var(--card);border: 1px solid rgba(255, 255, 255, 0.03);}
+  .case .media{height:150px;background-size:cover;background-position:center}
+  .case .body{padding:14px}
+  .case h4{margin:0 0 8px}
+  .case p{margin:0;color:var(--muted);font-size:13px}
 
-    .cases{padding:40px 48px}
-    .cases-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:18px}
-    .case {border-radius: 12px;overflow: hidden;background: var(--card);border: 1px solid rgba(255, 255, 255, 0.03);}
-    .case .media{height:150px;background-size:cover;background-position:center}
-    .case .body{padding:14px}
-    .case h4{margin:0 0 8px}
-    .case p{margin:0;color:var(--muted);font-size:13px}
+  .contact{display:grid;grid-template-columns:1fr 1fr;gap:30px;align-items:start;padding:40px 48px;}
+  .contact .info{max-width:420px}
+  .contact form{display:flex;flex-direction:column;gap:10px;background:var(--card);padding:22px;border-radius:12px;border:1px solid rgba(255,255,255,0.02);}
+  label{display:block;font-size:13px;margin-bottom:6px;color:var(--muted)}
+  input,textarea{width:100%;padding:12px;border-radius:10px;border:1px solid rgba(255,255,255,0.04);background:transparent;color:inherit;}
+  textarea{min-height:120px}
 
-    .contact{display:grid;grid-template-columns:1fr 1fr;gap:30px;align-items:start;padding:40px 48px;}
-    .contact .info{max-width:420px}
-    .contact form{display:flex;flex-direction:column;gap:10px;background:var(--card);padding:22px;border-radius:12px;border:1px solid rgba(255,255,255,0.02);}
-    label{display:block;font-size:13px;margin-bottom:6px;color:var(--muted)}
-    input,textarea{width:100%;padding:12px;border-radius:10px;border:1px solid rgba(255,255,255,0.04);background:transparent;color:inherit;}
-    textarea{min-height:120px}
+  footer{padding:28px 48px;color:var(--muted);display:flex;justify-content:space-between;align-items:center}
 
-    footer{padding:28px 48px;color:var(--muted);display:flex;justify-content:space-between;align-items:center}
-
-    @media (max-width:920px){.hero{grid-template-columns:1fr;padding:48px 24px}header{padding:18px 24px}.features{flex-direction:column;padding:24px}.cases,.contact,footer{padding:24px}}
-    @media (max-width:768px){.contact{grid-template-columns:1fr;gap:28px;}.contact .info{order:1}.contact form{order:2;width:100%}}
-    @media (max-width:480px){.cta-row{flex-direction:column;}}
-
-    @keyframes spin {0%{transform:rotate(0deg);}100%{transform:rotate(360deg);}}
-    .popup {display:none;opacity:0;position:fixed;inset:0;background: rgba(0,0,0,0.6);justify-content:center;align-items:center;z-index:1000;transition: opacity 0.3s ease;}
-    .popup.show {display:flex;opacity:1;}
-    .popup-content {background:#121212;color:white;padding:30px 24px;border-radius:16px;width:320px;text-align:center;transform: scale(0.9);transition: transform 0.3s ease;}
-    .popup.show .popup-content {transform: scale(1);}
-  </style>
+  @media (max-width:920px){.hero{grid-template-columns:1fr;padding:48px 24px}header{padding:18px 24px}.features{flex-direction:column;padding:24px}.cases,.contact,footer{padding:24px}}
+  @media (max-width:768px){.contact{grid-template-columns:1fr;gap:28px;}.contact .info{order:1}.contact form{order:2;width:100%}}
+  @media (max-width:480px){.cta-row{flex-direction:column;}}
+  @keyframes spin {0%{transform:rotate(0deg);}100%{transform:rotate(360deg);}}
+  .popup{display:none;opacity:0;position:fixed;inset:0;background: rgba(0,0,0,0.6);justify-content:center;align-items:center;z-index:1000;transition: opacity 0.3s ease;}
+  .popup.show{display:flex;opacity:1;}
+  .popup-content{background:#121212;color:white;padding:30px 24px;border-radius:16px;width:320px;text-align:center;transform: scale(0.9);transition: transform 0.3s ease;}
+  .popup.show .popup-content{transform: scale(1);}
+</style>
 </head>
 <body>
-  <header>
-    <div class="logo">
-      <div class="brand-mark">AC</div>
-      <div>
-        <div style="font-weight:800">Studio</div>
-        <div style="font-size:12px;color:var(--muted);margin-top:2px">Application Development</div>
-      </div>
-    </div>
-    <nav>
-      <button class="lang-switch" id="langBtn">RU</button>
-      <a data-i18n="contacts" class="cta" href="#contact">Contacts</a>
-    </nav>
-  </header>
-
-  <main>
-    <!-- Hero -->
-    <section class="hero">
-      <div>
-        <div data-i18n="kicker" class="kicker">We empower great ideas</div>
-        <h1 data-i18n="headline">We build software. From concept to top charts.</h1>
-        <p data-i18n="subtext">Full-cycle development and publishing for mobile games — concept, launch and growth.</p>
-        <div class="cta-row">
-          <button class="btn-primary" data-i18n="btn_request">Request development</button>
-          <a class="btn-ghost" href="#cases" data-i18n="btn_cases">View success cases</a>
-        </div>
-      </div>
-
-      <aside class="card floating">
-        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px">          
-          <div style="font-weight:700" data-i18n="impact_title">Our impact</div>       
-          <div data-i18n="since" style="font-size:13px;color:var(--muted)">Since 2025</div>
-        </div>
-        <div class="stat"><div><div class="num">120M+</div><div class="label" data-i18n="lifetime_downloads">Lifetime downloads</div></div><div style="text-align:right;color:var(--muted);font-size:13px">▲ 24% Y/Y</div></div>
-        <div class="stat"><div><div class="num">$4.8M</div><div class="label">Monthly revenue peak</div></div><div data-i18n="top_title" style="text-align:right;color:var(--muted);font-size:13px">Top title</div></div>
-        <div style="height:12px"></div>
-        <div style="background:linear-gradient(90deg,#0b1220, rgba(255,255,255,0.02));padding:10px;border-radius:10px;display:flex;gap:10px;align-items:center">
-          <div style="width:48px;height:48px;border-radius:8px;background:url('https://images.unsplash.com/photo-1542751371-adc38448a05e?auto=format&fit=crop&w=800&q=60') center/cover"></div>
-          <div>
-            <div style="font-weight:700">Tap Tap Roach</div>
-            <div data-i18n="upcoming_release" style="font-size:13px;color:var(--muted)">Upcoming release</div>
-          </div>
-        </div>
-      </aside>
-    </section>
-
-    <!-- Features -->
-    <section id="services" class="features">
-      <div class="feature">
-        <h3 data-i18n="feature1_title">End-to-end Development</h3>
-        <p data-i18n="feature1_text">From prototyping and production to live-ops — we build and polish gameplay, art and systems to launch at scale.</p>
-      </div>
-      <div class="feature">
-        <h3 data-i18n="feature2_title">User Acquisition & Ads</h3>
-        <p data-i18n="feature2_text">Data-driven acquisition campaigns, creatives and A/B testing to maximize installs and LTV.</p>
-      </div>
-      <div class="feature">
-        <h3 data-i18n="feature3_title">Monetization & Growth</h3>
-        <p data-i18n="feature3_text">Economy design, analytics and retention strategies to boost revenue and player engagement.</p>
-      </div>
-    </section>
-
-    <!-- Cases -->
-    <section id="cases" class="cases">
-      <h2 data-i18n="cases_title">Success cases</h2>
-      <div class="cases-grid">
-        <article class="case"><div class="media" style="background-image:url('https://images.unsplash.com/photo-1511512578047-dfb367046420?auto=format&fit=crop&w=1200&q=60')"></div><div class="body"><h4>Tap-Tap Roach</h4><p data-i18n="case1">Prototype → 50K downloads. Full cycle: design, monetization, UA.</p></div></article>
-        <article class="case"><div class="media" style="background-image:url('https://images.unsplash.com/photo-1526378722959-6a3e02d3a4a6?auto=format&fit=crop&w=1200&q=60')"></div><div class="body"><h4>BalloonX</h4><p data-i18n="case2">Super Casual Game — mobile tapper: increased ARPDAU by 42%.</p></div></article>
-        <article class="case"><div class="media" style="background-image:url('https://images.unsplash.com/photo-1526378722959-6a3e02d3a4a6?auto=format&fit=crop&w=1200&q=60')"></div><div class="body"><h4>Fleet Mesh</h4><p data-i18n="case3">SaaS telematics platform for real-time vehicle monitoring.</p></div></article>
-      </div>
-    </section>
-
-    <!-- Contact -->
-    <section id="contact" class="contact">
-      <div class="info">
-        <h3 data-i18n="contact_title">Have additional questions?</h3>
-        <p style="color:var(--muted)" data-i18n="contact_text">Write to us — we’ll review your request and suggest growth paths.</p>
-        <div style="margin-top:18px">
-          <div style="font-weight:700">hello@anycodestudio.com</div>
-        </div>
-      </div>
-      <form id="contactForm">
-        <label data-i18n="name" for="name">Name*</label>
-        <input id="name" data-i18n-placeholder="your_name" placeholder="Your name" required>
-
-        <label data-i18n="email" for="email">Email*</label>
-        <input id="email" type="email" data-i18n-placeholder="your_email" placeholder="you@mail.com" required>
-
-        <label data-i18n="your_request" for="about">Your request*</label>
-        <textarea id="about" data-i18n-placeholder="your_description" placeholder="Short description" required></textarea>
-
-        <div style="display:flex;gap:10px;margin-top:12px">
-          <button type="submit" class="btn-primary" data-i18n="btn_send">Request review</button>
-          <button type="button" class="btn-ghost"
-            onclick="document.querySelector('#name').value='';document.querySelector('#email').value='';document.querySelector('#about').value='';"
-            data-i18n="btn_clear">Clear</button>
-        </div>
-      </form>
-    </section>
-  </main>
-
-  <footer>
-    <div>© Any Code Studio 2025</div>
-    <div style="display:flex;gap:16px"><a href="/privacy.html" data-i18n="policy">Policy</a></div>
-  </footer>
-
-  <!-- POPUP -->
-  <div id="popup" class="popup">
-    <div class="popup-content" id="popup-content">
-      <div class="loader"></div>
-      <div id="popup-text" data-i18n="popup_sending">Отправка письма...</div>
+<header>
+  <div class="logo">
+    <div class="brand-mark">AC</div>
+    <div>
+      <div style="font-weight:800">Studio</div>
+      <div style="font-size:12px;color:var(--muted);margin-top:2px">Application Development</div>
     </div>
   </div>
+  <nav>
+    <button class="lang-switch" id="langBtn">RU</button>
+    <a data-i18n="contacts" class="cta" href="#contact">Contacts</a>
+  </nav>
+</header>
 
-  <!-- JS -->
-  <script>
-    // Переключение языков
-    const translations = {
-    ru: {
-        contacts: "Контакты",
-        kicker: "Мы усиливаем идеи",
-        headline: "Мы пишем софт. От идеи до топ-чартов.",
-        subtext: "Полный цикл разработки и продвижения мобильных игр — от концепта до масштабирования.",
-        btn_request: "Отправить запрос на разработку",
-        btn_cases: "Посмотреть успешные кейсы",
-        impact_title: "Наш вклад",
-        since: "с 2025",
-        top_title: "Лучший релиз",
-        upcoming_release: "Предстоящий релиз",
-        cases_title: "Успешные кейсы",
-        case1: "Прототип → 50K скачиваний. Полный цикл: дизайн, монетизация, UA.",
-        case2: "Super Casual Game - мобильная тапалка: улучшили ARPDAU на 42 %.",
-        case3: "SaaS платформа - телематика автотранспорта в реальном времени.",
-        contact_title: "Есть дополнительные вопросы?",
-        contact_text: "Напишите нам — мы дадим фидбек по вашему запросу и предложим пути роста.",
-        btn_send: "Отправить",
-        btn_clear: "Очистить",
-         feature1_title: "Полный цикл разработки",
-    feature1_text: "От прототипирования и производства до live-ops — мы создаём и шлифуем игровой процесс, графику и системы для масштабного запуска.",
-    feature2_title: "Привлечение пользователей и реклама",
-    feature2_text: "Кампании по привлечению пользователей на основе данных, креативы и A/B тестирование для максимального количества установок и LTV.",
-    feature3_title: "Монетизация и рост",
-    feature3_text: "Проектирование экономики, аналитика и стратегии удержания для увеличения дохода и вовлечённости игроков.",
-    lifetime_downloads: "Загрузок",   
-    your_name: "Ваше имя",      
-       policy: "Политика конфиденциальности",
-       name: "Имя*",  
-      email: "Эл. почта*",
-      your_email: "you@mail.com",
-      your_request: "Ваш запрос*",
-      your_description: "Краткое описание",
-      btn_send: "Отправить запрос",
-      btn_clear: "Очистить",
-      sending: "Отправка письма...",
-success: "Спасибо! Мы свяжемся с вами в течение 48 часов.",
- popup_sending: 'Отправка письма...',
-  popup_success: 'Письмо отправлено!',
-  popup_error: 'Ошибка отправки'
+<main>
+  <section class="hero">
+    <div>
+      <div data-i18n="kicker" class="kicker">We empower great ideas</div>
+      <h1 data-i18n="headline">We build software. From concept to top charts.</h1>
+      <p data-i18n="subtext">Full-cycle development and publishing for mobile games — concept, launch and growth.</p>
+      <div class="cta-row">
+        <button class="btn-primary" data-i18n="btn_request">Request development</button>
+        <a class="btn-ghost" href="#cases" data-i18n="btn_cases">View success cases</a>
+      </div>
+    </div>
+    <aside class="card floating">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px">
+        <div style="font-weight:700" data-i18n="impact_title">Our impact</div>
+        <div data-i18n="since" style="font-size:13px;color:var(--muted)">Since 2025</div>
+      </div>
+      <div class="stat"><div><div class="num">120M+</div><div class="label" data-i18n="lifetime_downloads">Lifetime downloads</div></div><div style="text-align:right;color:var(--muted);font-size:13px">▲ 24% Y/Y</div></div>
+      <div class="stat"><div><div class="num">$4.8M</div><div class="label">Monthly revenue peak</div></div><div data-i18n="top_title" style="text-align:right;color:var(--muted);font-size:13px">Top title</div></div>
+      <div style="height:12px"></div>
+      <div style="background:linear-gradient(90deg,#0b1220, rgba(255,255,255,0.02));padding:10px;border-radius:10px;display:flex;gap:10px;align-items:center">
+        <div style="width:48px;height:48px;border-radius:8px;background:url('https://images.unsplash.com/photo-1542751371-adc38448a05e?auto=format&fit=crop&w=800&q=60') center/cover"></div>
+        <div>
+          <div style="font-weight:700">Tap Tap Roach</div>
+          <div data-i18n="upcoming_release" style="font-size:13px;color:var(--muted)">Upcoming release</div>
+        </div>
+      </div>
+    </aside>
+  </section>
 
-      },
-      en: {
-        contacts: "Contacts",
-        kicker: "We empower great ideas",
-        headline: "We build software. From concept to top charts.",
-        subtext: "Full-cycle development and publishing for mobile games — concept, launch and growth.",
-        btn_request: "Request development",
-        btn_cases: "View success cases",
-        impact_title: "Our impact",
-        since: "Since 2025",
-        top_title: "Top title",
-        upcoming_release: "Upcoming release",
-        cases_title: "Success stories",
-        case1: "Prototype → 50K downloads. Full cycle: design, monetization, UA.",
-        case2: "Super Casual Game — mobile tapper: increased ARPDAU by 42%.",
-         case3: "SaaS telematics platform for real-time vehicle monitoring.",
-        contact_title: "Have additional questions?",
-        contact_text: "Write to us — we’ll review your request and suggest growth paths.",
-        btn_send: "Send",
-        btn_clear: "Clear",
-           feature1_title: "End-to-end Development",
+  <section id="services" class="features">
+    <div class="feature">
+      <h3 data-i18n="feature1_title">End-to-end Development</h3>
+      <p data-i18n="feature1_text">From prototyping and production to live-ops — we build and polish gameplay, art and systems to launch at scale.</p>
+    </div>
+    <div class="feature">
+      <h3 data-i18n="feature2_title">User Acquisition & Ads</h3>
+      <p data-i18n="feature2_text">Data-driven acquisition campaigns, creatives and A/B testing to maximize installs and LTV.</p>
+    </div>
+    <div class="feature">
+      <h3 data-i18n="feature3_title">Monetization & Growth</h3>
+      <p data-i18n="feature3_text">Economy design, analytics and retention strategies to boost revenue and player engagement.</p>
+    </div>
+  </section>
+
+  <section id="cases" class="cases">
+    <h2 data-i18n="cases_title">Success cases</h2>
+    <div class="cases-grid">
+      <article class="case"><div class="media" style="background-image:url('https://images.unsplash.com/photo-1511512578047-dfb367046420?auto=format&fit=crop&w=1200&q=60')"></div><div class="body"><h4>Tap-Tap Roach</h4><p data-i18n="case1">Prototype → 50K downloads. Full cycle: design, monetization, UA.</p></div></article>
+      <article class="case"><div class="media" style="background-image:url('https://images.unsplash.com/photo-1526378722959-6a3e02d3a4a6?auto=format&fit=crop&w=1200&q=60')"></div><div class="body"><h4>BalloonX</h4><p data-i18n="case2">Super Casual Game — mobile tapper: increased ARPDAU by 42%.</p></div></article>
+      <article class="case"><div class="media" style="background-image:url('https://images.unsplash.com/photo-1526378722959-6a3e02d3a4a6?auto=format&fit=crop&w=1200&q=60')"></div><div class="body"><h4>Fleet Mesh</h4><p data-i18n="case3">SaaS telematics platform for real-time vehicle monitoring.</p></div></article>
+    </div>
+  </section>
+
+  <section id="contact" class="contact">
+    <div class="info">
+      <h3 data-i18n="contact_title">Have additional questions?</h3>
+      <p style="color:var(--muted)" data-i18n="contact_text">Write to us — we’ll review your request and suggest growth paths.</p>
+      <div style="margin-top:18px">
+        <div style="font-weight:700">hello@anycodestudio.com</div>
+      </div>
+    </div>
+
+    <form id="contactForm">
+      <label data-i18n="name" for="name">Name*</label>
+      <input id="name" data-i18n-placeholder="your_name" placeholder="Your name" required>
+
+      <label data-i18n="email" for="email">Email*</label>
+      <input id="email" type="email" data-i18n-placeholder="your_email" placeholder="you@mail.com" required>
+
+      <label data-i18n="your_request" for="about">Your request*</label>
+      <textarea id="about" data-i18n-placeholder="your_description" placeholder="Short description" required></textarea>
+
+      <div style="display:flex;gap:10px;margin-top:12px">
+        <button type="submit" class="btn-primary" data-i18n="btn_send">Request review</button>
+        <button type="button" class="btn-ghost"
+          onclick="document.querySelector('#name').value='';document.querySelector('#email').value='';document.querySelector('#about').value='';"
+          data-i18n="btn_clear">Clear</button>
+      </div>
+    </form>
+  </section>
+</main>
+
+<footer>
+  <div>© Any Code Studio 2025</div>
+  <div style="display:flex;gap:16px"><a href="/privacy.html" data-i18n="policy">Policy</a></div>
+</footer>
+
+<!-- POPUP -->
+<div id="popup" class="popup">
+  <div id="popup-content" class="popup-content"></div>
+</div>
+
+<script>
+const translations = {
+  en: {
+    contacts: "Contacts",
+    kicker: "We empower great ideas",
+    headline: "We build software. From concept to top charts.",
+    subtext: "Full-cycle development and publishing for mobile games — concept, launch and growth.",
+    btn_request: "Request development",
+    btn_cases: "View success cases",
+    impact_title: "Our impact",
+    since: "Since 2025",
+    top_title: "Top title",
+    upcoming_release: "Upcoming release",
+    cases_title: "Success cases",
+    case1: "Prototype → 50K downloads. Full cycle: design, monetization, UA.",
+    case2: "Super Casual Game — mobile tapper: increased ARPDAU by 42%.",
+    case3: "SaaS telematics platform for real-time vehicle monitoring.",
+    contact_title: "Have additional questions?",
+    contact_text: "Write to us — we’ll review your request and suggest growth paths.",
+    btn_send: "Send",
+    btn_clear: "Clear",
+    feature1_title: "End-to-end Development",
     feature1_text: "From prototyping and production to live-ops — we build and polish gameplay, art and systems to launch at scale.",
     feature2_title: "User Acquisition & Ads",
     feature2_text: "Data-driven acquisition campaigns, creatives and A/B testing to maximize installs and LTV.",
     feature3_title: "Monetization & Growth",
     feature3_text: "Economy design, analytics and retention strategies to boost revenue and player engagement.",
-    lifetime_downloads: "Lifetime downdoads",
-
+    lifetime_downloads: "Lifetime downloads",
     name: "Name*",
-      your_name: "Your name",
-      email: "Email*",
-      your_email: "you@mail.com",
-      your_request: "Your request*",
-      your_description: "Short description",
-      btn_send: "Request review",
-      btn_clear: "Clear",
+    your_name: "Your name",
+    email: "Email*",
+    your_email: "you@mail.com",
+    your_request: "Your request*",
+    your_description: "Short description",
+    sending: "Sending mail...",
+    success: "✅ Thank you! We'll reply within 48 hours.",
+    error: "❌ Error sending. Please try later.",
+    close: "Close",
+    policy: "Policy"
+  },
+  ru: {
+    contacts: "Контакты",
+    kicker: "Мы усиливаем идеи",
+    headline: "Мы пишем софт. От идеи до топ-чартов.",
+    subtext: "Полный цикл разработки и продвижения мобильных игр — от концепта до масштабирования.",
+    btn_request: "Отправить запрос на разработку",
+    btn_cases: "Посмотреть успешные кейсы",
+    impact_title: "Наш вклад",
+    since: "С 2025",
+    top_title: "Лучший релиз",
+    upcoming_release: "Предстоящий релиз",
+    cases_title: "Успешные кейсы",
+    case1: "Прототип → 50K скачиваний. Полный цикл: дизайн, монетизация, UA.",
+    case2: "Super Casual Game — мобильная тапалка: ARPDAU +42%.",
+    case3: "SaaS телематика для мониторинга транспорта в реальном времени.",
+    contact_title: "Есть вопросы?",
+    contact_text: "Напишите нам — мы рассмотрим запрос и предложим варианты развития.",
+    btn_send: "Отправить",
+    btn_clear: "Очистить",
+    feature1_title: "Полная разработка",
+    feature1_text: "От прототипа до live-ops — создаем и доводим до готовности геймплей, арт и системы.",
+    feature2_title: "User Acquisition & Ads",
+    feature2_text: "Data-driven кампании, креативы и A/B тесты для максимального LTV.",
+    feature3_title: "Монетизация и рост",
+    feature3_text: "Дизайн экономики, аналитика и ретеншн для увеличения дохода и вовлеченности.",
+    lifetime_downloads: "Всего скачиваний",
+    name: "Имя*",
+    your_name: "Ваше имя",
+    email: "Email*",
+    your_email: "you@mail.com",
+    your_request: "Ваш запрос*",
+    your_description: "Коротко о запросе",
+    sending: "Отправка письма...",
+    success: "✅ Спасибо! Мы ответим в течение 48 часов.",
+    error: "❌ Ошибка при отправке. Попробуйте позже.",
+    close: "Закрыть",
+    policy: "Политика"
+  }
+};
 
-  
-      policy: "Policy",
-      sending: "Sending...",
-success: "Thank you! We will reply within 48 hours.",
- popup_sending: 'Sending...',
-  popup_success: 'Message sent!',
-  popup_error: 'Send error'
-      }
-    };
- 
-    const btn = document.getElementById('langBtn');
-    let currentLang = 'en';
-    btn.addEventListener('click', () => {
-      currentLang = currentLang === 'en' ? 'ru' : 'en';
-      document.querySelectorAll("[data-i18n-placeholder]").forEach(el => {
-        el.placeholder = translations[currentLang][el.getAttribute('data-i18n-placeholder')];
-      });
-      document.querySelectorAll("[data-i18n]").forEach(el => {
-        el.textContent = translations[currentLang][el.getAttribute('data-i18n')];
-      });
-      btn.textContent = currentLang === 'en' ? 'RU' : 'EN';
+let currentLang = 'ru';
+
+function updateTranslations() {
+  document.querySelectorAll('[data-i18n]').forEach(el => {
+    const key = el.getAttribute('data-i18n');
+    if(translations[currentLang][key]) el.innerText = translations[currentLang][key];
+  });
+  document.querySelectorAll('[data-i18n-placeholder]').forEach(el => {
+    const key = el.getAttribute('data-i18n-placeholder');
+    if(translations[currentLang][key]) el.placeholder = translations[currentLang][key];
+  });
+}
+
+document.getElementById('langBtn').addEventListener('click', () => {
+  currentLang = currentLang === 'ru' ? 'en' : 'ru';
+  document.getElementById('langBtn').innerText = currentLang.toUpperCase();
+  updateTranslations();
+});
+
+updateTranslations();
+
+// CONTACT FORM + POPUP
+const contactForm = document.getElementById('contactForm');
+const popup = document.getElementById('popup');
+const popupContent = document.getElementById('popup-content');
+
+contactForm.addEventListener('submit', async (e) => {
+  e.preventDefault();
+  popup.classList.add('show');
+
+  popupContent.innerHTML = `
+    <div class="loader" style="border:4px solid #f3f3f3;border-top:4px solid #7c4dff;border-radius:50%;width:40px;height:40px;margin:0 auto 20px auto;animation:spin 1s linear infinite;"></div>
+    <div>${translations[currentLang].sending}</div>
+  `;
+
+  const payload = {
+    name: document.querySelector('#name').value,
+    email: document.querySelector('#email').value,
+    message: document.querySelector('#about').value
+  };
+
+  try {
+    const res = await fetch('/api/send-mail', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload)
     });
 
-    // Попап
-    const contactForm = document.getElementById('contactForm');
-    const popup = document.getElementById('popup');
-    const popupContent = document.getElementById('popup-content');
-
-    contactForm.addEventListener('submit', async (e) => {
-      e.preventDefault();
-      popup.classList.add('show');
-      popupContent.innerHTML = `<div class="loader" style="border:4px solid #f3f3f3;border-top:4px solid #7c4dff;border-radius:50%;width:40px;height:40px;margin:0 auto 20px auto;animation:spin 1s linear infinite;"></div><div>Отправка письма...</div>`;
-      const payload = {
-        name: document.querySelector('#name').value,
-        email: document.querySelector('#email').value,
-        message: document.querySelector('#about').value
-      };
-      try {
-        const res = await fetch('/api/send-mail', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify(payload)
-        });
-        if (res.ok) {
-          popupContent.innerHTML = `<div>✅ Спасибо! Мы ответим в течение 48 часов.</div>
-          <button id="popup-close" style="margin-top:20px;padding:10px 16px;border:none;border-radius:10px;background:#7c4dff;color:white;font-weight:600;cursor:pointer;">Закрыть</button>`;
-          document.getElementById('popup-close').addEventListener('click', () => popup.classList.remove('show'));
-        } else {
-          popupContent.innerHTML = `<div>❌ Ошибка при отправке. Попробуйте позже.</div>`;
-        }
-      } catch(e) {
-        popupContent.innerHTML = `<div>❌ Ошибка при отправке. Попробуйте позже.</div>`;
-      }
-    });
-  </script>
+    if (res.ok) {
+      popupContent.innerHTML = `
+        <div>${translations[currentLang].success}</div>
+        <button id="popup-close" style="margin-top:20px;padding:10px 16px;border:none;border-radius:10px;background:#7c4dff;color:white;font-weight:600;cursor:pointer;">
+          ${translations[currentLang].close}
+        </button>
+      `;
+      document.getElementById('popup-close').addEventListener('click', () => popup.classList.remove('show'));
+    } else {
+      popupContent.innerHTML = `<div>${translations[currentLang].error}</div>`;
+    }
+  } catch (e) {
+    popupContent.innerHTML = `<div>${translations[currentLang].error}</div>`;
+  }
+});
+</script>
 </body>
 </html>
