@@ -99,7 +99,7 @@
       <h1 data-i18n="headline">We build software. From concept to top charts.</h1>
       <p data-i18n="subtext">Full-cycle development and publishing for mobile games — concept, launch and growth.</p>
       <div class="cta-row">
-        <button class="btn-primary" data-i18n="btn_request">Request development</button>
+        <button onclick="scrollToSection('contact')" class="btn-primary" data-i18n="btn_request">Request development</button>
         <a class="btn-ghost" href="#cases" data-i18n="btn_cases">View success cases</a>
       </div>
     </div>
@@ -410,8 +410,13 @@ document.querySelectorAll('.video-toggle').forEach(btn => {
   });
 });
 
-
-
+/* Scroll to Contact */
+function scrollToSection(id) {
+    const element = document.getElementById(id);
+    if (element) {
+        element.scrollIntoView({ behavior: 'smooth' });
+    }
+}
 </script>
 </body>
 </html>
