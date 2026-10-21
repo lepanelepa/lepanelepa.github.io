@@ -71,6 +71,22 @@
   @media (max-width:768px){.contact{grid-template-columns:1fr;gap:28px;}.contact .info{order:1}.contact form{order:2;width:100%}}
   @media (max-width:480px){.cta-row{flex-direction:column;}}
   @keyframes spin {0%{transform:rotate(0deg);}100%{transform:rotate(360deg);}}
+  /* Apps / Google Play widget */
+  .app-head{display:flex;gap:16px;align-items:center;margin-bottom:14px}
+  .hero-app-card{min-width:0}
+  .app-icon{width:64px;height:64px;border-radius:18px;flex:none;background:#121212;box-shadow:0 6px 24px rgba(0,0,0,0.35);object-fit:cover}
+  .app-name{margin:0 0 4px;font-size:22px}
+  .app-dev{color:#7fd8ff;font-weight:600;font-size:14px}
+  .app-chips{display:flex;flex-wrap:wrap;gap:6px;margin:0 0 14px}
+  .app-chip{background:var(--glass);border:1px solid rgba(255,255,255,0.1);border-radius:999px;padding:4px 10px;font-size:12px;color:var(--muted)}
+  .app-desc{color:var(--muted);font-size:14px;line-height:1.5;margin:0 0 18px}
+  .gp-badge{display:inline-block;line-height:0;transition:transform .15s ease}
+  .gp-badge:hover{transform:translateY(-2px)}
+  .gp-badge img{height:58px;width:auto;margin:-9px}
+  .app-shots{display:flex;background:linear-gradient(90deg,#0b1220, rgba(255,255,255,0.02));padding:10px;border-radius:10px;gap:12px;overflow-x:auto;scroll-snap-type:x mandatory;padding-bottom:8px;min-width:0;scrollbar-width:thin;scrollbar-color:rgba(255,255,255,0.2) transparent}
+  .app-shots a{flex:none;scroll-snap-align:start;line-height:0}
+  .app-shots img{height:200px;width:auto;border-radius:12px;background:#121212;border:1px solid rgba(255,255,255,0.08)}
+
   .popup{display:none;opacity:0;position:fixed;inset:0;background: rgba(0,0,0,0.6);justify-content:center;align-items:center;z-index:1000;transition: opacity 0.3s ease;}
   .popup.show{display:flex;opacity:1;}
   .popup-content{background:#121212;color:white;padding:30px 24px;border-radius:16px;width:320px;text-align:center;transform: scale(0.9);transition: transform 0.3s ease;}
@@ -103,20 +119,38 @@
         <a class="btn-ghost" href="#cases" data-i18n="btn_cases">View success cases</a>
       </div>
     </div>
-    <aside class="card floating">
-      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px">
-        <div style="font-weight:700" data-i18n="impact_title">Our impact</div>
-        <div data-i18n="since" style="font-size:13px;color:var(--muted)">Since 2025</div>
+    <aside class="card floating hero-app-card">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:14px">
+        <div style="font-weight:700" data-i18n="hero_app_title">Our app</div>
+        <div style="font-size:13px;color:var(--muted)">Google Play</div>
       </div>
-      <div class="stat"><div><div class="num">120M+</div><div class="label" data-i18n="lifetime_downloads">Lifetime downloads</div></div><div style="text-align:right;color:var(--muted);font-size:13px">▲ 24% Y/Y</div></div>
-      <div class="stat"><div><div class="num">$4.8M</div><div class="label">Monthly revenue peak</div></div><div data-i18n="top_title" style="text-align:right;color:var(--muted);font-size:13px">Top title</div></div>
-      <div style="height:12px"></div>
-      <div style="background:linear-gradient(90deg,#0b1220, rgba(255,255,255,0.02));padding:10px;border-radius:10px;display:flex;gap:10px;align-items:center">
-        <div style="width:48px;height:48px;border-radius:8px;background:url('https://images.unsplash.com/photo-1542751371-adc38448a05e?auto=format&fit=crop&w=800&q=60') center/cover"></div>
+      <div class="app-head">
+        <img class="app-icon" src="https://play-lh.googleusercontent.com/_E5S4PVla1eyL2eTbnHrHyXGiLMWbGdalRlEPIwdL6SSnkI_y2mfoGyGzw9W3wRAx-NC5wkNjyLuurnfa2pj=w240-h480" alt="AnyTelematics icon" width="64" height="64">
         <div>
-          <div style="font-weight:700">Tap Tap Roach</div>
-          <div data-i18n="upcoming_release" style="font-size:13px;color:var(--muted)">Upcoming release</div>
+          <h3 class="app-name">AnyTelematics</h3>
+          <div class="app-dev">AnyCodeStudio</div>
         </div>
+      </div>
+      <div class="app-chips">
+        <span class="app-chip">Android</span>
+        <span class="app-chip" data-i18n="app_category">Maps &amp; Navigation</span>
+        <span class="app-chip" data-i18n="app_rating">Everyone</span>
+      </div>
+      <p class="app-desc" data-i18n="app_desc">GPS vehicle tracking and telematics: real-time positions, trips and fleet control right on your phone.</p>
+      <div class="app-shots" aria-label="AnyTelematics screenshots">
+        <a href="https://play.google.com/store/apps/details?id=com.anycodestudio.telematics" target="_blank" rel="noopener"><img loading="lazy" alt="" src="https://play-lh.googleusercontent.com/qq9E9T0ANKK47oJi9qj2hhKkK-jwe5Tszpc4rql4PKgIL8skQjHiJQLsqtGMnC46dHGBKGcNQGglafhhMH6ppA=h520"></a>
+        <a href="https://play.google.com/store/apps/details?id=com.anycodestudio.telematics" target="_blank" rel="noopener"><img loading="lazy" alt="" src="https://play-lh.googleusercontent.com/oDE0fVVzlpN_tfpDJkTjG_lSl_a20MULmY1NiT34MRu4D8uizhidFtT66ft2623Tq_eBrKrm-cVJ83N1nFNOXg=h520"></a>
+        <a href="https://play.google.com/store/apps/details?id=com.anycodestudio.telematics" target="_blank" rel="noopener"><img loading="lazy" alt="" src="https://play-lh.googleusercontent.com/lbuXXfy_viq9n7Ibvs8C2xo8RuXJqefct8OmZeThQ7GXSnKlcjm3GBZLIhJswz93grgytPtDoF89vDfFEmCP=h520"></a>
+        <a href="https://play.google.com/store/apps/details?id=com.anycodestudio.telematics" target="_blank" rel="noopener"><img loading="lazy" alt="" src="https://play-lh.googleusercontent.com/qOfeSoUDS4NgBGkYKipMeF15_JlIWqHB3xMQnWLZbkmA8KfdTdxME69KXiV98ko56HlB8H3vho96rhIBICtBACQ=h520"></a>
+        <a href="https://play.google.com/store/apps/details?id=com.anycodestudio.telematics" target="_blank" rel="noopener"><img loading="lazy" alt="" src="https://play-lh.googleusercontent.com/ICBo915h9dCqb_cVgbp9QxNVeMih8Yx9gQvWOEnY9TF3opPql5TjzJDb8WkAXM5gJwTK2QOFCQyBH3BxqlvlIDI=h520"></a>
+        <a href="https://play.google.com/store/apps/details?id=com.anycodestudio.telematics" target="_blank" rel="noopener"><img loading="lazy" alt="" src="https://play-lh.googleusercontent.com/XiKeQXJz3kJANMTrvbu5rdDg9t4uHAAMEQBdfr7azvLfrquoRGRXjCFj5WLmailocp-hv6SOq35VMP0O4eJL3Q=h520"></a>
+        <a href="https://play.google.com/store/apps/details?id=com.anycodestudio.telematics" target="_blank" rel="noopener"><img loading="lazy" alt="" src="https://play-lh.googleusercontent.com/O1GICAjsXNctvEDUCYaQlVc_LtYo4HJfizgyRRtqdwirWjzrMeFGvy1OpfaC7RJgRdCa-EnTs4BlvqgFPoeG1g=h520"></a>
+        <a href="https://play.google.com/store/apps/details?id=com.anycodestudio.telematics" target="_blank" rel="noopener"><img loading="lazy" alt="" src="https://play-lh.googleusercontent.com/r4F13fR_H5m2VBthPUvoFNcbw5evYfq8Zxp8Jm4CUmcIs3zQM4w3gM-llI-02KFDPOfKcuTuHtzg0aRzNu3E=h520"></a>
+      </div>
+      <div style="margin-top:14px">
+        <a class="gp-badge" id="gpBadge" href="https://play.google.com/store/apps/details?id=com.anycodestudio.telematics" target="_blank" rel="noopener">
+          <img id="gpBadgeImg" src="https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png" alt="Get it on Google Play">
+        </a>
       </div>
     </aside>
   </section>
@@ -221,7 +255,7 @@
 </main>
 
 <footer>
-  <div>© Any Code Studio 2025</div>
+  <div>© Any Code Studio <span id="year">2026</span></div>
   <div style="display:flex;gap:16px"><a href="/privacy.html" data-i18n="policy">Policy</a></div>
 </footer>
 
@@ -268,7 +302,11 @@ const translations = {
     success: "✅ Thank you! We'll reply within 48 hours.",
     error: "❌ Error sending. Please try later.",
     close: "Close",
-    policy: "Policy"
+    policy: "Policy",
+    hero_app_title: "Our app",
+    app_category: "Maps & Navigation",
+    app_rating: "Everyone",
+    app_desc: "GPS vehicle tracking and telematics: real-time positions, trips and fleet control right on your phone."
   },
   ru: {
     contacts: "Контакты",
@@ -306,8 +344,18 @@ const translations = {
     success: "✅ Спасибо! Мы ответим в течение 48 часов.",
     error: "❌ Ошибка при отправке. Попробуйте позже.",
     close: "Закрыть",
-    policy: "Политика"
+    policy: "Политика",
+    hero_app_title: "Наше приложение",
+    app_category: "Карты и навигация",
+    app_rating: "Для всех",
+    app_desc: "GPS-мониторинг и телематика транспорта: местоположение в реальном времени, поездки и контроль автопарка прямо в телефоне."
   }
+};
+
+// Google Play badge: language-specific official image
+const gpBadges = {
+  en: { src: "https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png", alt: "Get it on Google Play", hl: "en" },
+  ru: { src: "https://play.google.com/intl/en_us/badges/static/images/badges/ru_badge_web_generic.png", alt: "Доступно в Google Play", hl: "ru" }
 };
 
 let currentLang = 'ru';
@@ -321,6 +369,13 @@ function updateTranslations() {
     const key = el.getAttribute('data-i18n-placeholder');
     if(translations[currentLang][key]) el.placeholder = translations[currentLang][key];
   });
+  const badge = gpBadges[currentLang];
+  const badgeImg = document.getElementById('gpBadgeImg');
+  if (badge && badgeImg) {
+    badgeImg.src = badge.src;
+    badgeImg.alt = badge.alt;
+    document.getElementById('gpBadge').href = 'https://play.google.com/store/apps/details?id=com.anycodestudio.telematics&hl=' + badge.hl;
+  }
 }
 
 document.getElementById('langBtn').addEventListener('click', () => {
@@ -330,6 +385,9 @@ document.getElementById('langBtn').addEventListener('click', () => {
 });
 
 updateTranslations();
+
+// Current year in footer
+document.getElementById('year').textContent = new Date().getFullYear();
 
 // CONTACT FORM + POPUP
 const contactForm = document.getElementById('contactForm');
