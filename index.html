@@ -9,6 +9,12 @@
 <meta property="og:type" content="website">
 <meta name="robots" content="index, follow">
 <meta http-equiv="Content-Security-Policy" content="default-src 'self' https:; style-src 'unsafe-inline' https:; script-src 'self' 'unsafe-inline';">
+<link rel="icon" href="/favicon.ico" sizes="48x48">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="manifest" href="/site.webmanifest">
+<meta name="theme-color" content="#07020b">
 <title>Studio — Game Publishing & Dev</title>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
 <style>
@@ -24,6 +30,8 @@
   a{color:inherit;text-decoration:none}
   header{display:flex;align-items:center;justify-content:space-between;padding:28px 48px}
   .logo{display:flex;gap:12px;align-items:center}
+  .logo img{display:block;height:48px;width:auto}
+  @media (max-width:480px){.logo img{height:32px}}
   .brand-mark{width:44px;height:44px;border-radius:10px;background:linear-gradient(135deg,#8b5cf6,#00d4ff);display:flex;align-items:center;justify-content:center;font-weight:800;color:#ffffff}
   nav{display:flex;gap:18px;align-items:center}
   nav a{font-weight:600;opacity:0.9}
@@ -95,13 +103,9 @@
 </head>
 <body>
 <header>
-  <div class="logo">
-    <div class="brand-mark">AC</div>
-    <div>
-      <div style="font-weight:800">Studio</div>
-      <div style="font-size:12px;color:var(--muted);margin-top:2px">Application Development</div>
-    </div>
-  </div>
+  <a class="logo" href="/" aria-label="AnyCodeStudio">
+    <img src="/img/logo.png" alt="AnyCodeStudio" width="239" height="48">
+  </a>
   <nav>
     <button class="lang-switch" id="langBtn">RU</button>
     <a data-i18n="contacts" class="cta" href="#contact">Contacts</a>
